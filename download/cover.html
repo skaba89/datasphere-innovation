@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=794, height=1123">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  @page { size: 794px 1123px; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 794px; height: 1123px; margin: 0; padding: 0; overflow: hidden; background: #f5f6f7; }
+
+  .cover {
+    position: relative;
+    width: 794px;
+    height: 1123px;
+    background: #f5f6f7;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Geometric accents */
+  .accent-line-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #d25328 0%, #d25328 30%, transparent 60%);
+  }
+  .accent-block-left {
+    position: absolute;
+    left: 0; top: 80px;
+    width: 4px; height: 300px;
+    background: #d25328;
+    opacity: 0.6;
+  }
+  .accent-circle {
+    position: absolute;
+    bottom: 120px; right: 60px;
+    width: 180px; height: 180px;
+    border: 2px solid rgba(64, 83, 93, 0.12);
+    border-radius: 50%;
+  }
+  .accent-dot {
+    position: absolute;
+    bottom: 150px; right: 140px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #d25328;
+    opacity: 0.5;
+  }
+
+  /* Content blocks using absolute anchor grid */
+  .kicker {
+    position: absolute;
+    top: 100px;
+    left: 72px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d25328;
+    opacity: 0.85;
+  }
+
+  .hero-title {
+    position: absolute;
+    top: 160px;
+    left: 72px;
+    width: 650px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #1b1d1e;
+  }
+
+  .subtitle {
+    position: absolute;
+    top: 380px;
+    left: 72px;
+    width: 580px;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #73797c;
+  }
+
+  .divider-line {
+    position: absolute;
+    top: 490px;
+    left: 72px;
+    width: 100px;
+    height: 2px;
+    background: #d25328;
+    opacity: 0.5;
+  }
+
+  .summary-block {
+    position: absolute;
+    top: 520px;
+    left: 72px;
+    width: 560px;
+    background: rgba(64, 83, 93, 0.06);
+    border-left: 3px solid #d25328;
+    padding: 20px 24px;
+  }
+  .summary-block p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #40535d;
+  }
+
+  .meta-block {
+    position: absolute;
+    bottom: 80px;
+    left: 72px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #73797c;
+    line-height: 1.8;
+  }
+  .meta-block .label {
+    font-weight: 600;
+    color: #40535d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 10px;
+  }
+
+  .score-block {
+    position: absolute;
+    bottom: 80px;
+    right: 72px;
+    text-align: right;
+  }
+  .score-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #d25328;
+    line-height: 1;
+  }
+  .score-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #73797c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="accent-line-top"></div>
+  <div class="accent-block-left"></div>
+  <div class="accent-circle"></div>
+  <div class="accent-dot"></div>
+
+  <div class="kicker">Audit technique et strategique</div>
+
+  <div class="hero-title">
+    DataSphere<br>Innovation
+  </div>
+
+  <div class="subtitle">
+    Audit complet du site web, analyse concurrentielle et plan de modernisation pour atteindre l'excellence professionnelle
+  </div>
+
+  <div class="divider-line"></div>
+
+  <div class="summary-block">
+    <p>
+      Analyse approfondie de l'architecture, du design, de la performance, du SEO, de la securite et de l'accessibilite du projet datasphere-innovation. Propositions d'evolution prioritisees et plan d'action sur 12 mois pour transformer le site en un outil de generation de leads professionnel et concurrentiel.
+    </p>
+  </div>
+
+  <div class="meta-block">
+    <div class="label">Date</div>
+    <div>14 avril 2026</div>
+    <div style="margin-top: 10px;"><span class="label">Auteur</span></div>
+    <div>Z.ai - Audit technique</div>
+    <div style="margin-top: 10px;"><span class="label">Projet</span></div>
+    <div>github.com/skaba89/datasphere-innovation</div>
+  </div>
+
+  <div class="score-block">
+    <div class="score-value">5.1</div>
+    <div class="score-label">Score global /10</div>
+  </div>
+</div>
+</body>
+</html>
