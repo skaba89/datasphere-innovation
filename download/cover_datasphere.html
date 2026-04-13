@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --c-accent: #c7233e;
+  --c-text: #212324;
+  --c-muted: #767f83;
+  --c-bg: #f5f4f3;
+}
+
+@page { size: 794px 1123px; margin: 0; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 794px;
+  height: 1123px;
+  overflow: hidden;
+  background: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.cover {
+  position: relative;
+  width: 794px;
+  height: 1123px;
+  background: #ffffff;
+}
+
+/* Geometric accents */
+.accent-line-left {
+  position: absolute;
+  left: 60px;
+  top: 95px;
+  bottom: 95px;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent 0%, var(--c-accent) 15%, var(--c-accent) 85%, transparent 100%);
+  opacity: 0.3;
+}
+
+.accent-dot-1 {
+  position: absolute;
+  left: 57px;
+  top: 200px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  opacity: 0.5;
+}
+
+.accent-hr {
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  top: 520px;
+  height: 1px;
+  background: linear-gradient(to right, var(--c-accent), transparent 80%);
+  opacity: 0.25;
+}
+
+/* Content zones */
+.kicker {
+  position: absolute;
+  top: 160px;
+  left: 90px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  opacity: 0.7;
+}
+
+.hero-title {
+  position: absolute;
+  top: 210px;
+  left: 90px;
+  right: 90px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--c-text);
+}
+
+.hero-title span {
+  color: var(--c-accent);
+}
+
+.meta {
+  position: absolute;
+  top: 540px;
+  left: 90px;
+  right: 90px;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--c-muted);
+}
+
+.summary {
+  position: absolute;
+  top: 680px;
+  left: 90px;
+  right: 90px;
+  padding: 24px 28px;
+  background: #f8f7f6;
+  border-left: 3px solid var(--c-accent);
+  border-radius: 0 6px 6px 0;
+}
+
+.summary p {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.footer-info {
+  position: absolute;
+  bottom: 95px;
+  left: 90px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--c-muted);
+  line-height: 1.6;
+}
+
+.footer-date {
+  position: absolute;
+  bottom: 95px;
+  right: 90px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: var(--c-muted);
+  text-align: right;
+}
+
+/* Decorative corner */
+.corner-br {
+  position: absolute;
+  right: 60px;
+  bottom: 95px;
+  width: 40px;
+  height: 40px;
+  border-right: 2px solid var(--c-accent);
+  border-bottom: 2px solid var(--c-accent);
+  opacity: 0.2;
+}
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="accent-line-left"></div>
+  <div class="accent-dot-1"></div>
+  <div class="accent-hr"></div>
+
+  <div class="kicker">Audit technique et strategique</div>
+
+  <h1 class="hero-title">
+    Rapport d'audit<br/>
+    <span>DataSphere</span> Innovation
+  </h1>
+
+  <div class="meta">
+    Analyse technique, UX, securite et SEO du projet<br/>
+    Propositions d'evolution pour un positionnement professionnel
+  </div>
+
+  <div class="summary">
+    <p>
+      Ce rapport presente un audit complet du site DataSphere Innovation : architecture, code, performance, SEO, accessibilite, securite, et competitivite.
+      15 recommandations priorisees sont detaillees avec une feuille de route sur 12 mois pour transformer le projet en plateforme professionnelle de reference.
+    </p>
+  </div>
+
+  <div class="footer-info">
+    Projet : github.com/skaba89/datasphere-innovation<br/>
+    Stack : Vite + React 18 + TypeScript + Tailwind CSS + Supabase
+  </div>
+
+  <div class="footer-date">
+    Avril 2026<br/>
+    Version 1.0
+  </div>
+
+  <div class="corner-br"></div>
+</div>
+</body>
+</html>
