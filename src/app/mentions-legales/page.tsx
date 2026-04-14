@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { BackToTop } from "@/components/layout/BackToTop";
+import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 
 export const metadata: Metadata = {
   title: "Mentions légales — DataSphere Innovation",
@@ -148,9 +151,10 @@ export default function MentionsLegalesPage() {
           </div>
         </div>
       </section>
-      <div className="mt-auto">
-        <Footer />
-      </div>
+      <Footer />
+      <BackToTop />
+      <ChatWidget />
+      <CookieConsent />
     </main>
   );
 }

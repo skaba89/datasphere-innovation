@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { BackToTop } from "@/components/layout/BackToTop";
+import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — DataSphere Innovation",
@@ -121,7 +124,7 @@ export default function PolitiqueConfidentialitePage() {
               <p>
                 Conformément au RGPD, vous disposez des droits suivants :
               </p>
-              <ul className="list-disc ml-6 mt-2 space-y-1">
+              <ul className="list-disc ml-6 space-y-1">
                 <li>Droit d&apos;accès à vos données</li>
                 <li>Droit de rectification</li>
                 <li>Droit à l&apos;effacement</li>
@@ -202,9 +205,10 @@ export default function PolitiqueConfidentialitePage() {
           </div>
         </div>
       </section>
-      <div className="mt-auto">
-        <Footer />
-      </div>
+      <Footer />
+      <BackToTop />
+      <ChatWidget />
+      <CookieConsent />
     </main>
   );
 }
