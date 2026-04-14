@@ -505,12 +505,12 @@ export const CONTACT_SUBJECTS = [
 // ─── Footer Links ───────────────────────────────────────────────────────────
 
 export const FOOTER_SERVICES = [
-  { label: "Stratégie Data", href: "/#services" },
-  { label: "BI & Dashboards", href: "/#services" },
-  { label: "Solutions IA", href: "/#services" },
-  { label: "Data Engineering", href: "/#services" },
-  { label: "Automatisation", href: "/#services" },
-  { label: "Cloud & Modernisation", href: "/#services" },
+  { label: "Stratégie Data", href: "/services/data-strategy" },
+  { label: "BI & Dashboards", href: "/services/bi-dashboards" },
+  { label: "Solutions IA", href: "/services/ai-solutions" },
+  { label: "Data Engineering", href: "/services/data-engineering" },
+  { label: "Automatisation", href: "/services/process-automation" },
+  { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
 ];
 
 export const FOOTER_NAVIGATION = [
@@ -518,12 +518,23 @@ export const FOOTER_NAVIGATION = [
   { label: "Services", href: "/#services" },
   { label: "Cas d'usage", href: "/#cas-usage" },
   { label: "Témoignages", href: "/#temoignages" },
+  { label: "Blog", href: "/blog" },
+  { label: "À propos", href: "/a-propos" },
+  { label: "Carrières", href: "/carrieres" },
   { label: "Contact", href: "/#contact" },
+];
+
+export const FOOTER_RESOURCES = [
+  { label: "Blog & Insights", href: "/blog" },
+  { label: "Plan du site", href: "/plan-du-site" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "Méthodologie", href: "/#methode" },
 ];
 
 export const LEGAL_LINKS = [
   { label: "Mentions légales", href: "/mentions-legales" },
   { label: "Politique de confidentialité", href: "/politique-confidentialite" },
+  { label: "Conditions générales", href: "/conditions-generales" },
 ];
 
 // ─── Chatbot ────────────────────────────────────────────────────────────────

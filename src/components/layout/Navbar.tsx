@@ -71,6 +71,18 @@ export function Navbar() {
               </Link>
             );
           })}
+          <Link
+            href="/blog"
+            className="text-sm px-3 py-2 rounded-md text-muted-foreground hover:text-foreground transition-colors duration-200"
+          >
+            Blog
+          </Link>
+          <Link
+            href="/a-propos"
+            className="text-sm px-3 py-2 rounded-md text-muted-foreground hover:text-foreground transition-colors duration-200"
+          >
+            À propos
+          </Link>
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
@@ -156,6 +168,27 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                href="/blog"
+                onClick={() => setMobileOpen(false)}
+                className="text-foreground font-heading text-lg py-2.5 px-3 rounded-lg hover:bg-secondary/50 transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
+                href="/a-propos"
+                onClick={() => setMobileOpen(false)}
+                className="text-foreground font-heading text-lg py-2.5 px-3 rounded-lg hover:bg-secondary/50 transition-colors"
+              >
+                À propos
+              </Link>
+              <Link
+                href="/carrieres"
+                onClick={() => setMobileOpen(false)}
+                className="text-foreground font-heading text-lg py-2.5 px-3 rounded-lg hover:bg-secondary/50 transition-colors"
+              >
+                Carrières
+              </Link>
               <Link
                 href="/#contact"
                 onClick={() => setMobileOpen(false)}

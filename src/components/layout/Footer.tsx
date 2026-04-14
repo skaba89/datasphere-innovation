@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Mail, Phone, MapPin, ArrowRight, Linkedin, Twitter } from "lucide-react";
-import { COMPANY, FOOTER_SERVICES, FOOTER_NAVIGATION, LEGAL_LINKS } from "@/lib/constants";
+import { COMPANY, FOOTER_SERVICES, FOOTER_NAVIGATION, FOOTER_RESOURCES, LEGAL_LINKS } from "@/lib/constants";
 
 export function Footer() {
   const [email, setEmail] = React.useState("");
@@ -26,7 +26,7 @@ export function Footer() {
   return (
     <footer className="bg-secondary/30 border-t border-border/50">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand & Newsletter */}
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-4 group">
@@ -101,6 +101,30 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Ressources */}
+          <div>
+            <h3 className="font-heading font-semibold text-foreground mb-4">
+              Ressources
+            </h3>
+            <ul className="space-y-2.5">
+              {FOOTER_RESOURCES.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h3 className="font-heading font-semibold text-foreground mb-3 mt-6">
+              Légal
+            </h3>
+            <ul className="space-y-2.5">
               {LEGAL_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -174,7 +198,7 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} {COMPANY.name}. Tous droits réservés.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap justify-center">
             {LEGAL_LINKS.map((link) => (
               <Link
                 key={link.href}
@@ -184,6 +208,12 @@ export function Footer() {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/plan-du-site"
+              className="text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              Plan du site
+            </Link>
           </div>
         </div>
       </div>
