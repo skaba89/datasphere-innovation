@@ -378,7 +378,9 @@ export function Navbar() {
                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
                     exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.3 }}
-                  />
+                  >
+                    <Moon size={16} />
+                  </motion.div>
                 )}
               </AnimatePresence>
             </button>
