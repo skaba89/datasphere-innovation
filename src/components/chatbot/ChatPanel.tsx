@@ -19,7 +19,6 @@ const WELCOME_MESSAGE: Message = {
 export function ChatPanel({ onClose }: ChatPanelProps) {
   const [messages, setMessages] = React.useState<Message[]>([WELCOME_MESSAGE]);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [provider, setProvider] = React.useState<string>("");
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
   const scrollToBottom = React.useCallback(() => {
@@ -72,10 +71,8 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
           id: `assistant-${Date.now()}`,
           role: "assistant",
           content: data.message,
-          provider: data.provider,
         };
         setMessages((prev) => [...prev, assistantMessage]);
-        if (data.provider) setProvider(data.provider);
       }
     } catch {
       const errorMessage: Message = {
@@ -110,7 +107,7 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
               <p className="text-xs text-white/80 font-medium">
-                En ligne {provider && `• ${provider === "groq" ? "Groq AI" : provider === "openrouter" ? "OpenRouter AI" : "AI"}`}
+                En ligne • DatIA
               </p>
             </div>
           </div>
