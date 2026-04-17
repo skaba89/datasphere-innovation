@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "DataSphere Innovation" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/images/favicon-datasphere.png",
   },
   openGraph: {
     title: "DataSphere Innovation — Cabinet Expert Data & IA",
@@ -74,7 +74,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "DataSphere Innovation",
     url: "https://datasphereinnovation.fr",
-    logo: "https://datasphereinnovation.fr/logo.svg",
+    logo: "https://datasphereinnovation.fr/images/logo-datasphere.png",
     description:
       "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale.",
     address: {
@@ -100,7 +100,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "DataSphere Innovation",
-    image: "https://datasphereinnovation.fr/logo.svg",
+    image: "https://datasphereinnovation.fr/images/logo-datasphere.png",
     telephone: "+33 6 81 82 28 40",
     email: "contact@datasphereinnovation.fr",
     address: {

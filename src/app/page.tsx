@@ -9,6 +9,7 @@ import { DifferentiatorsSection } from "@/components/sections/DifferentiatorsSec
 import { UseCasesSection } from "@/components/sections/UseCasesSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { MethodSection } from "@/components/sections/MethodSection";
+import { InsightsSection } from "@/components/sections/InsightsSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { ContactSection } from "@/components/sections/ContactSection";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <UseCasesSection />
       <TestimonialsSection />
       <MethodSection />
+      <InsightsSection />
       <AboutSection />
       <FAQSection />
       <ContactSection />
