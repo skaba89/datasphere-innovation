@@ -155,13 +155,13 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/80 backdrop-blur-2xl border-b border-border/30 shadow-lg shadow-black/5"
+          ? "bg-background/90 backdrop-blur-2xl border-b border-border/30 shadow-lg shadow-black/5"
           : "bg-transparent"
       }`}
     >
       {/* Top gradient line when scrolled */}
       {scrolled && (
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary" />
       )}
 
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
@@ -178,7 +178,7 @@ export function Navbar() {
             />
             <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
-          <span className="font-heading font-bold text-lg text-foreground hidden sm:inline">
+          <span className={`font-heading font-bold text-lg transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
             DataSphere<span className="text-primary"> Innovation</span>
           </span>
         </Link>
@@ -203,7 +203,9 @@ export function Navbar() {
                     className={`relative flex items-center gap-1.5 text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
                       activeDropdown === dropdownKey || isActive
                         ? "text-primary font-medium bg-primary/5"
-                        : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                        : scrolled
+                          ? "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                          : "text-white/70 hover:text-white hover:bg-white/10"
                     }`}
                   >
                     {link.label}
@@ -231,7 +233,7 @@ export function Navbar() {
                       >
                         <div className="relative bg-background/95 backdrop-blur-2xl border border-border/50 rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
                           {/* Top gradient line */}
-                          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+                          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary" />
 
                           {dropdownKey === "Services" ? (
                             // Services Mega Menu — 2 column grid with images
@@ -281,7 +283,7 @@ export function Navbar() {
                                   className="flex items-center justify-center gap-2 p-2.5 rounded-xl text-sm font-medium text-primary hover:bg-primary/5 transition-colors"
                                 >
                                   Voir tous les services
-                                  <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                                  <ArrowRight size={14} />
                                 </Link>
                               </div>
                             </div>
@@ -330,7 +332,9 @@ export function Navbar() {
                 className={`relative text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
                   isActive
                     ? "text-primary font-medium bg-primary/5"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                    : scrolled
+                      ? "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
+                      : "text-white/70 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {link.label}
@@ -351,7 +355,7 @@ export function Navbar() {
           {/* Phone number */}
           <a
             href={COMPANY.phoneHref}
-            className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors px-2"
+            className={`flex items-center gap-1.5 text-xs transition-colors px-2 ${scrolled ? "text-muted-foreground hover:text-primary" : "text-white/60 hover:text-white"}`}
           >
             <Phone size={13} />
             <span className="hidden xl:inline">{COMPANY.phone}</span>
@@ -360,7 +364,11 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={toggleTheme}
-              className="relative w-9 h-9 rounded-xl border border-border/50 bg-secondary/30 flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/30 hover:bg-secondary/60 transition-all duration-300"
+              className={`relative w-9 h-9 rounded-xl border flex items-center justify-center transition-all duration-300 ${
+                scrolled
+                  ? "border-border/50 bg-secondary/30 text-muted-foreground hover:text-foreground hover:border-primary/30 hover:bg-secondary/60"
+                  : "border-white/20 bg-white/10 text-white/60 hover:text-white hover:border-white/30 hover:bg-white/20"
+              }`}
               aria-label={
                 theme === "dark"
                   ? "Passer en mode clair"
@@ -394,7 +402,7 @@ export function Navbar() {
           )}
           <Link
             href="/#contact"
-            className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-heading font-semibold text-sm hover:bg-primary/90 transition-all duration-300 overflow-hidden"
+            className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-heading font-semibold text-sm hover:bg-primary/90 transition-all duration-300 overflow-hidden shadow-lg shadow-primary/20"
           >
             <span className="relative z-10 flex items-center gap-2">
               <Sparkles size={14} className="hidden xl:inline" />
@@ -410,7 +418,11 @@ export function Navbar() {
           {mounted && (
             <button
               onClick={toggleTheme}
-              className="w-9 h-9 rounded-xl border border-border/50 bg-secondary/30 flex items-center justify-center text-muted-foreground hover:text-foreground transition-all"
+              className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all ${
+                scrolled
+                  ? "border-border/50 bg-secondary/30 text-muted-foreground hover:text-foreground"
+                  : "border-white/20 bg-white/10 text-white/60 hover:text-white"
+              }`}
               aria-label="Changer de thème"
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
@@ -418,7 +430,7 @@ export function Navbar() {
           )}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-foreground p-2 rounded-lg hover:bg-secondary/50 transition-colors"
+            className={`p-2 rounded-lg transition-colors ${scrolled ? "text-foreground hover:bg-secondary/50" : "text-white hover:bg-white/10"}`}
             aria-label="Menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
