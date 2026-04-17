@@ -105,7 +105,7 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
           </div>
           <div>
             <h3 className="text-sm font-heading font-bold text-white tracking-tight">
-              DataSphere AI Assistant
+              DatIA — Conseiller Data & IA
             </h3>
             <div className="flex items-center gap-1.5 mt-0.5">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />

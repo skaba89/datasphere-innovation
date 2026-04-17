@@ -547,10 +547,10 @@ export const CHAT_SUGGESTED_QUESTIONS = [
 ] as const;
 
 export const CHAT_WELCOME_MESSAGE =
-  "Bonjour ! 👋 Je suis l'assistant DataSphere Innovation. Comment puis-je vous aider avec vos projets data & IA ?";
+  "Bonjour ! Je suis DatIA, votre conseiller Data & IA. Comment puis-je vous aider avec vos projets data et intelligence artificielle ?";
 
 export const CHAT_ERROR_MESSAGE =
-  "Je suis désolé, une erreur est survenue. N'hésitez pas à réessayer ou à nous contacter directement à contact@datasphereinnovation.fr";
+  "Je suis désolé, une erreur est survenue. N'hésitez pas à réessayer ou à contacter directement notre équipe à contact@datasphereinnovation.fr";
 
 export const CHAT_NETWORK_ERROR =
-  "Je suis désolé, je n'arrive pas à me connecter. Veuillez réessayer dans quelques instants.";
+  "Je suis désolé, je n'arrive pas à me connecter. Veuillez réessayer dans quelques instants ou contactez-nous à contact@datasphereinnovation.fr";
