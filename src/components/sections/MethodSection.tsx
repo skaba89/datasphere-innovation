@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { METHOD_STEPS } from "@/lib/constants";
 import { Search, PenTool, Rocket, HeadphonesIcon } from "lucide-react";
@@ -8,6 +9,25 @@ import type { LucideIcon } from "lucide-react";
 
 const stepIcons: LucideIcon[] = [Search, PenTool, Rocket, HeadphonesIcon];
 const stepColors = ["primary", "accent", "primary", "accent"] as const;
+
+const stepLinks: { label: string; href: string }[][] = [
+  [
+    { label: "Stratégie Data", href: "/services/data-strategy" },
+    { label: "Audit data", href: "/#contact" },
+  ],
+  [
+    { label: "BI & Dashboards", href: "/services/bi-dashboards" },
+    { label: "Architecture data", href: "/services/data-engineering" },
+  ],
+  [
+    { label: "Solutions IA", href: "/services/ai-solutions" },
+    { label: "Automatisation", href: "/services/process-automation" },
+  ],
+  [
+    { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+    { label: "Contact", href: "/#contact" },
+  ],
+];
 
 export function MethodSection() {
   return (
@@ -30,6 +50,11 @@ export function MethodSection() {
               Notre méthodologie en 4 phases garantit des résultats concrets et
               mesurables à chaque étape.
             </p>
+            <p className="text-muted-foreground/70 max-w-3xl mt-3 text-base">
+              Chaque projet suit un cadre rigoureux : du diagnostic initial à l&apos;optimisation continue,
+              nous assurons une trajectoire claire avec des livrables concrets à chaque phase.
+              Cette approche itérative permet des premiers résultats en 4 à 6 semaines.
+            </p>
           </div>
         </SectionReveal>
 
@@ -45,6 +70,7 @@ export function MethodSection() {
               const Icon = stepIcons[index];
               const color = stepColors[index];
               const isPrimary = color === "primary";
+              const links = stepLinks[index];
 
               return (
                 <SectionReveal key={step.title} delay={index * 0.15}>
@@ -74,9 +100,21 @@ export function MethodSection() {
                       <h3 className="text-xl font-heading font-bold mb-2">
                         {step.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                         {step.description}
                       </p>
+                      {/* Links to relevant service pages */}
+                      <div className="flex flex-wrap lg:justify-center gap-1.5">
+                        {links.map((link) => (
+                          <Link
+                            key={link.href + link.label}
+                            href={link.href}
+                            className="text-xs px-2 py-0.5 rounded-full bg-primary/5 text-primary/70 border border-primary/10 hover:bg-primary/10 hover:text-primary transition-colors"
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </SectionReveal>

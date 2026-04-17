@@ -27,7 +27,7 @@ export function HeroSection() {
       <motion.div style={{ y: bgY }} className="absolute inset-0">
         <Image
           src="/images/hero-bg.png"
-          alt=""
+          alt="DataSphere Innovation — Cabinet expert Data et Intelligence Artificielle, transformation digitale"
           fill
           className="object-cover"
           priority

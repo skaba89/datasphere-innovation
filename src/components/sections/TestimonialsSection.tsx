@@ -48,6 +48,11 @@ export function TestimonialsSection() {
               Ce que disent nos{" "}
               <span className="gradient-text">clients</span>
             </h2>
+            <p className="text-muted-foreground max-w-2xl text-base">
+              Avec un taux de satisfaction de 98% et un ROI moyen de 3x, nos clients témoignent de l&apos;impact concret de nos
+              <a href="/#services" className="text-primary hover:underline"> services data & IA</a> sur leur performance.
+              Découvrez leurs retours d&apos;expérience.
+            </p>
           </div>
         </SectionReveal>
 

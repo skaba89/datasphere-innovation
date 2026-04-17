@@ -107,6 +107,12 @@ export function ContactSection() {
               Un projet data ? Une question ? Prenez contact avec nous et
               recevez une réponse sous 24h.
             </p>
+            <p className="text-muted-foreground/70 max-w-3xl mt-3 text-sm">
+              Que vous ayez besoin d&apos;une <a href="/services/data-strategy" className="text-primary hover:underline">stratégie data</a>, de
+              <a href="/services/bi-dashboards" className="text-primary hover:underline"> dashboards BI</a>, de
+              <a href="/services/ai-solutions" className="text-primary hover:underline"> solutions IA</a> ou d&apos;une
+              <a href="/services/cloud-modernization" className="text-primary hover:underline"> migration cloud</a>, notre équipe vous accompagne.
+            </p>
           </div>
         </SectionReveal>
 

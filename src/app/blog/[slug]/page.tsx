@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts, getBlogPostBySlug } from "@/lib/blog-data";
 import { BlogPostClient } from "./BlogPostClient";
+import { generateArticleSchema, generateBreadcrumbSchema, JsonLd } from "@/lib/json-ld";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -16,6 +17,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${post.title} — DataSphere Innovation`,
     description: post.excerpt,
+    openGraph: {
+      title: `${post.title} — DataSphere Innovation`,
+      description: post.excerpt,
+      url: `https://datasphereinnovation.fr/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["DataSphere Innovation"],
+      tags: [post.category],
+    },
+    alternates: {
+      canonical: `https://datasphereinnovation.fr/blog/${post.slug}`,
+    },
   };
 }
 
@@ -41,5 +54,27 @@ export default async function BlogPostPage({ params }: PageProps) {
       </main>
     );
   }
-  return <BlogPostClient post={post} />;
+
+  const articleSchema = generateArticleSchema({
+    slug: post.slug,
+    title: post.title,
+    excerpt: post.excerpt,
+    date: post.date,
+    author: post.author,
+    category: post.category,
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Accueil", url: "https://datasphereinnovation.fr" },
+    { name: "Blog", url: "https://datasphereinnovation.fr/blog" },
+    { name: post.title, url: `https://datasphereinnovation.fr/blog/${post.slug}` },
+  ]);
+
+  return (
+    <>
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
+      <BlogPostClient post={post} />
+    </>
+  );
 }

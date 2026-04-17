@@ -59,6 +59,12 @@ export function InsightsSection() {
               <p className="text-muted-foreground mt-3 max-w-xl text-lg">
                 Analyses, guides et perspectives de nos experts data & IA pour vous aider à prendre les meilleures décisions.
               </p>
+              <p className="text-muted-foreground/70 mt-2 max-w-xl text-sm">
+                Nos publications couvrent la <a href="/services/data-strategy" className="text-primary hover:underline">stratégie data</a>, le
+                <a href="/services/ai-solutions" className="text-primary hover:underline"> Machine Learning</a>, le
+                <a href="/services/data-engineering" className="text-primary hover:underline"> Data Engineering</a> et le
+                <a href="/services/cloud-modernization" className="text-primary hover:underline"> Cloud</a>.
+              </p>
             </div>
             <Link
               href="/blog"

@@ -58,6 +58,24 @@ export function StatsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <SectionReveal>
+          <div className="text-center mb-10">
+            <p className="text-white/40 text-sm max-w-2xl mx-auto">
+              Des résultats concrets confirmés par nos clients. Selon{" "}
+              <a
+                href="https://www.mckinsey.com/capabilities/quantumblack/our-insights"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary/60 hover:text-primary underline underline-offset-2"
+              >
+                McKinsey
+              </a>
+              , les entreprises data-driven obtiennent un ROI 3 à 5 fois supérieur
+              à leurs investissements data. Nos chiffres parlent d&apos;eux-mêmes.
+            </p>
+          </div>
+        </SectionReveal>
+
+        <SectionReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {STATS.map((stat, i) => (
               <motion.div
@@ -85,6 +103,41 @@ export function StatsSection() {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </SectionReveal>
+
+        {/* Source citation */}
+        <SectionReveal>
+          <div className="text-center mt-8">
+            <p className="text-white/25 text-xs">
+              Sources :{" "}
+              <a
+                href="https://www.mckinsey.com/capabilities/quantumblack/our-insights"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/35 hover:text-white/50 underline underline-offset-2"
+              >
+                McKinsey Global Institute
+              </a>
+              {" · "}
+              <a
+                href="https://www.gartner.com/en/information-technology"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/35 hover:text-white/50 underline underline-offset-2"
+              >
+                Gartner IT Research
+              </a>
+              {" · "}
+              <a
+                href="https://www.forbes.com/sites/forbestechcouncil/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/35 hover:text-white/50 underline underline-offset-2"
+              >
+                Forbes Technology Council
+              </a>
+            </p>
           </div>
         </SectionReveal>
       </div>

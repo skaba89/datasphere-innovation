@@ -18,6 +18,34 @@ const SERVICE_IMAGES: Record<string, string> = {
   "cloud-modernization": "/images/services/cloud-modernization.png",
 };
 
+// Related services mapping for contextual linking
+const RELATED_SERVICES: Record<string, { slug: string; label: string }[]> = {
+  "data-strategy": [
+    { slug: "bi-dashboards", label: "BI & Dashboards" },
+    { slug: "data-engineering", label: "Data Engineering" },
+  ],
+  "bi-dashboards": [
+    { slug: "data-strategy", label: "Stratégie Data" },
+    { slug: "data-engineering", label: "Data Engineering" },
+  ],
+  "ai-solutions": [
+    { slug: "data-engineering", label: "Data Engineering" },
+    { slug: "process-automation", label: "Automatisation" },
+  ],
+  "data-engineering": [
+    { slug: "cloud-modernization", label: "Cloud & Modernisation" },
+    { slug: "data-strategy", label: "Stratégie Data" },
+  ],
+  "process-automation": [
+    { slug: "ai-solutions", label: "Solutions IA" },
+    { slug: "cloud-modernization", label: "Cloud & Modernisation" },
+  ],
+  "cloud-modernization": [
+    { slug: "data-engineering", label: "Data Engineering" },
+    { slug: "process-automation", label: "Automatisation" },
+  ],
+};
+
 export function ServicesSection() {
   return (
     <section id="services" className="section-padding bg-background relative overflow-hidden">
@@ -39,6 +67,15 @@ export function ServicesSection() {
               De la stratégie à l&apos;exécution, nous offrons une expertise
               complète pour transformer vos données en valeur business.
             </p>
+            <p className="text-muted-foreground/70 max-w-3xl mt-3 text-base">
+              Nos six pôles de services couvrent l&apos;ensemble de la chaîne de valeur data :
+              de la définition de votre <Link href="/services/data-strategy" className="text-primary hover:underline">stratégie data</Link> à la
+              <Link href="/services/cloud-modernization" className="text-primary hover:underline"> modernisation cloud</Link>, en passant par la
+              <Link href="/services/bi-dashboards" className="text-primary hover:underline"> Business Intelligence</Link>, le
+              <Link href="/services/ai-solutions" className="text-primary hover:underline"> Machine Learning</Link>, le
+              <Link href="/services/data-engineering" className="text-primary hover:underline"> Data Engineering</Link> et l&apos;
+              <Link href="/services/process-automation" className="text-primary hover:underline"> automatisation des processus</Link>.
+            </p>
           </div>
         </SectionReveal>
 
@@ -46,6 +83,7 @@ export function ServicesSection() {
           {SERVICES.map((service, index) => {
             const Icon = service.icon;
             const imageUrl = SERVICE_IMAGES[service.slug];
+            const related = RELATED_SERVICES[service.slug] || [];
             return (
               <SectionReveal key={service.slug} delay={index * 0.1}>
                 <Link href={`/services/${service.slug}`} className="block group">
@@ -89,7 +127,27 @@ export function ServicesSection() {
                           </span>
                         ))}
                       </div>
-                      <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+
+                      {/* Contextual links to related services */}
+                      {related.length > 0 && (
+                        <div className="pt-3 border-t border-border/20">
+                          <p className="text-xs text-muted-foreground/60 mb-1.5">Services complémentaires :</p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {related.map((r) => (
+                              <Link
+                                key={r.slug}
+                                href={`/services/${r.slug}`}
+                                className="text-xs px-2 py-0.5 rounded-full bg-primary/5 text-primary/70 border border-primary/10 hover:bg-primary/10 hover:text-primary transition-colors"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                {r.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex items-center gap-2 text-sm font-semibold text-primary mt-3">
                         <span>En savoir plus</span>
                         <ArrowRight size={14} className="group-hover:translate-x-1.5 transition-transform duration-300" />
                       </div>

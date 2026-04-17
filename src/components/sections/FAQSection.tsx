@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import {
   Accordion,
@@ -9,6 +10,38 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FAQ_ITEMS } from "@/lib/constants";
+
+// Map FAQ indices to relevant service links
+const FAQ_SERVICE_LINKS: { label: string; href: string }[][] = [
+  [
+    { label: "Stratégie Data", href: "/services/data-strategy" },
+    { label: "Solutions IA", href: "/services/ai-solutions" },
+  ],
+  [
+    { label: "Solutions IA", href: "/services/ai-solutions" },
+    { label: "BI & Dashboards", href: "/services/bi-dashboards" },
+  ],
+  [
+    { label: "Notre méthode", href: "/#methode" },
+    { label: "Data Engineering", href: "/services/data-engineering" },
+  ],
+  [
+    { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+    { label: "Contact", href: "/#contact" },
+  ],
+  [
+    { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+    { label: "Stratégie Data", href: "/services/data-strategy" },
+  ],
+  [
+    { label: "Data Engineering", href: "/services/data-engineering" },
+    { label: "BI & Dashboards", href: "/services/bi-dashboards" },
+  ],
+  [
+    { label: "Contactez-nous", href: "/#contact" },
+    { label: "Nos services", href: "/#services" },
+  ],
+];
 
 export function FAQSection() {
   return (
@@ -23,6 +56,11 @@ export function FAQSection() {
               Questions{" "}
               <span className="gradient-text">fréquentes</span>
             </h2>
+            <p className="text-muted-foreground max-w-2xl text-base">
+              Retrouvez les réponses aux questions les plus courantes sur nos services,
+              notre méthodologie et notre accompagnement. Chaque réponse inclut des liens
+              vers les <Link href="/#services" className="text-primary hover:underline">services</Link> concernés pour aller plus loin.
+            </p>
           </div>
         </SectionReveal>
 
@@ -35,7 +73,22 @@ export function FAQSection() {
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground leading-relaxed">
-                    {faq.answer}
+                    <p>{faq.answer}</p>
+                    {/* Links to relevant service pages */}
+                    {FAQ_SERVICE_LINKS[index] && FAQ_SERVICE_LINKS[index].length > 0 && (
+                      <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-border/20">
+                        <span className="text-xs text-muted-foreground/60 self-center">En savoir plus :</span>
+                        {FAQ_SERVICE_LINKS[index].map((link) => (
+                          <Link
+                            key={link.href + link.label}
+                            href={link.href}
+                            className="text-xs px-2.5 py-1 rounded-full bg-primary/5 text-primary/70 border border-primary/10 hover:bg-primary/10 hover:text-primary transition-colors"
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </AccordionContent>
                 </AccordionItem>
               ))}

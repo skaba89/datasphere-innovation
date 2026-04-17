@@ -27,6 +27,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import type { ServiceData } from "@/lib/service-data";
+import { services } from "@/lib/service-data";
 
 const iconMap: Record<string, LucideIcon> = {
   Database,
@@ -54,22 +55,36 @@ const SERVICE_IMAGES: Record<string, string> = {
   "cloud-modernization": "/images/services/cloud-modernization.png",
 };
 
+// Related services mapping
+const RELATED_MAP: Record<string, string[]> = {
+  "data-strategy": ["bi-dashboards", "data-engineering"],
+  "bi-dashboards": ["data-strategy", "data-engineering"],
+  "ai-solutions": ["data-engineering", "process-automation"],
+  "data-engineering": ["cloud-modernization", "data-strategy"],
+  "process-automation": ["ai-solutions", "cloud-modernization"],
+  "cloud-modernization": ["data-engineering", "process-automation"],
+};
+
 export function ServicePageClient({ service }: { service: ServiceData }) {
   const Icon = iconMap[service.icon] || Database;
   const heroImage = SERVICE_IMAGES[service.slug];
+
+  const relatedServices = (RELATED_MAP[service.slug] || [])
+    .map((slug) => services.find((s) => s.slug === slug))
+    .filter(Boolean) as ServiceData[];
 
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
 
       {/* Hero with Background Image */}
-      <section className="relative pt-32 pb-24 overflow-hidden">
+      <section className="relative pt-32 pb-24 overflow-hidden" role="banner" aria-label={`Service ${service.title}`}>
         {/* Background Image */}
         {heroImage && (
           <div className="absolute inset-0">
             <Image
               src={heroImage}
-              alt={service.title}
+              alt={`Service ${service.shortTitle} - DataSphere Innovation`}
               fill
               className="object-cover"
               priority
@@ -133,16 +148,19 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
       </section>
 
       {/* Features */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" role="region" aria-label="Fonctionnalités">
         <div className="container mx-auto px-4">
           <SectionReveal>
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
-                Fonctionnalites
+                Fonctionnalités
               </span>
               <h2 className="text-3xl md:text-4xl font-heading font-bold">
                 Ce que nous <span className="gradient-text">offrons</span>
               </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+                Un ensemble complet de fonctionnalités pour répondre à vos besoins en {service.shortTitle.toLowerCase()}.
+              </p>
             </div>
           </SectionReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -161,17 +179,20 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
       </section>
 
       {/* Benefits with image */}
-      <section className="section-padding bg-secondary/20 relative overflow-hidden">
+      <section className="section-padding bg-secondary/20 relative overflow-hidden" role="region" aria-label="Bénéfices">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[100px] pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionReveal>
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 text-accent text-sm font-medium mb-4">
-                Benefices
+                Bénéfices
               </span>
               <h2 className="text-3xl md:text-4xl font-heading font-bold">
                 Les <span className="gradient-text">bénéfices</span>
               </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+                Des résultats concrets et mesurables pour votre entreprise.
+              </p>
             </div>
           </SectionReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -192,7 +213,7 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
       </section>
 
       {/* Use Cases */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" role="region" aria-label="Cas d'usage">
         <div className="container mx-auto px-4">
           <SectionReveal>
             <div className="text-center mb-12">
@@ -202,6 +223,9 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
               <h2 className="text-3xl md:text-4xl font-heading font-bold">
                 Cas d&apos;<span className="gradient-text">usage</span>
               </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+                Des exemples concrets de mise en œuvre dans différents secteurs.
+              </p>
             </div>
           </SectionReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -225,17 +249,20 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
       </section>
 
       {/* Methodology */}
-      <section className="section-padding bg-secondary/20 relative overflow-hidden">
+      <section className="section-padding bg-secondary/20 relative overflow-hidden" role="region" aria-label="Méthodologie">
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-primary/3 blur-[80px] pointer-events-none" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionReveal>
             <div className="text-center mb-12">
               <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
-                Methodologie
+                Méthodologie
               </span>
               <h2 className="text-3xl md:text-4xl font-heading font-bold">
                 Notre <span className="gradient-text">méthodologie</span>
               </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+                Un processus en 4 étapes pour garantir le succès de votre projet {service.shortTitle.toLowerCase()}.
+              </p>
             </div>
           </SectionReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -248,7 +275,7 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
                       <StepIcon size={32} className="text-primary" />
                     </div>
                     <span className="text-xs font-bold text-primary tracking-widest">
-                      ETAPE {step.step}
+                      ÉTAPE {step.step}
                     </span>
                     <h3 className="text-lg font-heading font-bold mt-1 mb-2 group-hover/step:text-primary transition-colors">
                       {step.title}
@@ -264,13 +291,62 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
         </div>
       </section>
 
+      {/* Related Services */}
+      <section className="section-padding bg-background" role="region" aria-label="Services complémentaires">
+        <div className="container mx-auto px-4">
+          <SectionReveal>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                Services complémentaires
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold">
+                Allez plus loin avec nos <span className="gradient-text">autres services</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+                Combine notre expertise {service.shortTitle.toLowerCase()} avec d&apos;autres services pour un impact maximal.
+              </p>
+            </div>
+          </SectionReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {relatedServices.map((related, i) => {
+              const RelatedIcon = iconMap[related.icon] || Database;
+              return (
+                <SectionReveal key={related.slug} delay={i * 0.1}>
+                  <Link href={`/services/${related.slug}`} className="block group">
+                    <GlassCard hover className="p-6 h-full">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                          <RelatedIcon size={24} className="text-primary" />
+                        </div>
+                        <div>
+                          <h3 className="font-heading font-semibold text-lg group-hover:text-primary transition-colors">
+                            {related.shortTitle}
+                          </h3>
+                        </div>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                        {related.description}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+                        <span>Découvrir</span>
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </GlassCard>
+                  </Link>
+                </SectionReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* CTA with background image */}
-      <section className="section-padding bg-background relative overflow-hidden">
+      <section className="section-padding bg-background relative overflow-hidden" role="region" aria-label="Appel à l'action">
         {heroImage && (
           <div className="absolute inset-0">
             <Image
               src={heroImage}
-              alt=""
+              alt={`Contactez-nous pour le service ${service.shortTitle}`}
               fill
               className="object-cover opacity-10"
             />

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Tag, Share2, Twitter, Linkedin } from "lucide-react";
+import { ArrowLeft, Clock, Tag, Share2, Twitter, Linkedin, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
@@ -26,7 +26,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
     <main className="min-h-screen flex flex-col">
       <Navbar />
 
-      <article className="relative pt-32 pb-16 overflow-hidden">
+      <article className="relative pt-32 pb-16 overflow-hidden" role="banner" aria-label={`Article : ${post.title}`}>
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-accent/5 to-transparent" />
         <div className="container mx-auto px-4 relative z-10 max-w-3xl">
           <motion.div
@@ -69,7 +69,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
         </div>
       </article>
 
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" role="region" aria-label="Contenu de l'article">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="prose prose-lg max-w-none">
             {post.content.split("\n").map((line, i) => {
@@ -138,6 +138,31 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               >
                 <Linkedin size={18} />
               </a>
+            </div>
+          </div>
+
+          {/* Related CTA */}
+          <div className="mt-8 p-6 rounded-2xl border border-border/30 bg-card">
+            <h3 className="font-heading font-semibold text-lg mb-2">
+              Besoin d&apos;accompagnement sur ce sujet ?
+            </h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              Nos experts sont à votre disposition pour discuter de vos projets data et IA.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/#contact"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-heading font-medium text-sm hover:bg-primary/90 transition-colors"
+              >
+                Contactez-nous
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/#services"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border bg-secondary/30 text-foreground font-heading font-medium text-sm hover:bg-secondary/60 transition-colors"
+              >
+                Nos services
+              </Link>
             </div>
           </div>
         </div>
