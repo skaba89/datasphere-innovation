@@ -166,12 +166,19 @@ export function Navbar() {
 
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/25">
-            <span className="text-primary-foreground font-bold text-lg font-heading">D</span>
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative w-10 h-10 rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/25">
+            <Image
+              src="/images/logo-datasphere.png"
+              alt="DataSphere Innovation"
+              width={40}
+              height={40}
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
-          <span className="font-heading font-bold text-lg text-foreground">
+          <span className="font-heading font-bold text-lg text-foreground hidden sm:inline">
             DataSphere<span className="text-primary"> Innovation</span>
           </span>
         </Link>

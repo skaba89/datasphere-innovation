@@ -127,9 +127,15 @@ export function Footer() {
           {/* Brand & Newsletter — 4 columns */}
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-2.5 mb-5 group">
-              <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-lg shadow-primary/20">
-                <span className="text-primary-foreground font-bold text-lg font-heading">D</span>
-                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent" />
+              <div className="relative w-11 h-11 rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-110 shadow-lg shadow-primary/20">
+                <Image
+                  src="/images/logo-datasphere.png"
+                  alt="DataSphere Innovation"
+                  width={44}
+                  height={44}
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
               </div>
               <span className="font-heading font-bold text-xl text-foreground">
                 DataSphere<span className="text-primary"> Innovation</span>
