@@ -14,18 +14,19 @@ export function MethodSection() {
     <section id="methode" className="section-padding bg-background relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
+      <div className="absolute top-0 left-1/3 w-96 h-96 rounded-full bg-primary/3 blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         <SectionReveal>
-          <div className="text-center mb-16">
+          <div className="mb-16">
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 text-accent text-sm font-medium mb-4">
               Notre Méthode
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
               Un processus{" "}
               <span className="gradient-text">éprouvé</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl text-lg">
               Notre méthodologie en 4 phases garantit des résultats concrets et
               mesurables à chaque étape.
             </p>

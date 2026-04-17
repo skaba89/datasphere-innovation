@@ -32,18 +32,19 @@ export function TestimonialsSection() {
   return (
     <section
       id="temoignages"
-      className="section-padding bg-secondary/20 relative overflow-hidden"
+      className="section-padding bg-background relative overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/4 w-72 h-72 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-accent/3 blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         <SectionReveal>
-          <div className="text-center mb-12">
+          <div className="mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
               Témoignages
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
               Ce que disent nos{" "}
               <span className="gradient-text">clients</span>
             </h2>
@@ -52,7 +53,10 @@ export function TestimonialsSection() {
 
         <SectionReveal>
           <div className="max-w-3xl mx-auto">
-            <GlassCard className="p-8 md:p-10 relative">
+            <div className="p-8 md:p-10 rounded-2xl border border-border/30 bg-card relative overflow-hidden">
+              {/* Decorative gradient */}
+              <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+
               {/* Quote decoration */}
               <Quote
                 size={48}
@@ -72,7 +76,7 @@ export function TestimonialsSection() {
                       <Star
                         key={i}
                         size={18}
-                        className="text-yellow-500 fill-yellow-500"
+                        className="text-accent fill-accent"
                       />
                     ))}
                   </div>
@@ -122,7 +126,7 @@ export function TestimonialsSection() {
                   </button>
                 </div>
               </div>
-            </GlassCard>
+            </div>
           </div>
         </SectionReveal>
       </div>

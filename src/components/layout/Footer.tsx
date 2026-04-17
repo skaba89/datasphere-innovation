@@ -41,59 +41,68 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
   "cloud-modernization": Cloud,
 };
 
-// ─── Service image mapping ──────────────────────────────────────────────────
+// ─── CTA Banner (Keyrus-style pre-footer) ──────────────────────────────────
 
-const SERVICE_IMAGES: Record<string, string> = {
-  "data-strategy": "/images/services/data-strategy.png",
-  "bi-dashboards": "/images/services/bi-dashboards.png",
-  "ai-solutions": "/images/services/ai-solutions.png",
-  "data-engineering": "/images/services/data-engineering.png",
-  "process-automation": "/images/services/process-automation.png",
-  "cloud-modernization": "/images/services/cloud-modernization.png",
-};
-
-// ─── Animated Link Component ───────────────────────────────────────────────
-
-function FooterLink({
-  href,
-  children,
-  icon: Icon,
-}: {
-  href: string;
-  children: React.ReactNode;
-  icon?: LucideIcon;
-}) {
+export function CTABanner() {
   return (
-    <Link
-      href={href}
-      className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
-    >
-      {Icon && (
-        <Icon
-          size={13}
-          className="shrink-0 text-muted-foreground/40 group-hover:text-primary transition-colors duration-300"
-        />
-      )}
-      <span className="relative">
-        {children}
-        <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
-      </span>
-    </Link>
+    <section className="relative overflow-hidden bg-gradient-to-r from-primary via-primary/90 to-accent py-20 md:py-28">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-white/20 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-accent/30 blur-3xl" />
+      </div>
+      <div className="absolute inset-0 grid-bg opacity-10" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight"
+          >
+            Prêt à transformer vos données en avantage compétitif ?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed"
+          >
+            Contactez nos experts et recevez une proposition adaptée à vos enjeux sous 24h.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Link
+              href="/#contact"
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-primary font-heading font-bold text-base hover:bg-white/90 transition-all duration-300 shadow-lg shadow-black/10 hover:shadow-xl hover:-translate-y-0.5"
+            >
+              <Sparkles size={18} />
+              Parler à un expert
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <a
+              href={COMPANY.phoneHref}
+              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full border-2 border-white/30 text-white font-heading font-semibold text-base hover:bg-white/10 hover:border-white/50 transition-all duration-300"
+            >
+              <Phone size={18} />
+              {COMPANY.phone}
+            </a>
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 }
 
-// ─── Section heading component ─────────────────────────────────────────────
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-foreground/60 mb-5 flex items-center gap-2">
-      <span className="w-4 h-px bg-primary/50" />
-      {children}
-    </h3>
-  );
-}
-
-// ─── Footer Component ──────────────────────────────────────────────────────
+// ─── Footer Component (Keyrus-inspired dark footer) ───────────────────────
 
 export function Footer() {
   const [email, setEmail] = React.useState("");
@@ -113,21 +122,21 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative bg-secondary/10 overflow-hidden">
-      {/* Top gradient line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <footer className="relative overflow-hidden bg-[hsl(222,25%,6%)] dark:bg-[hsl(222,20%,3%)]">
+      {/* Top accent line */}
+      <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
 
-      {/* Background decorations */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full bg-primary/2 blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/2 blur-[120px] pointer-events-none" />
-      <div className="absolute inset-0 grid-bg opacity-[0.03]" />
+      {/* Subtle grid texture */}
+      <div className="absolute inset-0 grid-bg opacity-[0.02]" />
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/3 blur-[200px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-accent/2 blur-[180px] pointer-events-none" />
 
       <div className="container mx-auto px-4 pt-16 pb-8 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Brand & Newsletter — 4 columns */}
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-2.5 mb-5 group">
-              <div className="relative w-11 h-11 rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-110 shadow-lg shadow-primary/20">
+              <div className="relative w-11 h-11 rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-110 shadow-lg shadow-primary/30">
                 <Image
                   src="/images/logo-datasphere.png"
                   alt="DataSphere Innovation"
@@ -137,17 +146,17 @@ export function Footer() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
               </div>
-              <span className="font-heading font-bold text-xl text-foreground">
+              <span className="font-heading font-bold text-xl text-white">
                 DataSphere<span className="text-primary"> Innovation</span>
               </span>
             </Link>
-            <p className="text-sm text-muted-foreground mb-6 leading-relaxed max-w-sm">
+            <p className="text-sm text-white/50 mb-6 leading-relaxed max-w-sm">
               {COMPANY.tagline}. Nous accompagnons les entreprises ambitieuses dans leur transformation data et IA.
             </p>
 
             {/* Newsletter */}
             <div className="space-y-3">
-              <p className="text-xs font-bold text-foreground/60 uppercase tracking-[0.15em] flex items-center gap-2">
+              <p className="text-xs font-bold text-white/40 uppercase tracking-[0.15em] flex items-center gap-2">
                 <Send size={12} className="text-primary" />
                 Newsletter
               </p>
@@ -157,7 +166,7 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Votre email professionnel"
-                  className="w-full pl-4 pr-12 py-3 rounded-xl border border-border/50 bg-background/60 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-all placeholder:text-muted-foreground/40"
+                  className="w-full pl-4 pr-12 py-3 rounded-xl border border-white/10 bg-white/5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all placeholder:text-white/25"
                   required
                   aria-label="Email pour la newsletter"
                 />
@@ -201,7 +210,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-secondary/40 border border-border/30 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/30 hover:bg-primary/5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 hover:bg-primary/10 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={17} />
@@ -210,39 +219,28 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Services with thumbnails — 3 columns */}
+          {/* Services — 3 columns */}
           <div className="lg:col-span-3">
-            <SectionHeading>Services</SectionHeading>
-            <ul className="space-y-2.5">
+            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-primary" />
+              Services
+            </h3>
+            <ul className="space-y-2">
               {FOOTER_SERVICES.map((service) => {
                 const slug = service.href.split("/").pop() || "";
                 const Icon = SERVICE_ICONS[slug];
-                const imageUrl = SERVICE_IMAGES[slug];
                 return (
                   <li key={service.href}>
                     <Link
                       href={service.href}
-                      className="group flex items-center gap-3 py-1.5 rounded-lg hover:bg-primary/5 -mx-1.5 px-1.5 transition-all duration-200"
+                      className="group flex items-center gap-3 py-1.5 rounded-lg hover:bg-white/5 -mx-1.5 px-1.5 transition-all duration-200"
                     >
-                      {/* Service thumbnail */}
-                      {imageUrl && (
-                        <div className="relative w-8 h-8 rounded-md overflow-hidden shrink-0 border border-border/30 group-hover:border-primary/20 transition-colors">
-                          <Image
-                            src={imageUrl}
-                            alt={service.label}
-                            fill
-                            className="object-cover transition-transform duration-300 group-hover:scale-110"
-                            sizes="32px"
-                          />
-                          <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/5 transition-colors" />
+                      {Icon && (
+                        <div className="w-7 h-7 rounded-md bg-primary/15 flex items-center justify-center shrink-0 group-hover:bg-primary/25 transition-colors">
+                          <Icon size={13} className="text-primary" />
                         </div>
                       )}
-                      {!imageUrl && Icon && (
-                        <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors">
-                          <Icon size={14} className="text-primary" />
-                        </div>
-                      )}
-                      <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors duration-200 relative">
+                      <span className="text-sm text-white/50 group-hover:text-primary transition-colors duration-200 relative">
                         {service.label}
                         <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
                       </span>
@@ -255,55 +253,44 @@ export function Footer() {
 
           {/* Navigation — 2 columns */}
           <div className="lg:col-span-2">
-            <SectionHeading>Navigation</SectionHeading>
-            <ul className="space-y-2.5">
+            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-primary" />
+              Navigation
+            </h3>
+            <ul className="space-y-2">
               {FOOTER_NAVIGATION.map((link) => (
                 <li key={link.href}>
-                  <FooterLink href={link.href} icon={ChevronRight}>
-                    {link.label}
-                  </FooterLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources + Legal — 1.5 columns */}
-          <div className="lg:col-span-1.5">
-            <SectionHeading>Ressources</SectionHeading>
-            <ul className="space-y-2.5">
-              {FOOTER_RESOURCES.map((link) => (
-                <li key={link.href}>
-                  <FooterLink href={link.href} icon={ChevronRight}>
-                    {link.label}
-                  </FooterLink>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-6">
-              <SectionHeading>Legal</SectionHeading>
-              <ul className="space-y-2.5">
-                {LEGAL_LINKS.map((link) => (
-                  <li key={link.href}>
-                    <FooterLink href={link.href} icon={ChevronRight}>
+                  <Link
+                    href={link.href}
+                    className="group flex items-center gap-2 text-sm text-white/50 hover:text-primary transition-colors duration-300"
+                  >
+                    <ChevronRight
+                      size={13}
+                      className="shrink-0 text-white/20 group-hover:text-primary transition-colors duration-300"
+                    />
+                    <span className="relative">
                       {link.label}
-                    </FooterLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                      <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Contact — 1.5 columns */}
-          <div className="lg:col-span-1.5">
-            <SectionHeading>Contact</SectionHeading>
+          {/* Resources + Contact — 3 columns */}
+          <div className="lg:col-span-3">
+            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-5 flex items-center gap-2">
+              <span className="w-4 h-px bg-primary" />
+              Contact
+            </h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href={`mailto:${COMPANY.email}`}
-                  className="flex items-start gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                  className="flex items-start gap-3 text-sm text-white/50 hover:text-primary transition-colors group"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 group-hover:border-primary/20 transition-all duration-300">
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
                     <Mail size={15} className="text-primary" />
                   </div>
                   <span className="pt-1.5 text-xs break-all">{COMPANY.email}</span>
@@ -312,17 +299,17 @@ export function Footer() {
               <li>
                 <a
                   href={COMPANY.phoneHref}
-                  className="flex items-start gap-3 text-sm text-muted-foreground hover:text-primary transition-colors group"
+                  className="flex items-start gap-3 text-sm text-white/50 hover:text-primary transition-colors group"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 group-hover:border-primary/20 transition-all duration-300">
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
                     <Phone size={15} className="text-primary" />
                   </div>
                   <span className="pt-1.5">{COMPANY.phone}</span>
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 text-sm text-muted-foreground">
-                  <div className="w-9 h-9 rounded-xl bg-primary/8 border border-primary/10 flex items-center justify-center shrink-0">
+                <div className="flex items-start gap-3 text-sm text-white/50">
+                  <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0">
                     <MapPin size={15} className="text-primary" />
                   </div>
                   <span className="pt-1.5 text-xs leading-relaxed">{COMPANY.address}</span>
@@ -334,40 +321,67 @@ export function Footer() {
             <div className="mt-6">
               <Link
                 href="/#contact"
-                className="group inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground font-heading font-semibold text-xs hover:bg-primary/90 transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-heading font-semibold text-xs hover:bg-primary/90 transition-all duration-300"
               >
                 <Sparkles size={13} />
                 Parlons de votre projet
                 <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
+
+            {/* Resources */}
+            <div className="mt-8">
+              <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-4 flex items-center gap-2">
+                <span className="w-4 h-px bg-primary" />
+                Ressources
+              </h3>
+              <ul className="space-y-2">
+                {FOOTER_RESOURCES.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="group flex items-center gap-2 text-sm text-white/50 hover:text-primary transition-colors duration-300"
+                    >
+                      <ChevronRight
+                        size={13}
+                        className="shrink-0 text-white/20 group-hover:text-primary transition-colors duration-300"
+                      />
+                      <span className="relative">
+                        {link.label}
+                        <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-border/20">
+        <div className="mt-14 pt-6 border-t border-white/10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-muted-foreground/50">
+            <p className="text-xs text-white/25">
               &copy; {new Date().getFullYear()} {COMPANY.name}. Tous droits réservés.
             </p>
             <div className="flex items-center gap-3 flex-wrap justify-center">
               {LEGAL_LINKS.map((link, i) => (
                 <React.Fragment key={link.href}>
                   {i > 0 && (
-                    <span className="text-muted-foreground/20">|</span>
+                    <span className="text-white/15">|</span>
                   )}
                   <Link
                     href={link.href}
-                    className="text-xs text-muted-foreground/50 hover:text-primary transition-colors duration-300"
+                    className="text-xs text-white/25 hover:text-primary transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
                 </React.Fragment>
               ))}
-              <span className="text-muted-foreground/20">|</span>
+              <span className="text-white/15">|</span>
               <Link
                 href="/plan-du-site"
-                className="text-xs text-muted-foreground/50 hover:text-primary transition-colors duration-300"
+                className="text-xs text-white/25 hover:text-primary transition-colors duration-300"
               >
                 Plan du site
               </Link>

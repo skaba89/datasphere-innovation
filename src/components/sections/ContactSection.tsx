@@ -88,21 +88,22 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-secondary/20 relative overflow-hidden">
+    <section id="contact" className="section-padding bg-secondary/10 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         <SectionReveal>
-          <div className="text-center mb-12">
+          <div className="mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
               Contact
             </span>
-            <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
               Parlons de votre{" "}
               <span className="gradient-text">projet</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl text-lg">
               Un projet data ? Une question ? Prenez contact avec nous et
               recevez une réponse sous 24h.
             </p>
@@ -112,10 +113,10 @@ export function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Contact info */}
           <SectionReveal>
-            <div className="space-y-6">
-              <GlassCard hover className="glow-card">
+            <div className="space-y-4">
+              <div className="p-5 rounded-2xl border border-border/30 bg-card hover:border-primary/20 transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <Mail size={18} className="text-primary" />
                   </div>
                   <div>
@@ -128,10 +129,10 @@ export function ContactSection() {
                     </a>
                   </div>
                 </div>
-              </GlassCard>
-              <GlassCard hover className="glow-card">
+              </div>
+              <div className="p-5 rounded-2xl border border-border/30 bg-card hover:border-primary/20 transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <Phone size={18} className="text-primary" />
                   </div>
                   <div>
@@ -146,10 +147,10 @@ export function ContactSection() {
                     </a>
                   </div>
                 </div>
-              </GlassCard>
-              <GlassCard hover className="glow-card">
+              </div>
+              <div className="p-5 rounded-2xl border border-border/30 bg-card hover:border-primary/20 transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <MapPin size={18} className="text-primary" />
                   </div>
                   <div>
@@ -159,13 +160,13 @@ export function ContactSection() {
                     </p>
                   </div>
                 </div>
-              </GlassCard>
+              </div>
             </div>
           </SectionReveal>
 
           {/* Form */}
           <SectionReveal delay={0.2}>
-            <GlassCard className="lg:col-span-2">
+            <div className="lg:col-span-2 p-6 md:p-8 rounded-2xl border border-border/30 bg-card">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -274,7 +275,7 @@ export function ContactSection() {
                   )}
                 </Button>
               </form>
-            </GlassCard>
+            </div>
           </SectionReveal>
         </div>
       </div>

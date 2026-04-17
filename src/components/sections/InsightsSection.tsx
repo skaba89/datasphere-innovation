@@ -46,23 +46,23 @@ export function InsightsSection() {
 
       <div className="container mx-auto px-4 relative z-10">
         <SectionReveal>
-          {/* Section Header */}
+          {/* Section Header — Keyrus-style left aligned */}
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <TrendingUp size={16} className="text-primary" />
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Insights & Perspectives</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-heading font-bold">
+              <h2 className="text-3xl md:text-5xl font-heading font-bold">
                 Nos dernières <span className="gradient-text">publications</span>
               </h2>
-              <p className="text-muted-foreground mt-3 max-w-xl">
+              <p className="text-muted-foreground mt-3 max-w-xl text-lg">
                 Analyses, guides et perspectives de nos experts data & IA pour vous aider à prendre les meilleures décisions.
               </p>
             </div>
             <Link
               href="/blog"
-              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border/50 bg-secondary/20 text-sm font-medium text-foreground hover:bg-secondary/40 hover:border-primary/20 transition-all shrink-0"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border/50 bg-secondary/20 text-sm font-medium text-foreground hover:bg-secondary/40 hover:border-primary/20 transition-all shrink-0"
             >
               Voir tous les articles
               <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
@@ -81,7 +81,7 @@ export function InsightsSection() {
               >
                 <Link
                   href={`/blog/${article.slug}`}
-                  className="group block h-full rounded-2xl border border-border/30 bg-background/60 backdrop-blur-sm overflow-hidden hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 transition-all duration-500"
+                  className="group block h-full rounded-2xl border border-border/30 bg-card overflow-hidden hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 transition-all duration-500"
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
@@ -91,10 +91,10 @@ export function InsightsSection() {
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent" />
                     {/* Category badge */}
                     <div className="absolute top-3 left-3">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-primary/90 text-primary-foreground backdrop-blur-sm">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-primary text-primary-foreground">
                         {article.category}
                       </span>
                     </div>
@@ -125,7 +125,7 @@ export function InsightsSection() {
                     </p>
 
                     {/* Read more */}
-                    <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-primary">
+                    <div className="mt-4 flex items-center gap-1.5 text-sm font-semibold text-primary">
                       Lire l&apos;article
                       <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
                     </div>

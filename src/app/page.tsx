@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Footer, CTABanner } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { CredibilityBar } from "@/components/sections/CredibilityBar";
@@ -36,6 +36,7 @@ export default function HomePage() {
       <ContactSection />
       <PartnersSection />
       <ClientsSection />
+      <CTABanner />
       <Footer />
       <BackToTop />
       <ChatWidget />
