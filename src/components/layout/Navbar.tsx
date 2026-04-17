@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS, SERVICES, COMPANY } from "@/lib/constants";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
@@ -40,17 +39,6 @@ const SERVICE_ICONS: Record<string, LucideIcon> = {
   "cloud-modernization": Cloud,
 };
 
-// ─── Service image mapping ──────────────────────────────────────────────────
-
-const SERVICE_IMAGES: Record<string, string> = {
-  "data-strategy": "/images/services/data-strategy.png",
-  "bi-dashboards": "/images/services/bi-dashboards.png",
-  "ai-solutions": "/images/services/ai-solutions.png",
-  "data-engineering": "/images/services/data-engineering.png",
-  "process-automation": "/images/services/process-automation.png",
-  "cloud-modernization": "/images/services/cloud-modernization.png",
-};
-
 // ─── Dropdown menu item type ───────────────────────────────────────────────
 
 interface DropdownItem {
@@ -58,7 +46,6 @@ interface DropdownItem {
   href: string;
   description: string;
   icon?: LucideIcon;
-  image?: string;
 }
 
 // ─── Navigation structure with dropdowns ───────────────────────────────────
@@ -69,7 +56,6 @@ const NAV_DROPDOWNS: Record<string, DropdownItem[]> = {
     href: `/services/${s.slug}`,
     description: s.description,
     icon: SERVICE_ICONS[s.slug],
-    image: SERVICE_IMAGES[s.slug],
   })),
   Entreprise: [
     {
@@ -94,6 +80,61 @@ const NAV_DROPDOWNS: Record<string, DropdownItem[]> = {
 };
 
 const DROPDOWN_KEYS = Object.keys(NAV_DROPDOWNS);
+
+// ─── Nexus Logo SVG ────────────────────────────────────────────────────────
+
+function NexusLogo({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      {/* Outer hexagon ring */}
+      <path
+        d="M24 4L42 14V34L24 44L6 34V14L24 4Z"
+        stroke="url(#logoGrad)"
+        strokeWidth="2"
+        fill="none"
+      />
+      {/* Inner data node connections */}
+      <path
+        d="M24 12L34 18V30L24 36L14 30V18L24 12Z"
+        stroke="url(#logoGrad)"
+        strokeWidth="1.5"
+        fill="url(#logoFill)"
+        fillOpacity="0.15"
+      />
+      {/* Center nexus point */}
+      <circle cx="24" cy="24" r="4" fill="url(#logoGrad)" />
+      {/* Connection lines radiating from center */}
+      <line x1="24" y1="24" x2="24" y2="12" stroke="url(#logoGrad)" strokeWidth="1" opacity="0.6" />
+      <line x1="24" y1="24" x2="34" y2="18" stroke="url(#logoGrad)" strokeWidth="1" opacity="0.6" />
+      <line x1="24" y1="24" x2="34" y2="30" stroke="url(#logoGrad)" strokeWidth="1" opacity="0.6" />
+      <line x1="24" y1="24" x2="24" y2="36" stroke="url(#logoGrad)" strokeWidth="1" opacity="0.6" />
+      <line x1="24" y1="24" x2="14" y2="30" stroke="url(#logoGrad)" strokeWidth="1" opacity="0.6" />
+      <line x1="24" y1="24" x2="14" y2="18" stroke="url(#logoGrad)" strokeWidth="1" opacity="0.6" />
+      {/* Node dots at vertices */}
+      <circle cx="24" cy="12" r="2" fill="url(#logoGrad)" opacity="0.8" />
+      <circle cx="34" cy="18" r="2" fill="url(#logoGrad)" opacity="0.8" />
+      <circle cx="34" cy="30" r="2" fill="url(#logoGrad)" opacity="0.8" />
+      <circle cx="24" cy="36" r="2" fill="url(#logoGrad)" opacity="0.8" />
+      <circle cx="14" cy="30" r="2" fill="url(#logoGrad)" opacity="0.8" />
+      <circle cx="14" cy="18" r="2" fill="url(#logoGrad)" opacity="0.8" />
+      <defs>
+        <linearGradient id="logoGrad" x1="6" y1="4" x2="42" y2="44" gradientUnits="userSpaceOnUse">
+          <stop stopColor="hsl(195, 100%, 45%)" />
+          <stop offset="1" stopColor="hsl(25, 95%, 53%)" />
+        </linearGradient>
+        <linearGradient id="logoFill" x1="14" y1="12" x2="34" y2="36" gradientUnits="userSpaceOnUse">
+          <stop stopColor="hsl(195, 100%, 45%)" />
+          <stop offset="1" stopColor="hsl(25, 95%, 53%)" />
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+}
 
 // ─── Navbar Component ──────────────────────────────────────────────────────
 
@@ -166,19 +207,11 @@ export function Navbar() {
 
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20 px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-xl overflow-hidden transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/25">
-            <Image
-              src="/images/logo-datasphere.png"
-              alt="DataSphere Innovation"
-              width={40}
-              height={40}
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="relative w-10 h-10 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-lg">
+            <NexusLogo className="w-full h-full" />
           </div>
-          <span className={`font-heading font-bold text-lg transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
+          <span className={`font-heading font-bold text-lg tracking-tight transition-colors duration-300 ${scrolled ? "text-foreground" : "text-white"}`}>
             DataSphere<span className="text-primary"> Innovation</span>
           </span>
         </Link>
@@ -221,63 +254,45 @@ export function Navbar() {
                   <AnimatePresence>
                     {activeDropdown === dropdownKey && (
                       <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.97 }}
+                        initial={{ opacity: 0, y: 8, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.97 }}
+                        exit={{ opacity: 0, y: 8, scale: 0.98 }}
                         transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-3 ${
+                        className={`absolute top-full left-1/2 -translate-x-1/2 pt-2 ${
                           dropdownKey === "Services"
-                            ? "w-[720px]"
-                            : "w-[380px]"
+                            ? "w-[640px]"
+                            : "w-[360px]"
                         }`}
                       >
-                        <div className="relative bg-background/95 backdrop-blur-2xl border border-border/50 rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
+                        <div className="relative bg-background/95 backdrop-blur-2xl border border-border/40 rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
                           {/* Top gradient line */}
                           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary" />
 
                           {dropdownKey === "Services" ? (
-                            // Services Mega Menu — 2 column grid with images
-                            <div className="p-4">
-                              <div className="grid grid-cols-2 gap-2">
+                            // Services Mega Menu — 3 column grid, icons only
+                            <div className="p-3">
+                              <div className="grid grid-cols-3 gap-1">
                                 {items.map((item) => {
                                   const Icon = item.icon;
                                   return (
                                     <Link
                                       key={item.href}
                                       href={item.href}
-                                      className="flex items-start gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200 group/item relative overflow-hidden"
+                                      className="flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-primary/5 transition-all duration-200 group/item text-center"
                                     >
-                                      {/* Service thumbnail */}
-                                      {item.image && (
-                                        <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-border/30">
-                                          <Image
-                                            src={item.image}
-                                            alt={item.label}
-                                            fill
-                                            className="object-cover transition-transform duration-300 group-hover/item:scale-110"
-                                            sizes="48px"
-                                          />
-                                          <div className="absolute inset-0 bg-primary/20 group-hover/item:bg-primary/10 transition-colors" />
+                                      {Icon && (
+                                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/15 to-accent/10 flex items-center justify-center shrink-0 group-hover/item:from-primary/20 group-hover/item:to-accent/15 group-hover/item:shadow-sm group-hover/item:shadow-primary/10 transition-all">
+                                          <Icon size={20} className="text-primary" />
                                         </div>
                                       )}
-                                      {!item.image && Icon && (
-                                        <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover/item:bg-primary/15 transition-colors">
-                                          <Icon size={22} className="text-primary" />
-                                        </div>
-                                      )}
-                                      <div className="min-w-0 pt-0.5">
-                                        <p className="text-sm font-semibold text-foreground group-hover/item:text-primary transition-colors">
-                                          {item.label}
-                                        </p>
-                                        <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2 leading-relaxed">
-                                          {item.description}
-                                        </p>
-                                      </div>
+                                      <p className="text-xs font-semibold text-foreground group-hover/item:text-primary transition-colors leading-tight">
+                                        {item.label}
+                                      </p>
                                     </Link>
                                   );
                                 })}
                               </div>
-                              <div className="mt-3 pt-3 border-t border-border/30">
+                              <div className="mt-2 pt-2 border-t border-border/30">
                                 <Link
                                   href="/#services"
                                   className="flex items-center justify-center gap-2 p-2.5 rounded-xl text-sm font-medium text-primary hover:bg-primary/5 transition-colors"
@@ -288,8 +303,8 @@ export function Navbar() {
                               </div>
                             </div>
                           ) : (
-                            // Simple Dropdown — single column
-                            <div className="p-3">
+                            // Simple Dropdown — single column with icons
+                            <div className="p-2">
                               {items.map((item) => {
                                 const Icon = item.icon;
                                 return (
@@ -299,7 +314,7 @@ export function Navbar() {
                                     className="flex items-center gap-3 p-3 rounded-xl hover:bg-primary/5 transition-all duration-200 group/item"
                                   >
                                     {Icon && (
-                                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover/item:bg-primary/15 transition-colors">
+                                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-accent/10 flex items-center justify-center shrink-0 group-hover/item:from-primary/20 group-hover/item:to-accent/15 transition-all">
                                         <Icon size={18} className="text-primary" />
                                       </div>
                                     )}
@@ -479,45 +494,60 @@ export function Navbar() {
                             transition={{ duration: 0.2 }}
                             className="overflow-hidden"
                           >
-                            <div className="pl-3 pb-2 space-y-1">
-                              {items.map((item) => {
-                                const Icon = item.icon;
-                                return (
-                                  <Link
-                                    key={item.href}
-                                    href={item.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="flex items-center gap-3 py-2.5 px-3 rounded-xl hover:bg-primary/5 transition-colors group/mobile"
-                                  >
-                                    {/* Service thumbnail for mobile */}
-                                    {item.image ? (
-                                      <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0 border border-border/30">
-                                        <Image
-                                          src={item.image}
-                                          alt={item.label}
-                                          fill
-                                          className="object-cover"
-                                          sizes="40px"
-                                        />
-                                        <div className="absolute inset-0 bg-primary/10" />
-                                      </div>
-                                    ) : Icon ? (
-                                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                                        <Icon size={18} className="text-primary" />
-                                      </div>
-                                    ) : null}
-                                    <div>
-                                      <p className="text-sm font-semibold text-foreground group-hover/mobile:text-primary transition-colors">
+                            {dropdownKey === "Services" ? (
+                              // Services mobile — 2-column grid with icons
+                              <div className="grid grid-cols-2 gap-1 p-2">
+                                {items.map((item) => {
+                                  const Icon = item.icon;
+                                  return (
+                                    <Link
+                                      key={item.href}
+                                      href={item.href}
+                                      onClick={() => setMobileOpen(false)}
+                                      className="flex flex-col items-center gap-1.5 p-3 rounded-xl hover:bg-primary/5 transition-colors group/mobile text-center"
+                                    >
+                                      {Icon && (
+                                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                                          <Icon size={18} className="text-primary" />
+                                        </div>
+                                      )}
+                                      <p className="text-xs font-semibold text-foreground group-hover/mobile:text-primary transition-colors leading-tight">
                                         {item.label}
                                       </p>
-                                      <p className="text-xs text-muted-foreground line-clamp-1">
-                                        {item.description}
-                                      </p>
-                                    </div>
-                                  </Link>
-                                );
-                              })}
-                            </div>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            ) : (
+                              // Other dropdowns — list with icons
+                              <div className="pl-3 pb-2 space-y-1">
+                                {items.map((item) => {
+                                  const Icon = item.icon;
+                                  return (
+                                    <Link
+                                      key={item.href}
+                                      href={item.href}
+                                      onClick={() => setMobileOpen(false)}
+                                      className="flex items-center gap-3 py-2.5 px-3 rounded-xl hover:bg-primary/5 transition-colors group/mobile"
+                                    >
+                                      {Icon && (
+                                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                          <Icon size={18} className="text-primary" />
+                                        </div>
+                                      )}
+                                      <div>
+                                        <p className="text-sm font-semibold text-foreground group-hover/mobile:text-primary transition-colors">
+                                          {item.label}
+                                        </p>
+                                        <p className="text-xs text-muted-foreground line-clamp-1">
+                                          {item.description}
+                                        </p>
+                                      </div>
+                                    </Link>
+                                  );
+                                })}
+                              </div>
+                            )}
                           </motion.div>
                         )}
                       </AnimatePresence>

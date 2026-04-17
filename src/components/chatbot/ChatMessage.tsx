@@ -43,7 +43,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
         )}
         {isAssistant && (
           <p className="text-[10px] text-muted-foreground/50 mt-1.5 pt-1 border-t border-border/20">
-            DatIA
+            Nexus
           </p>
         )}
       </div>

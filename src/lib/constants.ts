@@ -547,7 +547,7 @@ export const CHAT_SUGGESTED_QUESTIONS = [
 ] as const;
 
 export const CHAT_WELCOME_MESSAGE =
-  "Bonjour ! Je suis DatIA, votre conseiller Data & IA. Comment puis-je vous aider avec vos projets data et intelligence artificielle ?";
+  "Bonjour ! Je suis Nexus, l'IA assistant de DataSphere Innovation. Je suis là pour vous aider à explorer nos services en data, IA et transformation digitale. Posez-moi votre question !";
 
 export const CHAT_ERROR_MESSAGE =
   "Je suis désolé, une erreur est survenue. N'hésitez pas à réessayer ou à contacter directement notre équipe à contact@datasphereinnovation.fr";
