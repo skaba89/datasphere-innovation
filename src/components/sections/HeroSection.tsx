@@ -86,10 +86,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border/40 bg-secondary/40 backdrop-blur-sm mb-8"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-border/40 bg-secondary/40 backdrop-blur-sm mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse-glow" />
-            <span className="text-sm text-muted-foreground font-medium">
+            <span className="text-sm font-semibold text-primary">
               Cabinet expert Data & Intelligence Artificielle
             </span>
           </motion.div>
@@ -123,7 +123,7 @@ export function HeroSection() {
           >
             <Link
               href="/#contact"
-              className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-primary text-primary-foreground font-heading font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow-ring overflow-hidden"
+              className="group relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-heading font-semibold text-base hover:bg-primary/90 transition-all duration-300 glow-ring overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Parler à un expert
@@ -136,7 +136,7 @@ export function HeroSection() {
             </Link>
             <Link
               href="/#services"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border/50 bg-secondary/20 text-foreground font-heading font-medium text-base hover:bg-secondary/40 transition-all duration-300 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-border/50 bg-background text-foreground font-heading font-medium text-base hover:bg-secondary/40 hover:border-primary/20 transition-all duration-300"
             >
               Découvrir nos services
             </Link>
