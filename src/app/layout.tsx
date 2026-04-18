@@ -7,6 +7,7 @@ import {
   generateOrganizationSchema,
   generateLocalBusinessSchema,
   generateWebSiteSchema,
+  generateGraphSchema,
   JsonLd,
 } from "@/lib/json-ld";
 
@@ -75,9 +76,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const organizationSchema = generateOrganizationSchema();
-  const localBusinessSchema = generateLocalBusinessSchema();
-  const webSiteSchema = generateWebSiteSchema();
+  const graphSchema = generateGraphSchema([
+    generateOrganizationSchema(),
+    generateLocalBusinessSchema(),
+    generateWebSiteSchema(),
+  ]);
 
   return (
     <html lang="fr" suppressHydrationWarning>
@@ -88,9 +91,7 @@ export default function RootLayout({
           title="Sitemap"
           href="/sitemap.xml"
         />
-        <JsonLd data={organizationSchema} />
-        <JsonLd data={localBusinessSchema} />
-        <JsonLd data={webSiteSchema} />
+        <JsonLd data={graphSchema} />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-background text-foreground font-sans`}

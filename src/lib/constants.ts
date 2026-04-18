@@ -518,6 +518,26 @@ export const FAQ_ITEMS: FAQItem[] = [
     answer:
       "Nous sommes agnostiques et maîtrisons les trois principaux clouds (AWS, Azure, GCP). Notre approche multi-cloud s'appuie sur une évaluation objective de vos besoins : performance, coûts, conformité, écosystème existant. Nous concevons des architectures qui tirent le meilleur de chaque plateforme tout en assurant l'interopérabilité et la gouvernance transverse.",
   },
+  {
+    question: "Qu'est-ce que le MLOps et pourquoi est-ce essentiel pour l'industrialisation de l'IA ?",
+    answer:
+      "Le MLOps est l'ensemble des pratiques qui permettent de passer de l'expérimentation IA à la production de manière fiable et scalable. Selon Gartner, seulement 20% des projets IA atteignent le stade de la production. Le MLOps intègre le versionning des modèles, le CI/CD ML, le monitoring de drift et la gouvernance. Les entreprises qui implémentent le MLOps déploient 3x plus de modèles en production et réduisent de 60% leur time-to-deployment.",
+  },
+  {
+    question: "Comment choisir entre AWS, Azure et GCP pour vos données ?",
+    answer:
+      "Le choix dépend de votre contexte : GCP excelle avec BigQuery pour l'analytics serverless et les entreprises data-first. Azure offre la meilleure intégration avec l'écosystème Microsoft et Power BI. AWS propose l'écosystème le plus riche et la plus grande communauté. Pour le multi-cloud, nous combinons les forces de chaque plateforme. Notre équipe certifiée AWS, Azure et GCP vous accompagne dans cette décision stratégique avec une évaluation objective.",
+  },
+  {
+    question: "Qu'est-ce que le data mesh et est-il adapté à mon entreprise ?",
+    answer:
+      "Le data mesh est un paradigme d'architecture décentralisée où chaque domaine métier est propriétaire de ses données, les traite comme un produit et dispose d'une infrastructure self-serve. Il est particulièrement adapté aux grandes organisations avec de multiples domaines data. Selon McKinsey, les entreprises qui adoptent le data mesh constatent une amélioration de 40% de la disponibilité des données et une réduction de 30% des délais de mise sur le marché des produits data.",
+  },
+  {
+    question: "Comment l'IA générative transforme-t-elle la stratégie data des entreprises ?",
+    answer:
+      "L'IA générative redéfinit l'interaction avec les données en permettant aux équipes métier d'interroger leurs bases de données en langage naturel via des assistants data alimentés par LLM. Les entreprises qui intègrent l'IA générative dans leur stack data constatent une augmentation de 40% de l'adoption des outils analytiques selon nos observations. Elle automatise également la documentation, la qualité des données et la génération de rapports, libérant les équipes pour des tâches à plus forte valeur ajoutée.",
+  },
 ];
 
 // ─── Contact Form Subjects ──────────────────────────────────────────────────

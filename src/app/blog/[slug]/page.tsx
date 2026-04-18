@@ -7,6 +7,7 @@ import {
   generateBreadcrumbSchema,
   generateOrganizationSchema,
   generateWebPageSchema,
+  generateGraphSchema,
   JsonLd,
 } from "@/lib/json-ld";
 
@@ -61,36 +62,32 @@ export default async function BlogPostPage({ params }: PageProps) {
     );
   }
 
-  const articleSchema = generateArticleSchema({
-    slug: post.slug,
-    title: post.title,
-    excerpt: post.excerpt,
-    date: post.date,
-    author: post.author,
-    category: post.category,
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Accueil", url: "https://datasphereinnovation.fr" },
-    { name: "Blog", url: "https://datasphereinnovation.fr/blog" },
-    { name: post.title, url: `https://datasphereinnovation.fr/blog/${post.slug}` },
+  const blogGraph = generateGraphSchema([
+    generateOrganizationSchema(),
+    generateWebPageSchema({
+      title: `${post.title} — DataSphere Innovation`,
+      description: post.excerpt,
+      url: `https://datasphereinnovation.fr/blog/${post.slug}`,
+      dateModified: post.dateModified || post.date,
+    }),
+    generateArticleSchema({
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt,
+      date: post.date,
+      author: post.author,
+      category: post.category,
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Blog", url: "https://datasphereinnovation.fr/blog" },
+      { name: post.title, url: `https://datasphereinnovation.fr/blog/${post.slug}` },
+    ]),
   ]);
-
-  const organizationSchema = generateOrganizationSchema();
-
-  const webPageSchema = generateWebPageSchema({
-    title: `${post.title} — DataSphere Innovation`,
-    description: post.excerpt,
-    url: `https://datasphereinnovation.fr/blog/${post.slug}`,
-    dateModified: post.date,
-  });
 
   return (
     <>
-      <JsonLd data={organizationSchema} />
-      <JsonLd data={webPageSchema} />
-      <JsonLd data={articleSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={blogGraph} />
       <BlogPostClient post={post} />
     </>
   );

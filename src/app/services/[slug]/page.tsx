@@ -6,6 +6,7 @@ import {
   generateBreadcrumbSchema,
   generateOrganizationSchema,
   generateWebPageSchema,
+  generateGraphSchema,
   JsonLd,
 } from "@/lib/json-ld";
 
@@ -44,34 +45,30 @@ export default async function ServicePage({ params }: PageProps) {
     return <div>Service non trouvé</div>;
   }
 
-  const serviceSchema = generateServiceSchema({
-    slug: service.slug,
-    title: service.title,
-    description: service.description,
-    features: service.features,
-    benefits: service.benefits,
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Accueil", url: "https://datasphereinnovation.fr" },
-    { name: "Services", url: "https://datasphereinnovation.fr/#services" },
-    { name: service.title, url: `https://datasphereinnovation.fr/services/${service.slug}` },
+  const serviceGraph = generateGraphSchema([
+    generateOrganizationSchema(),
+    generateWebPageSchema({
+      title: `${service.title} — DataSphere Innovation`,
+      description: service.description,
+      url: `https://datasphereinnovation.fr/services/${service.slug}`,
+    }),
+    generateServiceSchema({
+      slug: service.slug,
+      title: service.title,
+      description: service.description,
+      features: service.features,
+      benefits: service.benefits,
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Services", url: "https://datasphereinnovation.fr/#services" },
+      { name: service.title, url: `https://datasphereinnovation.fr/services/${service.slug}` },
+    ]),
   ]);
-
-  const organizationSchema = generateOrganizationSchema();
-
-  const webPageSchema = generateWebPageSchema({
-    title: `${service.title} — DataSphere Innovation`,
-    description: service.description,
-    url: `https://datasphereinnovation.fr/services/${service.slug}`,
-  });
 
   return (
     <>
-      <JsonLd data={organizationSchema} />
-      <JsonLd data={webPageSchema} />
-      <JsonLd data={serviceSchema} />
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={serviceGraph} />
       <ServicePageClient service={service} />
     </>
   );

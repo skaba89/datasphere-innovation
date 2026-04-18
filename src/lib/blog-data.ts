@@ -4,6 +4,7 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   date: string;
+  dateModified: string;
   readingTime: string;
   category: string;
   author: string;
@@ -49,9 +50,10 @@ La data observability s'impose comme une discipline à part entière. Au-delà d
 **Conclusion** : La stratégie data en 2025 est celle qui combine technologie, organisation et responsabilité. Les entreprises qui anticipent ces tendances construisent un avantage compétitif durable.
     `,
     date: "2025-01-15",
+    dateModified: "2025-01-22",
     readingTime: "6 min",
     category: "Stratégie Data",
-    author: "Équipe DataSphere",
+    author: "Sophie Martin",
   },
   {
     slug: "mlops-production-ia",
@@ -100,9 +102,10 @@ Les entreprises qui implémentent le MLOps constatent :
 **Conclusion** : Le MLOps n'est pas un luxe, c'est une nécessité. Sans lui, vos investissements IA risquent de rester au stade de l'expérimentation.
     `,
     date: "2025-01-08",
+    dateModified: "2025-01-15",
     readingTime: "8 min",
     category: "Intelligence Artificielle",
-    author: "Équipe DataSphere",
+    author: "Léa Chen",
   },
   {
     slug: "cloud-data-platform-comparatif",
@@ -158,9 +161,10 @@ Le meilleur choix dépend de votre contexte :
 **Conclusion** : Il n'y a pas de mauvais choix, seulement un choix plus adapté à votre contexte. L'accompagnement par un expert permet de sécuriser cette décision stratégique.
     `,
     date: "2024-12-20",
+    dateModified: "2025-01-05",
     readingTime: "7 min",
     category: "Cloud & Infrastructure",
-    author: "Équipe DataSphere",
+    author: "Marc Petit",
   },
   {
     slug: "automatisation-rpa-guide",
@@ -235,9 +239,10 @@ Selon McKinsey, 60% des métiers ont au moins 30% d'activités automatisables. P
 **Conclusion** : L'automatisation n'est pas une question de technologie mais de priorisation. Commencez par les processus à fort volume et faible complexité pour des résultats rapides.
     `,
     date: "2024-12-10",
+    dateModified: "2025-01-03",
     readingTime: "5 min",
     category: "Automatisation",
-    author: "Équipe DataSphere",
+    author: "Thomas Dubois",
   },
 ];
 

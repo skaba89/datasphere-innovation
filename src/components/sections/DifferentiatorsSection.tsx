@@ -59,6 +59,18 @@ const DIFFERENTIATOR_SOURCES = [
     url: "https://www.weforum.org/communities/artificial-intelligence-and-robotics/",
     badge: "WEF Insight",
   },
+  {
+    name: "Forrester",
+    quote: "Les entreprises qui investissent dans l'IA générative constatent une amélioration de 50% de la productivité et un avantage compétitif mesurable en moins de 12 mois.",
+    url: "https://www.forrester.com/blogs/the-state-of-generative-ai/",
+    badge: "Forrester Research",
+  },
+  {
+    name: "IDC",
+    quote: "D'ici 2026, 65% des organisations auront adopté une stratégie data-first, générant un ROI 3x supérieur à celles qui ne l'ont pas fait.",
+    url: "https://www.idc.com/getdoc.jsp?containerId=prUS51491923",
+    badge: "IDC Research",
+  },
 ];
 
 export function DifferentiatorsSection() {
@@ -144,7 +156,7 @@ export function DifferentiatorsSection() {
               <p className="text-white/80 text-base font-semibold mb-1">Sources et références</p>
               <p className="text-white/60 text-sm">Notre approche est soutenue par les analyses les plus reconnues</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {DIFFERENTIATOR_SOURCES.map((source) => (
                 <a
                   key={source.name}

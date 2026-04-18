@@ -65,6 +65,22 @@ const FAQ_SERVICE_LINKS: { label: string; href: string }[][] = [
     { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
     { label: "Data Engineering", href: "/services/data-engineering" },
   ],
+  [
+    { label: "Solutions IA", href: "/services/ai-solutions" },
+    { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+  ],
+  [
+    { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+    { label: "Stratégie Data", href: "/services/data-strategy" },
+  ],
+  [
+    { label: "Data Engineering", href: "/services/data-engineering" },
+    { label: "Stratégie Data", href: "/services/data-strategy" },
+  ],
+  [
+    { label: "Solutions IA", href: "/services/ai-solutions" },
+    { label: "Data Engineering", href: "/services/data-engineering" },
+  ],
 ];
 
 export function FAQSection() {
@@ -84,6 +100,9 @@ export function FAQSection() {
               Retrouvez les réponses aux questions les plus courantes sur nos services,
               notre méthodologie et notre accompagnement. Chaque réponse inclut des liens
               vers les <Link href="/#services" className="text-primary hover:underline">services</Link> concernés pour aller plus loin.
+            </p>
+            <p className="text-muted-foreground/70 max-w-2xl text-sm mt-2" data-section-summary>
+              DataSphere Innovation accompagne les entreprises en data, IA et transformation digitale : projets de 4 semaines à 12 mois, ROI moyen de 3x, conformité RGPD native, 98% de satisfaction client. Nos experts certifiés AWS, Azure et GCP interviennent sur tout le territoire français.
             </p>
           </div>
         </SectionReveal>

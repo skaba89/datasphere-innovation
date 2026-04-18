@@ -193,13 +193,15 @@ export function AboutSection() {
                 Notre expertise est validée par les études les plus reconnues du secteur data et IA.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-4">
               {[
                 { name: "McKinsey", desc: "Les entreprises data-driven ont 23x plus de chances d'acquérir des clients et 19x plus d'être rentables.", url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights" },
                 { name: "Gartner", desc: "Plus de 80% des entreprises auront adopté l'IA d'ici 2026, générant 3 900 Md$ de valeur ajoutée.", url: "https://www.gartner.com/en/information-technology" },
                 { name: "Forbes", desc: "Le ROI moyen des projets data atteint 13x, avec une croissance 30% supérieure pour les data-driven.", url: "https://www.forbes.com/sites/forbestechcouncil/" },
                 { name: "Harvard Business Review", desc: "Les organisations du top quartile data surpassent leurs concurrents de 2,5x en performance.", url: "https://hbr.org/topic/data-science" },
                 { name: "World Economic Forum", desc: "L'IA générera 3 900 milliards de dollars de valeur ajoutée d'ici 2026 selon le WEF.", url: "https://www.weforum.org/communities/artificial-intelligence-and-robotics/" },
+                { name: "IDC", desc: "Le marché mondial des données et de l'IA atteindra 500 milliards de dollars en 2025.", url: "https://www.idc.com/getdoc.jsp?containerId=prUS51491923" },
+                { name: "Deloitte", desc: "Les entreprises investissant dans l'IA et la data génèrent un ROI moyen de 4.3x et surpassent leurs concurrents de 35%.", url: "https://www2.deloitte.com/global/en/pages/technology/articles/ai-institute.html" },
               ].map((ref) => (
                 <a
                   key={ref.name}

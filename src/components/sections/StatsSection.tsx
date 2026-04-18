@@ -70,6 +70,18 @@ const SOURCES = [
     url: "https://hbr.org/topic/data-science",
     badge: "HBR Research",
   },
+  {
+    name: "IDC",
+    quote: "Le marché mondial des données et de l'IA atteindra 500 milliards de dollars en 2025, avec une croissance annuelle de 25%.",
+    url: "https://www.idc.com/getdoc.jsp?containerId=prUS51491923",
+    badge: "IDC Research",
+  },
+  {
+    name: "Deloitte",
+    quote: "Les entreprises qui investissent massivement dans l'IA et la data génèrent un ROI moyen de 4.3x et surpassent leurs concurrents de 35% en croissance.",
+    url: "https://www2.deloitte.com/global/en/pages/technology/articles/ai-institute.html",
+    badge: "Deloitte AI Institute",
+  },
 ];
 
 export function StatsSection() {
@@ -141,7 +153,7 @@ export function StatsSection() {
               <p className="text-white text-xl font-bold mb-2">Sources et références</p>
               <p className="text-white/80 text-base">Nos chiffres sont appuyés par des études de référence du secteur</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {SOURCES.map((source) => (
                 <a
                   key={source.name}

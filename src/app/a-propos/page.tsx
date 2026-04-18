@@ -6,7 +6,7 @@ import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { STATS, DIFFERENTIATORS, PARTNERS, CLIENTS } from "@/lib/constants";
-import { generatePersonSchema, generateBreadcrumbSchema, JsonLd } from "@/lib/json-ld";
+import { generatePersonSchema, generateBreadcrumbSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 import {
   Award,
   Globe,
@@ -142,33 +142,41 @@ const TEAM_VALUES = [
 ];
 
 export default function AProposPage() {
-  const personSchemas = TEAM_MEMBERS.map((member) =>
-    generatePersonSchema({
-      name: member.name,
-      role: member.role,
-      description: member.description,
-    })
-  );
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: "Accueil", url: "https://datasphereinnovation.fr" },
-    { name: "À propos", url: "https://datasphereinnovation.fr/a-propos" },
+  const aboutGraph = generateGraphSchema([
+    ...TEAM_MEMBERS.map((member) =>
+      generatePersonSchema({
+        name: member.name,
+        role: member.role,
+        description: member.description,
+      })
+    ),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "À propos", url: "https://datasphereinnovation.fr/a-propos" },
+    ]),
   ]);
 
   return (
     <>
-      {personSchemas.map((schema, i) => (
-        <JsonLd key={i} data={schema} />
-      ))}
-      <JsonLd data={breadcrumbSchema} />
+      <JsonLd data={aboutGraph} />
       <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
         <Navbar />
 
         {/* Breadcrumb Navigation */}
         <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
-          <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">Accueil</Link>
-          <span className="mx-2 text-muted-foreground/50">›</span>
-          <span className="text-sm text-foreground font-medium">À propos</span>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link href="/">Accueil</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>À propos</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </nav>
 
         {/* Hero Section */}

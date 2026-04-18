@@ -14,6 +14,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Blog — DataSphere Innovation",
@@ -22,7 +23,22 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const blogListGraph = generateGraphSchema([
+    generateWebPageSchema({
+      title: "Blog — DataSphere Innovation",
+      description:
+        "Articles et insights sur la data, l'intelligence artificielle et la transformation digitale par les experts DataSphere Innovation.",
+      url: "https://datasphereinnovation.fr/blog",
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Blog", url: "https://datasphereinnovation.fr/blog" },
+    ]),
+  ]);
+
   return (
+    <>
+      <JsonLd data={blogListGraph} />
     <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
@@ -108,5 +124,6 @@ export default function BlogPage() {
       <BackToTop />
       <ChatWidget />
     </main>
+    </>
   );
 }

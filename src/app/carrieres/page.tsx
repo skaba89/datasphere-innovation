@@ -5,7 +5,16 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { COMPANY } from "@/lib/constants";
+import { generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 import {
   Briefcase,
   Heart,
@@ -127,12 +136,44 @@ const JOB_OPENINGS = [
 ];
 
 export default function CarrieresPage() {
+  const carrieresGraph = generateGraphSchema([
+    generateWebPageSchema({
+      title: "Carrières — DataSphere Innovation",
+      description:
+        "Rejoignez DataSphere Innovation et participez à la transformation data & IA des entreprises. Découvrez nos offres d'emploi et notre culture d'entreprise.",
+      url: "https://datasphereinnovation.fr/carrieres",
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Carrières", url: "https://datasphereinnovation.fr/carrieres" },
+    ]),
+  ]);
+
   return (
-    <main className="min-h-screen flex flex-col">
+    <>
+      <JsonLd data={carrieresGraph} />
+    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Accueil</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Carrières</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-32 pb-16 overflow-hidden" role="banner" aria-label="Carrières chez DataSphere Innovation">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-accent/5 to-transparent" />
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="container mx-auto px-4 relative z-10">
@@ -153,7 +194,7 @@ export default function CarrieresPage() {
       </section>
 
       {/* Why Join Us */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" role="region" aria-label="Pourquoi nous rejoindre">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-heading font-bold mb-4">
@@ -189,7 +230,7 @@ export default function CarrieresPage() {
       </section>
 
       {/* Job Openings */}
-      <section className="section-padding bg-secondary/20">
+      <section className="section-padding bg-secondary/20" role="region" aria-label="Offres d'emploi">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-heading font-bold mb-4">
@@ -244,7 +285,7 @@ export default function CarrieresPage() {
       </section>
 
       {/* Spontaneous Application */}
-      <section className="section-padding bg-background">
+      <section className="section-padding bg-background" role="region" aria-label="Candidature spontanée">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-heading font-bold mb-4">
             Vous ne trouvez pas votre <span className="gradient-text">bonheur</span> ?
@@ -264,7 +305,7 @@ export default function CarrieresPage() {
       </section>
 
       {/* Process */}
-      <section className="section-padding bg-secondary/20">
+      <section className="section-padding bg-secondary/20" role="region" aria-label="Processus de recrutement">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-heading font-bold mb-4">
@@ -299,5 +340,6 @@ export default function CarrieresPage() {
       <ChatWidget />
       <CookieConsent />
     </main>
+    </>
   );
 }

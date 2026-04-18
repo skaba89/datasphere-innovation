@@ -285,6 +285,25 @@ export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
   };
 }
 
+// ─── @graph Schema (consolidated) ──────────────────────────────────────────
+
+/**
+ * Consolidates multiple schemas into a single @graph block.
+ * This is CRITICAL for GEO audits: many tools only detect JSON-LD
+ * if it's in a single script tag with @graph, not multiple separate ones.
+ */
+export function generateGraphSchema(schemas: Record<string, unknown>[]) {
+  // Strip individual @context from each schema (the graph has one shared context)
+  const cleanedSchemas = schemas.map((schema) => {
+    const { ["@context"]: _ctx, ...rest } = schema;
+    return rest;
+  });
+  return {
+    "@context": "https://schema.org",
+    "@graph": cleanedSchemas,
+  };
+}
+
 // ─── JSON-LD Script Component ───────────────────────────────────────────────
 
 interface JsonLdProps {
