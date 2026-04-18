@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ArrowRight, ExternalLink, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/ui/SectionReveal";
@@ -66,6 +67,8 @@ const SERVICE_SOURCES = [
 ];
 
 export function ServicesSection() {
+  const router = useRouter();
+
   return (
     <section id="services" aria-label="Nos services" className="section-padding bg-background relative overflow-hidden">
       {/* Background decorations */}
@@ -147,20 +150,32 @@ export function ServicesSection() {
                         ))}
                       </div>
 
-                      {/* Contextual links to related services */}
+                      {/* Contextual links to related services — using <span> to avoid nested <a> */}
                       {related.length > 0 && (
                         <div className="pt-3 border-t border-border/20">
                           <p className="text-xs text-muted-foreground/60 mb-1.5">Services complémentaires :</p>
                           <div className="flex flex-wrap gap-1.5">
                             {related.map((r) => (
-                              <Link
+                              <span
                                 key={r.slug}
-                                href={`/services/${r.slug}`}
-                                className="text-xs px-2 py-0.5 rounded-full bg-primary/5 text-primary/70 border border-primary/10 hover:bg-primary/10 hover:text-primary transition-colors"
-                                onClick={(e) => e.stopPropagation()}
+                                role="button"
+                                tabIndex={0}
+                                className="text-xs px-2 py-0.5 rounded-full bg-primary/5 text-primary/70 border border-primary/10 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  router.push(`/services/${r.slug}`);
+                                }}
+                                onKeyDown={(e) => {
+                                  if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    router.push(`/services/${r.slug}`);
+                                  }
+                                }}
                               >
                                 {r.label}
-                              </Link>
+                              </span>
                             ))}
                           </div>
                         </div>
