@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { SERVICES } from "@/lib/constants";
@@ -46,9 +46,28 @@ const RELATED_SERVICES: Record<string, { slug: string; label: string }[]> = {
   ],
 };
 
+// External sources for services
+const SERVICE_SOURCES = [
+  {
+    name: "Gartner",
+    quote: "Le marché mondial de la Business Intelligence atteindra 22 milliards USD en 2025",
+    url: "https://www.gartner.com/en/information-technology",
+  },
+  {
+    name: "McKinsey",
+    quote: "L'IA générative pourrait ajouter 2 600 à 4 400 milliards USD à l'économie mondiale",
+    url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights",
+  },
+  {
+    name: "Forbes",
+    quote: "Le ROI moyen des projets data atteint 13x pour les entreprises matures",
+    url: "https://www.forbes.com/sites/forbestechcouncil/",
+  },
+];
+
 export function ServicesSection() {
   return (
-    <section id="services" className="section-padding bg-background relative overflow-hidden">
+    <section id="services" aria-label="Nos services" className="section-padding bg-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[100px] pointer-events-none" />
@@ -158,6 +177,35 @@ export function ServicesSection() {
             );
           })}
         </div>
+
+        {/* External sources */}
+        <SectionReveal delay={0.5}>
+          <div className="mt-12">
+            <p className="text-muted-foreground text-sm font-medium mb-4 text-center">Sources et références</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {SERVICE_SOURCES.map((source) => (
+                <a
+                  key={source.name}
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-3 p-4 rounded-xl border border-border/30 bg-card hover:bg-secondary/30 hover:border-primary/20 transition-all duration-300"
+                >
+                  <Quote size={16} className="text-primary/60 shrink-0 mt-0.5" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-2">
+                      {source.quote}
+                    </p>
+                    <div className="flex items-center gap-1.5 text-primary/70 group-hover:text-primary transition-colors">
+                      <span className="text-xs font-semibold">{source.name}</span>
+                      <ExternalLink size={10} />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </SectionReveal>
 
         {/* Bottom CTA */}
         <SectionReveal delay={0.6}>

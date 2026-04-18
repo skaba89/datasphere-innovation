@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { services } from "@/lib/service-data";
 import { ServicePageClient } from "./ServicePageClient";
-import { generateServiceSchema, generateBreadcrumbSchema, JsonLd } from "@/lib/json-ld";
+import {
+  generateServiceSchema,
+  generateBreadcrumbSchema,
+  generateOrganizationSchema,
+  generateWebPageSchema,
+  JsonLd,
+} from "@/lib/json-ld";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -52,8 +58,18 @@ export default async function ServicePage({ params }: PageProps) {
     { name: service.title, url: `https://datasphereinnovation.fr/services/${service.slug}` },
   ]);
 
+  const organizationSchema = generateOrganizationSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    title: `${service.title} — DataSphere Innovation`,
+    description: service.description,
+    url: `https://datasphereinnovation.fr/services/${service.slug}`,
+  });
+
   return (
     <>
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={webPageSchema} />
       <JsonLd data={serviceSchema} />
       <JsonLd data={breadcrumbSchema} />
       <ServicePageClient service={service} />

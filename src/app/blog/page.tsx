@@ -6,6 +6,14 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { Clock, ArrowRight, Tag } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Blog — DataSphere Innovation",
@@ -15,10 +23,27 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Accueil</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Blog</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
+      <section className="relative pt-16 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-accent/5 to-transparent" />
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="container mx-auto px-4 relative z-10">

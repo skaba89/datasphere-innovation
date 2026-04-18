@@ -31,7 +31,7 @@ const stepLinks: { label: string; href: string }[][] = [
 
 export function MethodSection() {
   return (
-    <section id="methode" className="section-padding bg-background relative overflow-hidden">
+    <section id="methode" aria-label="Notre méthodologie" className="section-padding bg-background relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
       <div className="absolute top-0 left-1/3 w-96 h-96 rounded-full bg-primary/3 blur-3xl pointer-events-none" />

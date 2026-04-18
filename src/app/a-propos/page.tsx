@@ -161,8 +161,15 @@ export default function AProposPage() {
         <JsonLd key={i} data={schema} />
       ))}
       <JsonLd data={breadcrumbSchema} />
-      <main className="min-h-screen flex flex-col">
+      <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
         <Navbar />
+
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+          <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">Accueil</Link>
+          <span className="mx-2 text-muted-foreground/50">›</span>
+          <span className="text-sm text-foreground font-medium">À propos</span>
+        </nav>
 
         {/* Hero Section */}
         <section className="relative pt-32 pb-16 overflow-hidden" role="banner" aria-label="À propos de DataSphere Innovation">

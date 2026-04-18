@@ -34,7 +34,7 @@ const USE_CASE_LINKS: { label: string; href: string }[][] = [
 
 export function UseCasesSection() {
   return (
-    <section id="cas-usage" className="section-padding bg-background">
+    <section id="cas-usage" aria-label="Cas d'usage" className="section-padding bg-background">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="mb-14">

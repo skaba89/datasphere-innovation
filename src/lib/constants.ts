@@ -488,6 +488,36 @@ export const FAQ_ITEMS: FAQItem[] = [
     answer:
       "Un premier échange découverte de 30 minutes pour comprendre vos enjeux, suivi d'un audit gratuit si pertinent. Nous vous proposons ensuite une approche détaillée avec planning, budget et livrables attendus. Pas de surprise, pas d'engagement initial — juste de l'expertise et de la transparence.",
   },
+  {
+    question: "Quel est le coût d'un projet data ou IA ?",
+    answer:
+      "Le coût varie en fonction de la complexité, de la durée et du périmètre du projet. Un POC IA démarre à partir de 15 000 €. Un projet BI complet se situe généralement entre 30 000 € et 80 000 €. Une transformation data d'envergure peut représenter un investissement de 100 000 € à 500 000 €. Nous proposons systématiquement une estimation détaillée et transparente après la phase de cadrage.",
+  },
+  {
+    question: "Comment mesurez-vous le ROI de vos projets ?",
+    answer:
+      "Nous définissons des KPIs mesurables dès la phase de cadrage : réduction des coûts, gain de temps, augmentation du chiffre d'affaires, amélioration de la qualité, adoption utilisateur. Chaque projet fait l'objet d'un suivi quantifié avec des rapports réguliers. Notre ROI moyen de 3x est calculé sur l'ensemble des projets livrés et vérifiable auprès de nos clients.",
+  },
+  {
+    question: "Travaillez-vous avec des données sensibles ou réglementées ?",
+    answer:
+      "Oui, nous avons une expérience approfondie avec les données sensibles : santé (HDS), finance (PCI-DSS), données personnelles (RGPD). Nous implémentons les mesures de sécurité nécessaires : chiffrement, contrôle d'accès, audit trail, anonymisation. Nos architectures sont conçues pour répondre aux exigences réglementaires les plus strictes.",
+  },
+  {
+    question: "Proposez-vous des formations pour nos équipes ?",
+    answer:
+      "Absolument. Le transfert de compétences est au cœur de notre approche. Nous proposons des formations sur mesure : data literacy pour les équipes métier, formations techniques (dbt, Airflow, Power BI), ateliers IA et machine learning, et coaching pour vos équipes data. L'objectif est de rendre vos équipes autonomes et pérennes.",
+  },
+  {
+    question: "Comment assurez-vous la pérennité des solutions déployées ?",
+    answer:
+      "Nous concevons chaque solution avec la pérennité en tête : documentation complète, architecture scalable, code review et best practices, transfert de compétences, et monitoring en production. Nous proposons également des contrats de maintenance et d'évolution pour un accompagnement sur le long terme, garantissant que vos solutions restent performantes et adaptées à vos besoins évolutifs.",
+  },
+  {
+    question: "Quelle est votre approche pour les projets multi-cloud ?",
+    answer:
+      "Nous sommes agnostiques et maîtrisons les trois principaux clouds (AWS, Azure, GCP). Notre approche multi-cloud s'appuie sur une évaluation objective de vos besoins : performance, coûts, conformité, écosystème existant. Nous concevons des architectures qui tirent le meilleur de chaque plateforme tout en assurant l'interopérabilité et la gouvernance transverse.",
+  },
 ];
 
 // ─── Contact Form Subjects ──────────────────────────────────────────────────

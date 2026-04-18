@@ -39,7 +39,7 @@ const INSIGHTS = [
 
 export function InsightsSection() {
   return (
-    <section id="insights" className="section-padding bg-background relative overflow-hidden">
+    <section id="insights" aria-label="Publications et insights" className="section-padding bg-background relative overflow-hidden">
       {/* Background */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-primary/2 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/2 blur-[120px] pointer-events-none" />

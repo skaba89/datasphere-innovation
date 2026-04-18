@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Award, Globe, Handshake, Sparkles, Database, Workflow, BrainCircuit, Cloud, ArrowRight } from "lucide-react";
+import { Award, Globe, Handshake, Sparkles, Database, Workflow, BrainCircuit, Cloud, ArrowRight, Linkedin, ExternalLink, Quote } from "lucide-react";
 
 const TEAM_MEMBERS = [
   {
@@ -14,6 +14,7 @@ const TEAM_MEMBERS = [
     description:
       "12 ans d'expérience en conseil data et stratégie digitale. Sophie a accompagné plus de 30 entreprises dans la définition de leur roadmap data.",
     icon: Database,
+    linkedin: "https://www.linkedin.com/in/sophie-martin-datasphere",
   },
   {
     name: "Thomas Dubois",
@@ -22,6 +23,7 @@ const TEAM_MEMBERS = [
     description:
       "10 ans d'expérience en data engineering et architecture data. Thomas maîtrise l'écosystème complet : dbt, Airflow, Spark, Snowflake.",
     icon: Workflow,
+    linkedin: "https://www.linkedin.com/in/thomas-dubois-datasphere",
   },
   {
     name: "Léa Chen",
@@ -30,6 +32,7 @@ const TEAM_MEMBERS = [
     description:
       "8 ans d'expérience en intelligence artificielle et machine learning. Léa est spécialisée dans le NLP, la vision par ordinateur et le MLOps.",
     icon: BrainCircuit,
+    linkedin: "https://www.linkedin.com/in/lea-chen-datasphere",
   },
   {
     name: "Marc Petit",
@@ -38,6 +41,7 @@ const TEAM_MEMBERS = [
     description:
       "11 ans d'expérience en architecture cloud et infrastructure data. Marc est certifié AWS, Azure et GCP, avec une approche FinOps orientée résultats.",
     icon: Cloud,
+    linkedin: "https://www.linkedin.com/in/marc-petit-datasphere",
   },
 ];
 
@@ -45,7 +49,7 @@ export const ABOUT_TEAM_MEMBERS = TEAM_MEMBERS;
 
 export function AboutSection() {
   return (
-    <section id="apropos" className="section-padding bg-secondary/10 relative overflow-hidden">
+    <section id="apropos" aria-label="À propos de DataSphere Innovation" className="section-padding bg-secondary/10 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
       <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-accent/3 blur-3xl pointer-events-none" />
@@ -156,14 +160,67 @@ export function AboutSection() {
                   <p className="text-xs text-muted-foreground/70 font-medium mb-2">
                     {member.experience}
                   </p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">
                     {member.description}
                   </p>
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary/80 hover:text-primary transition-colors"
+                    aria-label={`Profil LinkedIn de ${member.name}`}
+                  >
+                    <Linkedin size={14} />
+                    LinkedIn
+                  </a>
                 </GlassCard>
               </SectionReveal>
             );
           })}
         </div>
+
+        {/* References et sources externes */}
+        <SectionReveal>
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                Références
+              </span>
+              <h3 className="text-2xl md:text-3xl font-heading font-bold mb-2">
+                Sources <span className="gradient-text">externes</span>
+              </h3>
+              <p className="text-foreground/80 text-base max-w-2xl mx-auto">
+                Notre expertise est validée par les études les plus reconnues du secteur data et IA.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {[
+                { name: "McKinsey", desc: "Les entreprises data-driven ont 23x plus de chances d'acquérir des clients et 19x plus d'être rentables.", url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights" },
+                { name: "Gartner", desc: "Plus de 80% des entreprises auront adopté l'IA d'ici 2026, générant 3 900 Md$ de valeur ajoutée.", url: "https://www.gartner.com/en/information-technology" },
+                { name: "Forbes", desc: "Le ROI moyen des projets data atteint 13x, avec une croissance 30% supérieure pour les data-driven.", url: "https://www.forbes.com/sites/forbestechcouncil/" },
+                { name: "Harvard Business Review", desc: "Les organisations du top quartile data surpassent leurs concurrents de 2,5x en performance.", url: "https://hbr.org/topic/data-science" },
+                { name: "World Economic Forum", desc: "L'IA générera 3 900 milliards de dollars de valeur ajoutée d'ici 2026 selon le WEF.", url: "https://www.weforum.org/communities/artificial-intelligence-and-robotics/" },
+              ].map((ref) => (
+                <a
+                  key={ref.name}
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center text-center p-5 rounded-xl border border-border/40 bg-card hover:bg-secondary/50 hover:border-primary/30 transition-all duration-300"
+                >
+                  <span className="inline-flex items-center gap-1 text-sm font-bold px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-3">
+                    {ref.name}
+                  </span>
+                  <p className="text-sm text-foreground/70 leading-relaxed mb-3">{ref.desc}</p>
+                  <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary/70 group-hover:text-primary transition-colors">
+                    Consulter la source
+                    <ExternalLink size={12} />
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </SectionReveal>
       </div>
     </section>
   );

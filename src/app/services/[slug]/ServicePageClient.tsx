@@ -18,6 +18,7 @@ import {
   HardHat,
   Cog,
   Cloud,
+  ChevronRight,
   type LucideIcon,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
@@ -26,6 +27,14 @@ import { BackToTop } from "@/components/layout/BackToTop";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import type { ServiceData } from "@/lib/service-data";
 import { services } from "@/lib/service-data";
 
@@ -74,11 +83,34 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
     .filter(Boolean) as ServiceData[];
 
   return (
-    <main className="min-h-screen flex flex-col">
+    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Accueil</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/#services">Services</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{service.shortTitle}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
       {/* Hero with Background Image */}
-      <section className="relative pt-32 pb-24 overflow-hidden" role="banner" aria-label={`Service ${service.title}`}>
+      <section className="relative pt-20 pb-24 overflow-hidden" role="banner" aria-label={`Service ${service.title}`}>
         {/* Background Image */}
         {heroImage && (
           <div className="absolute inset-0">

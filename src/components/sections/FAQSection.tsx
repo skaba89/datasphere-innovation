@@ -41,11 +41,35 @@ const FAQ_SERVICE_LINKS: { label: string; href: string }[][] = [
     { label: "Contactez-nous", href: "/#contact" },
     { label: "Nos services", href: "/#services" },
   ],
+  [
+    { label: "Stratégie Data", href: "/services/data-strategy" },
+    { label: "BI & Dashboards", href: "/services/bi-dashboards" },
+  ],
+  [
+    { label: "BI & Dashboards", href: "/services/bi-dashboards" },
+    { label: "Solutions IA", href: "/services/ai-solutions" },
+  ],
+  [
+    { label: "Stratégie Data", href: "/services/data-strategy" },
+    { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+  ],
+  [
+    { label: "Automatisation", href: "/services/process-automation" },
+    { label: "Contact", href: "/#contact" },
+  ],
+  [
+    { label: "Data Engineering", href: "/services/data-engineering" },
+    { label: "Notre méthode", href: "/#methode" },
+  ],
+  [
+    { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+    { label: "Data Engineering", href: "/services/data-engineering" },
+  ],
 ];
 
 export function FAQSection() {
   return (
-    <section id="faq" className="section-padding bg-secondary/10">
+    <section id="faq" aria-label="Questions fréquentes" className="section-padding bg-secondary/10">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="mb-14">

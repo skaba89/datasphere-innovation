@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, useInView } from "framer-motion";
 import { STATS } from "@/lib/constants";
 import { SectionReveal } from "@/components/ui/SectionReveal";
+import { ExternalLink, Quote } from "lucide-react";
 
 function AnimatedCounter({
   end,
@@ -44,9 +45,36 @@ function AnimatedCounter({
   );
 }
 
+const SOURCES = [
+  {
+    name: "McKinsey",
+    quote: "Les entreprises data-driven ont 23x plus de chances d'acquérir des clients, 6x plus de les retenir et 19x plus d'être rentables.",
+    url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights",
+    badge: "McKinsey Global Institute",
+  },
+  {
+    name: "Gartner",
+    quote: "Plus de 80% des entreprises auront adopté l'IA d'ici 2026, générant une valeur ajoutée estimée à 3 900 milliards de dollars.",
+    url: "https://www.gartner.com/en/information-technology",
+    badge: "Gartner Research",
+  },
+  {
+    name: "Forbes",
+    quote: "Le ROI moyen des projets data atteint 13x, avec les entreprises data-driven affichant une croissance 30% supérieure à leurs concurrents.",
+    url: "https://www.forbes.com/sites/forbestechcouncil/",
+    badge: "Forbes Technology Council",
+  },
+  {
+    name: "Harvard Business Review",
+    quote: "Les organisations dans le top quartile de l'utilisation des données sont 2,5x plus susceptibles de surpasser leurs concurrents en performance.",
+    url: "https://hbr.org/topic/data-science",
+    badge: "HBR Research",
+  },
+];
+
 export function StatsSection() {
   return (
-    <section id="stats" className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-br from-[hsl(222,25%,8%)] via-[hsl(222,20%,6%)] to-[hsl(222,25%,10%)]">
+    <section id="stats" aria-label="Chiffres clés" className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-br from-[hsl(222,25%,8%)] via-[hsl(222,20%,6%)] to-[hsl(222,25%,10%)]">
       {/* Subtle decorations */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-primary/4 blur-[180px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[150px] pointer-events-none" />
@@ -59,15 +87,15 @@ export function StatsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <SectionReveal>
           <div className="text-center mb-10">
-            <p className="text-white/40 text-sm max-w-2xl mx-auto">
+            <p className="text-white/80 text-base max-w-2xl mx-auto">
               Des résultats concrets confirmés par nos clients. Selon{" "}
               <a
                 href="https://www.mckinsey.com/capabilities/quantumblack/our-insights"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary/60 hover:text-primary underline underline-offset-2"
+                className="text-primary hover:text-primary/80 font-semibold underline underline-offset-2 decoration-primary/50"
               >
-                McKinsey
+                McKinsey Global Institute
               </a>
               , les entreprises data-driven obtiennent un ROI 3 à 5 fois supérieur
               à leurs investissements data. Nos chiffres parlent d&apos;eux-mêmes.
@@ -98,7 +126,7 @@ export function StatsSection() {
                 <div className="w-8 h-0.5 bg-primary/30 mx-auto mb-2 group-hover:w-12 group-hover:bg-primary/60 transition-all duration-500" />
 
                 {/* Label */}
-                <p className="text-sm md:text-base text-white/50 font-medium">
+                <p className="text-sm md:text-base text-white/60 font-medium">
                   {stat.label}
                 </p>
               </motion.div>
@@ -106,38 +134,37 @@ export function StatsSection() {
           </div>
         </SectionReveal>
 
-        {/* Source citation */}
+        {/* Source citation - PROMINENT with badges */}
         <SectionReveal>
-          <div className="text-center mt-8">
-            <p className="text-white/25 text-xs">
-              Sources :{" "}
-              <a
-                href="https://www.mckinsey.com/capabilities/quantumblack/our-insights"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-white/50 underline underline-offset-2"
-              >
-                McKinsey Global Institute
-              </a>
-              {" · "}
-              <a
-                href="https://www.gartner.com/en/information-technology"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-white/50 underline underline-offset-2"
-              >
-                Gartner IT Research
-              </a>
-              {" · "}
-              <a
-                href="https://www.forbes.com/sites/forbestechcouncil/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/35 hover:text-white/50 underline underline-offset-2"
-              >
-                Forbes Technology Council
-              </a>
-            </p>
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <p className="text-white text-xl font-bold mb-2">Sources et références</p>
+              <p className="text-white/80 text-base">Nos chiffres sont appuyés par des études de référence du secteur</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {SOURCES.map((source) => (
+                <a
+                  key={source.name}
+                  href={source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-start gap-4 p-6 rounded-xl border border-white/15 bg-white/[0.05] hover:bg-white/[0.08] hover:border-primary/40 transition-all duration-300"
+                >
+                  <Quote size={22} className="text-primary/80 shrink-0 mt-0.5" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-white text-base leading-relaxed mb-3">
+                      {source.quote}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1 text-sm font-bold px-3 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/25">
+                        {source.badge}
+                      </span>
+                      <ExternalLink size={14} className="text-primary/60 group-hover:text-primary transition-colors" />
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </SectionReveal>
       </div>

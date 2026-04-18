@@ -6,7 +6,7 @@ import { PARTNERS } from "@/lib/constants";
 
 export function PartnersSection() {
   return (
-    <section className="py-12 bg-[hsl(222,20%,4%)] border-t border-white/5">
+    <section aria-label="Partenaires technologiques" className="py-12 bg-[hsl(222,20%,4%)] border-t border-white/5">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="text-center mb-8">
@@ -17,7 +17,7 @@ export function PartnersSection() {
               Nos partenaires{" "}
               <span className="gradient-text">technologiques</span>
             </h2>
-            <p className="text-white/40 max-w-xl mx-auto text-sm">
+            <p className="text-white/60 max-w-xl mx-auto text-sm">
               Nous collaborons avec les leaders du marché pour vous offrir les meilleures solutions.
             </p>
           </div>
@@ -28,7 +28,7 @@ export function PartnersSection() {
             {PARTNERS.map((partner) => (
               <div
                 key={partner}
-                className="flex items-center justify-center h-16 rounded-xl bg-white/5 border border-white/5 text-sm font-medium text-white/40 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-200"
+                className="flex items-center justify-center h-16 rounded-xl bg-white/5 border border-white/5 text-sm font-medium text-white/60 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-200"
               >
                 {partner}
               </div>

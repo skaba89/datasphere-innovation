@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts, getBlogPostBySlug } from "@/lib/blog-data";
 import { BlogPostClient } from "./BlogPostClient";
-import { generateArticleSchema, generateBreadcrumbSchema, JsonLd } from "@/lib/json-ld";
+import {
+  generateArticleSchema,
+  generateBreadcrumbSchema,
+  generateOrganizationSchema,
+  generateWebPageSchema,
+  JsonLd,
+} from "@/lib/json-ld";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -41,7 +47,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const post = getBlogPostBySlug(slug);
   if (!post) {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center">
+      <main id="main-content" className="min-h-screen flex flex-col items-center justify-center">
         <h1 className="text-2xl font-heading font-bold mb-4">
           Article non trouvé
         </h1>
@@ -70,8 +76,19 @@ export default async function BlogPostPage({ params }: PageProps) {
     { name: post.title, url: `https://datasphereinnovation.fr/blog/${post.slug}` },
   ]);
 
+  const organizationSchema = generateOrganizationSchema();
+
+  const webPageSchema = generateWebPageSchema({
+    title: `${post.title} — DataSphere Innovation`,
+    description: post.excerpt,
+    url: `https://datasphereinnovation.fr/blog/${post.slug}`,
+    dateModified: post.date,
+  });
+
   return (
     <>
+      <JsonLd data={organizationSchema} />
+      <JsonLd data={webPageSchema} />
       <JsonLd data={articleSchema} />
       <JsonLd data={breadcrumbSchema} />
       <BlogPostClient post={post} />

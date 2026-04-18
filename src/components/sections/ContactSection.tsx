@@ -88,7 +88,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section-padding bg-secondary/10 relative overflow-hidden">
+    <section id="contact" aria-label="Contactez-nous" className="section-padding bg-secondary/10 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none" />

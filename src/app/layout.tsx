@@ -3,6 +3,12 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
+import {
+  generateOrganizationSchema,
+  generateLocalBusinessSchema,
+  generateWebSiteSchema,
+  JsonLd,
+} from "@/lib/json-ld";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -69,87 +75,32 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLdOrganization = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "DataSphere Innovation",
-    url: "https://datasphereinnovation.fr",
-    logo: "https://datasphereinnovation.fr/images/logo-datasphere.png",
-    description:
-      "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale.",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "17 rue Gaston Monmousseau",
-      addressLocality: "Montreuil",
-      postalCode: "93100",
-      addressCountry: "FR",
-    },
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+33-6-81-82-28-40",
-      contactType: "sales",
-      availableLanguage: "French",
-    },
-    sameAs: [
-      "https://www.linkedin.com/company/datasphere-innovation",
-      "https://twitter.com/DataSphereInnov",
-    ],
-  };
-
-  const jsonLdLocalBusiness = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "DataSphere Innovation",
-    image: "https://datasphereinnovation.fr/images/logo-datasphere.png",
-    telephone: "+33 6 81 82 28 40",
-    email: "contact@datasphereinnovation.fr",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "17 rue Gaston Monmousseau",
-      addressLocality: "Montreuil",
-      postalCode: "93100",
-      addressCountry: "FR",
-    },
-    priceRange: "$$",
-  };
-
-  const jsonLdWebSite = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "DataSphere Innovation",
-    url: "https://datasphereinnovation.fr",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://datasphereinnovation.fr/search?q={search_term_string}",
-      "query-input": "required name=search_term_string",
-    },
-  };
+  const organizationSchema = generateOrganizationSchema();
+  const localBusinessSchema = generateLocalBusinessSchema();
+  const webSiteSchema = generateWebSiteSchema();
 
   return (
     <html lang="fr" suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLdOrganization),
-          }}
+        <link
+          rel="sitemap"
+          type="application/xml"
+          title="Sitemap"
+          href="/sitemap.xml"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLdLocalBusiness),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLdWebSite),
-          }}
-        />
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={localBusinessSchema} />
+        <JsonLd data={webSiteSchema} />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-background text-foreground font-sans`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg"
+        >
+          Aller au contenu principal
+        </a>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

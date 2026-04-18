@@ -32,6 +32,7 @@ export function TestimonialsSection() {
   return (
     <section
       id="temoignages"
+      aria-label="Témoignages clients"
       className="section-padding bg-background relative overflow-hidden"
     >
       {/* Background glow */}

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ChevronDown, Play } from "lucide-react";
+import { ArrowRight, ChevronDown, Play, Shield } from "lucide-react";
 import Link from "next/link";
 
 export function HeroSection() {
@@ -21,6 +21,7 @@ export function HeroSection() {
     <section
       ref={ref}
       id="hero"
+      aria-label="Bannière principale"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
@@ -159,11 +160,40 @@ export function HeroSection() {
                 <div className="text-2xl md:text-3xl font-heading font-bold text-primary stat-glow">
                   {stat.value}
                 </div>
-                <div className="text-xs text-white/40 mt-0.5 font-medium">
+                <div className="text-xs text-white/60 mt-0.5 font-medium">
                   {stat.label}
                 </div>
               </div>
             ))}
+          </motion.div>
+
+          {/* Trust badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="flex flex-wrap items-center gap-3 mt-6"
+          >
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/60">
+              <Shield size={12} className="text-primary/70" />
+              <span>RGPD conforme</span>
+            </div>
+            <a
+              href="https://www.mckinsey.com/capabilities/quantumblack/our-insights"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/60 hover:text-white/80 hover:border-primary/20 transition-colors"
+            >
+              <span>Référencé par McKinsey</span>
+            </a>
+            <a
+              href="https://www.gartner.com/en/information-technology"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/60 hover:text-white/80 hover:border-primary/20 transition-colors"
+            >
+              <span>Cité par Gartner</span>
+            </a>
           </motion.div>
         </div>
       </motion.div>
