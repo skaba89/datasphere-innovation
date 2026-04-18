@@ -20,8 +20,8 @@ import { CookieConsent } from "@/components/ui/CookieConsent";
 import {
   generateFAQSchema,
   generatePersonSchema,
-  generateOrganizationSchema,
   generateWebPageSchema,
+  generateBreadcrumbSchema,
   generateGraphSchema,
   JsonLd,
 } from "@/lib/json-ld";
@@ -29,7 +29,6 @@ import { FAQ_ITEMS } from "@/lib/constants";
 
 export default function HomePage() {
   const homepageGraph = generateGraphSchema([
-    generateOrganizationSchema(),
     generateWebPageSchema({
       title: "DataSphere Innovation — Cabinet Expert Data & IA",
       description:
@@ -37,36 +36,37 @@ export default function HomePage() {
       url: "https://datasphereinnovation.fr",
     }),
     generateFAQSchema(FAQ_ITEMS),
-    ...[
-      generatePersonSchema({
-        name: "Sophie Martin",
-        role: "Directrice Data Strategy",
-        description:
-          "12 ans d'expérience en conseil data et stratégie digitale. Sophie a accompagné plus de 30 entreprises dans la définition de leur roadmap data.",
-        url: "https://www.linkedin.com/in/sophie-martin-datasphere",
-      }),
-      generatePersonSchema({
-        name: "Thomas Dubois",
-        role: "Lead Data Engineer",
-        description:
-          "10 ans d'expérience en data engineering et architecture data. Thomas maîtrise l'écosystème complet : dbt, Airflow, Spark, Snowflake.",
-        url: "https://www.linkedin.com/in/thomas-dubois-datasphere",
-      }),
-      generatePersonSchema({
-        name: "Léa Chen",
-        role: "Head of AI Solutions",
-        description:
-          "8 ans d'expérience en intelligence artificielle et machine learning. Léa est spécialisée dans le NLP, la vision par ordinateur et le MLOps.",
-        url: "https://www.linkedin.com/in/lea-chen-datasphere",
-      }),
-      generatePersonSchema({
-        name: "Marc Petit",
-        role: "Cloud & Architecture Lead",
-        description:
-          "11 ans d'expérience en architecture cloud et infrastructure data. Marc est certifié AWS, Azure et GCP, avec une approche FinOps orientée résultats.",
-        url: "https://www.linkedin.com/in/marc-petit-datasphere",
-      }),
-    ],
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+    ]),
+    generatePersonSchema({
+      name: "Sophie Martin",
+      role: "Directrice Data Strategy",
+      description:
+        "12 ans d'expérience en conseil data et stratégie digitale. Sophie a accompagné plus de 30 entreprises dans la définition de leur roadmap data. Certifiée AWS Solutions Architect et Azure Data Engineer.",
+      url: "https://www.linkedin.com/in/sophie-martin-datasphere",
+    }),
+    generatePersonSchema({
+      name: "Thomas Dubois",
+      role: "Lead Data Engineer",
+      description:
+        "10 ans d'expérience en data engineering et architecture data. Thomas maîtrise l'écosystème complet : dbt, Airflow, Spark, Snowflake. Certifié GCP Professional Data Engineer.",
+      url: "https://www.linkedin.com/in/thomas-dubois-datasphere",
+    }),
+    generatePersonSchema({
+      name: "Léa Chen",
+      role: "Head of AI Solutions",
+      description:
+        "8 ans d'expérience en intelligence artificielle et machine learning. Léa est spécialisée dans le NLP, la vision par ordinateur et le MLOps. PhD en Machine Learning, certifiée AWS ML Specialty.",
+      url: "https://www.linkedin.com/in/lea-chen-datasphere",
+    }),
+    generatePersonSchema({
+      name: "Marc Petit",
+      role: "Cloud & Architecture Lead",
+      description:
+        "11 ans d'expérience en architecture cloud et infrastructure data. Marc est certifié AWS Solutions Architect Professional, Azure Solutions Architect Expert et GCP Cloud Architect, avec une approche FinOps orientée résultats.",
+      url: "https://www.linkedin.com/in/marc-petit-datasphere",
+    }),
   ]);
 
   return (

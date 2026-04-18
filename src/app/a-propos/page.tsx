@@ -8,6 +8,14 @@ import { CookieConsent } from "@/components/ui/CookieConsent";
 import { STATS, DIFFERENTIATORS, PARTNERS, CLIENTS } from "@/lib/constants";
 import { generatePersonSchema, generateBreadcrumbSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import {
   Award,
   Globe,
   Handshake,

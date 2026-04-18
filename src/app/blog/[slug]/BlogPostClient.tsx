@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Tag, Share2, Twitter, Linkedin, ArrowRight, User, ChevronRight } from "lucide-react";
+import { ArrowLeft, Clock, Tag, Share2, Twitter, Linkedin, ArrowRight, User, ChevronRight, BadgeCheck } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
@@ -18,37 +18,47 @@ import {
 } from "@/components/ui/breadcrumb";
 import type { BlogPost } from "@/lib/blog-data";
 
-// Author mapping for author cards
-const AUTHOR_MAP: Record<string, { name: string; role: string; bio: string; linkedin: string }> = {
+// Author mapping for author cards — enriched with certifications for E-E-A-T
+const AUTHOR_MAP: Record<string, { name: string; role: string; bio: string; linkedin: string; certifications: string[]; experience: string }> = {
   "Sophie Martin": {
     name: "Sophie Martin",
     role: "Directrice Data Strategy",
-    bio: "12 ans d'expérience en conseil data et stratégie digitale. Sophie a accompagné plus de 30 entreprises dans la définition de leur roadmap data.",
+    bio: "12 ans d'expérience en conseil data et stratégie digitale. Sophie a accompagné plus de 30 entreprises dans la définition de leur roadmap data. Certifiée AWS Solutions Architect et Azure Data Engineer, elle combine vision stratégique et expertise technique pour concevoir des architectures data robustes et scalables.",
     linkedin: "https://www.linkedin.com/in/sophie-martin-datasphere",
+    certifications: ["AWS Solutions Architect", "Azure Data Engineer"],
+    experience: "12 ans",
   },
   "Thomas Dubois": {
     name: "Thomas Dubois",
     role: "Lead Data Engineer",
-    bio: "10 ans d'expérience en data engineering et architecture data. Thomas maîtrise l'écosystème complet : dbt, Airflow, Spark, Snowflake.",
+    bio: "10 ans d'expérience en data engineering et architecture data. Thomas maîtrise l'écosystème complet : dbt, Airflow, Spark, Snowflake. Certifié GCP Professional Data Engineer et dbt Analytics Engineering, il conçoit des pipelines data performants et résilients pour les entreprises les plus exigeantes.",
     linkedin: "https://www.linkedin.com/in/thomas-dubois-datasphere",
+    certifications: ["GCP Professional Data Engineer", "dbt Certified"],
+    experience: "10 ans",
   },
   "Léa Chen": {
     name: "Léa Chen",
     role: "Head of AI Solutions",
-    bio: "8 ans d'expérience en intelligence artificielle et machine learning. Léa est spécialisée dans le NLP, la vision par ordinateur et le MLOps.",
+    bio: "8 ans d'expérience en intelligence artificielle et machine learning. Léa est spécialisée dans le NLP, la vision par ordinateur et le MLOps. Titulaire d'un PhD en Machine Learning et certifiée AWS ML Specialty, elle dirige la pratique IA de DataSphere Innovation avec une approche orientée impact business.",
     linkedin: "https://www.linkedin.com/in/lea-chen-datasphere",
+    certifications: ["PhD Machine Learning", "AWS ML Specialty"],
+    experience: "8 ans",
   },
   "Marc Petit": {
     name: "Marc Petit",
     role: "Cloud & Architecture Lead",
-    bio: "11 ans d'expérience en architecture cloud et infrastructure data. Marc est certifié AWS, Azure et GCP, avec une approche FinOps orientée résultats.",
+    bio: "11 ans d'expérience en architecture cloud et infrastructure data. Marc est certifié AWS Solutions Architect Professional, Azure Solutions Architect Expert et GCP Cloud Architect. Avec une approche FinOps orientée résultats, il optimise les architectures cloud pour la performance et la maîtrise des coûts.",
     linkedin: "https://www.linkedin.com/in/marc-petit-datasphere",
+    certifications: ["AWS SAP", "Azure SAE", "GCP Cloud Architect"],
+    experience: "11 ans",
   },
   "Équipe DataSphere": {
     name: "Équipe DataSphere Innovation",
     role: "Cabinet Expert Data & IA",
-    bio: "DataSphere Innovation est un cabinet expert en data et intelligence artificielle, fondé pour aider les entreprises à exploiter pleinement le potentiel de leurs données et à accélérer leur transformation digitale.",
+    bio: "DataSphere Innovation est un cabinet expert en data et intelligence artificielle, fondé pour aider les entreprises à exploiter pleinement le potentiel de leurs données et à accélérer leur transformation digitale. Plus de 50 projets délivrés, 98% de satisfaction client et 3x de ROI moyen.",
     linkedin: "https://www.linkedin.com/company/datasphere-innovation",
+    certifications: ["AWS Partner", "Azure Certified", "GCP Partner"],
+    experience: "Depuis 2021",
   },
 };
 
@@ -231,20 +241,31 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
             </div>
           </div>
 
-          {/* Author Card */}
+          {/* Author Card — Enhanced for E-E-A-T */}
           {(() => {
             const authorInfo = AUTHOR_MAP[post.author];
             if (!authorInfo) return null;
             return (
-              <div className="mt-8 p-6 rounded-2xl border border-border/30 bg-card">
+              <div className="mt-8 p-6 rounded-2xl border border-border/30 bg-card" itemProp="author" itemScope itemType="https://schema.org/Person">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center shrink-0" aria-hidden="true">
                     <User size={24} className="text-primary" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-heading font-semibold text-base">{authorInfo.name}</h4>
-                    <p className="text-sm text-primary font-medium mb-2">{authorInfo.role}</p>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">{authorInfo.bio}</p>
+                    <h4 className="font-heading font-semibold text-base" itemProp="name">{authorInfo.name}</h4>
+                    <p className="text-sm text-primary font-medium mb-1" itemProp="jobTitle">{authorInfo.role}</p>
+                    <p className="text-xs text-muted-foreground/60 font-medium mb-2">{authorInfo.experience} d&apos;expérience</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3" itemProp="description">{authorInfo.bio}</p>
+                    {authorInfo.certifications && authorInfo.certifications.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {authorInfo.certifications.map((cert) => (
+                          <span key={cert} className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/80 border border-primary/15">
+                            <BadgeCheck size={10} />
+                            {cert}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     <a
                       href={authorInfo.linkedin}
                       target="_blank"

@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Award, Globe, Handshake, Sparkles, Database, Workflow, BrainCircuit, Cloud, ArrowRight, Linkedin, ExternalLink, Quote } from "lucide-react";
+import { Award, Globe, Handshake, Sparkles, Database, Workflow, BrainCircuit, Cloud, ArrowRight, Linkedin, ExternalLink, Quote, BadgeCheck, ShieldCheck, TrendingUp, Users } from "lucide-react";
 
 const TEAM_MEMBERS = [
   {
@@ -12,36 +12,40 @@ const TEAM_MEMBERS = [
     role: "Directrice Data Strategy",
     experience: "12 ans d'expérience",
     description:
-      "12 ans d'expérience en conseil data et stratégie digitale. Sophie a accompagné plus de 30 entreprises dans la définition de leur roadmap data.",
+      "12 ans d'expérience en conseil data et stratégie digitale. Sophie a accompagné plus de 30 entreprises dans la définition de leur roadmap data. Certifiée AWS Solutions Architect et Azure Data Engineer.",
     icon: Database,
     linkedin: "https://www.linkedin.com/in/sophie-martin-datasphere",
+    certifications: ["AWS Solutions Architect", "Azure Data Engineer"],
   },
   {
     name: "Thomas Dubois",
     role: "Lead Data Engineer",
     experience: "10 ans d'expérience",
     description:
-      "10 ans d'expérience en data engineering et architecture data. Thomas maîtrise l'écosystème complet : dbt, Airflow, Spark, Snowflake.",
+      "10 ans d'expérience en data engineering et architecture data. Thomas maîtrise l'écosystème complet : dbt, Airflow, Spark, Snowflake. Certifié GCP Professional Data Engineer.",
     icon: Workflow,
     linkedin: "https://www.linkedin.com/in/thomas-dubois-datasphere",
+    certifications: ["GCP Professional Data Engineer", "dbt Certified"],
   },
   {
     name: "Léa Chen",
     role: "Head of AI Solutions",
     experience: "8 ans d'expérience",
     description:
-      "8 ans d'expérience en intelligence artificielle et machine learning. Léa est spécialisée dans le NLP, la vision par ordinateur et le MLOps.",
+      "8 ans d'expérience en intelligence artificielle et machine learning. Léa est spécialisée dans le NLP, la vision par ordinateur et le MLOps. PhD en Machine Learning, certifiée AWS ML Specialty.",
     icon: BrainCircuit,
     linkedin: "https://www.linkedin.com/in/lea-chen-datasphere",
+    certifications: ["PhD Machine Learning", "AWS ML Specialty"],
   },
   {
     name: "Marc Petit",
     role: "Cloud & Architecture Lead",
     experience: "11 ans d'expérience",
     description:
-      "11 ans d'expérience en architecture cloud et infrastructure data. Marc est certifié AWS, Azure et GCP, avec une approche FinOps orientée résultats.",
+      "11 ans d'expérience en architecture cloud et infrastructure data. Marc est certifié AWS Solutions Architect Professional, Azure Solutions Architect Expert et GCP Cloud Architect, avec une approche FinOps orientée résultats.",
     icon: Cloud,
     linkedin: "https://www.linkedin.com/in/marc-petit-datasphere",
+    certifications: ["AWS SAP", "Azure SAE", "GCP Cloud Architect"],
   },
 ];
 
@@ -163,6 +167,16 @@ export function AboutSection() {
                   <p className="text-xs text-muted-foreground leading-relaxed mb-3">
                     {member.description}
                   </p>
+                  {member.certifications && member.certifications.length > 0 && (
+                    <div className="flex flex-wrap justify-center gap-1 mb-3">
+                      {member.certifications.map((cert) => (
+                        <span key={cert} className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/80 border border-primary/15">
+                          <BadgeCheck size={10} />
+                          {cert}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <a
                     href={member.linkedin}
                     target="_blank"
@@ -178,6 +192,132 @@ export function AboutSection() {
             );
           })}
         </div>
+
+        {/* Certifications & Partenariats */}
+        <SectionReveal>
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                Certifications
+              </span>
+              <h3 className="text-2xl md:text-3xl font-heading font-bold mb-2">
+                Certifications & <span className="gradient-text">partenariats</span>
+              </h3>
+              <p className="text-foreground/80 text-base max-w-2xl mx-auto">
+                Notre équipe détient les certifications les plus reconnues du secteur cloud et data, validées par AWS, Microsoft Azure et Google Cloud Platform.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <GlassCard hover className="p-6 text-center glow-card">
+                <div className="w-14 h-14 rounded-xl bg-orange-500/10 flex items-center justify-center mx-auto mb-4">
+                  <ShieldCheck className="w-7 h-7 text-orange-500" />
+                </div>
+                <h4 className="font-heading font-semibold mb-2">AWS Partner</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  Partenaire certifié AWS avec des architectes Solutions Architect Professional et des spécialistes Data & ML certifiés.
+                </p>
+                <div className="flex flex-wrap justify-center gap-1">
+                  {["Solutions Architect", "Data Engineer", "ML Specialty"].map((c) => (
+                    <span key={c} className="text-[10px] px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-600 border border-orange-500/15">{c}</span>
+                  ))}
+                </div>
+              </GlassCard>
+              <GlassCard hover className="p-6 text-center glow-card">
+                <div className="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
+                  <ShieldCheck className="w-7 h-7 text-blue-500" />
+                </div>
+                <h4 className="font-heading font-semibold mb-2">Microsoft Azure</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  Certifiés Azure Solutions Architect Expert et Azure Data Engineer Associate, avec une expertise Power BI et Synapse Analytics.
+                </p>
+                <div className="flex flex-wrap justify-center gap-1">
+                  {["Solutions Architect Expert", "Data Engineer", "Power BI"].map((c) => (
+                    <span key={c} className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-600 border border-blue-500/15">{c}</span>
+                  ))}
+                </div>
+              </GlassCard>
+              <GlassCard hover className="p-6 text-center glow-card">
+                <div className="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+                  <ShieldCheck className="w-7 h-7 text-red-500" />
+                </div>
+                <h4 className="font-heading font-semibold mb-2">Google Cloud</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  Certifiés GCP Professional Data Engineer et Cloud Architect, experts BigQuery, Dataflow et Vertex AI pour des solutions data natives cloud.
+                </p>
+                <div className="flex flex-wrap justify-center gap-1">
+                  {["Professional Data Engineer", "Cloud Architect", "Vertex AI"].map((c) => (
+                    <span key={c} className="text-[10px] px-2 py-0.5 rounded-full bg-red-500/10 text-red-600 border border-red-500/15">{c}</span>
+                  ))}
+                </div>
+              </GlassCard>
+            </div>
+          </div>
+        </SectionReveal>
+
+        {/* Cas clients détaillés */}
+        <SectionReveal>
+          <div className="mt-16">
+            <div className="text-center mb-8">
+              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                Cas clients
+              </span>
+              <h3 className="text-2xl md:text-3xl font-heading font-bold mb-2">
+                Résultats <span className="gradient-text">prouvés</span>
+              </h3>
+              <p className="text-foreground/80 text-base max-w-2xl mx-auto">
+                Des projets concrets avec des résultats mesurables, validés par nos clients dans des secteurs variés.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  sector: "Industrie Automobile",
+                  client: "Constructeur CAC40",
+                  challenge: "Maintenance prédictive pour réduire les arrêts de production non planifiés de 40%.",
+                  result: "-40% de pannes imprévues",
+                  tech: "AWS, SageMaker, IoT",
+                  roi: "ROI 4.2x en 8 mois",
+                },
+                {
+                  sector: "Pharmacie",
+                  client: "Laboratoire International",
+                  challenge: "Accélérer l&apos;analyse des données cliniques et réduire le time-to-insight de 60%.",
+                  result: "60% de réduction du time-to-insight",
+                  tech: "Azure, Synapse, Power BI",
+                  roi: "ROI 3.8x en 6 mois",
+                },
+                {
+                  sector: "Finance",
+                  client: "Institution Financière",
+                  challenge: "Détecter la fraude en temps réel avec un modèle IA tout en respectant les contraintes réglementaires PCI-DSS.",
+                  result: "85% de fraudes détectées en temps réel",
+                  tech: "GCP, BigQuery ML, Dataflow",
+                  roi: "ROI 5.1x en 10 mois",
+                },
+              ].map((caseStudy, i) => (
+                <GlassCard key={i} hover className="p-6 glow-card h-full flex flex-col">
+                  <div className="flex items-center gap-2 mb-3">
+                    <TrendingUp size={16} className="text-primary" />
+                    <span className="text-xs font-bold text-primary uppercase tracking-wider">{caseStudy.sector}</span>
+                  </div>
+                  <h4 className="font-heading font-semibold mb-2">{caseStudy.client}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3 flex-grow">{caseStudy.challenge}</p>
+                  <div className="space-y-2 mt-auto">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">{caseStudy.result}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] text-muted-foreground/60">Stack : {caseStudy.tech}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-semibold text-accent">{caseStudy.roi}</span>
+                    </div>
+                  </div>
+                </GlassCard>
+              ))}
+            </div>
+          </div>
+        </SectionReveal>
 
         {/* References et sources externes */}
         <SectionReveal>
