@@ -89,6 +89,9 @@ export function ServicesSection() {
               De la stratégie à l&apos;exécution, nous offrons une expertise
               complète pour transformer vos données en valeur business.
             </p>
+            <p className="text-muted-foreground/70 max-w-3xl mt-3 text-sm" data-section-summary>
+              DataSphere Innovation propose six pôles de services couvrant l&apos;ensemble de la chaîne de valeur data : stratégie data, BI et dashboards, intelligence artificielle, data engineering, automatisation des processus et modernisation cloud. 50+ projets délivrés, ROI moyen de 3x, 98% de satisfaction client.
+            </p>
             <p className="text-muted-foreground/70 max-w-3xl mt-3 text-base">
               Nos six pôles de services couvrent l&apos;ensemble de la chaîne de valeur data :
               de la définition de votre <Link href="/services/data-strategy" className="text-primary hover:underline">stratégie data</Link> à la

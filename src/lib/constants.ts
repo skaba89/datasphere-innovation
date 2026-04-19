@@ -570,6 +570,7 @@ export const FOOTER_NAVIGATION = [
   { label: "Témoignages", href: "/#temoignages" },
   { label: "Blog", href: "/blog" },
   { label: "À propos", href: "/a-propos" },
+  { label: "Notre équipe", href: "/equipe" },
   { label: "Carrières", href: "/carrieres" },
   { label: "Contact", href: "/#contact" },
 ];

@@ -247,29 +247,30 @@ export interface ArticleSchemaInput {
 }
 
 export function generateArticleSchema(article: ArticleSchemaInput) {
-  // Map author names to Person profiles
-  const authorPersonMap: Record<string, { name: string; url: string; role: string }> = {
-    "Sophie Martin": { name: "Sophie Martin", url: "https://www.linkedin.com/in/sophie-martin-datasphere", role: "Directrice Data Strategy" },
-    "Thomas Dubois": { name: "Thomas Dubois", url: "https://www.linkedin.com/in/thomas-dubois-datasphere", role: "Lead Data Engineer" },
-    "Léa Chen": { name: "Léa Chen", url: "https://www.linkedin.com/in/lea-chen-datasphere", role: "Head of AI Solutions" },
-    "Marc Petit": { name: "Marc Petit", url: "https://www.linkedin.com/in/marc-petit-datasphere", role: "Cloud & Architecture Lead" },
+  // Map author names to Person profiles with @id linking to equipe pages
+  const authorPersonMap: Record<string, { name: string; slug: string; url: string; role: string }> = {
+    "Sophie Martin": { name: "Sophie Martin", slug: "sophie-martin", url: "https://www.linkedin.com/in/sophie-martin-datasphere", role: "Directrice Data Strategy" },
+    "Thomas Dubois": { name: "Thomas Dubois", slug: "thomas-dubois", url: "https://www.linkedin.com/in/thomas-dubois-datasphere", role: "Lead Data Engineer" },
+    "Léa Chen": { name: "Léa Chen", slug: "lea-chen", url: "https://www.linkedin.com/in/lea-chen-datasphere", role: "Head of AI Solutions" },
+    "Marc Petit": { name: "Marc Petit", slug: "marc-petit", url: "https://www.linkedin.com/in/marc-petit-datasphere", role: "Cloud & Architecture Lead" },
   };
 
   const authorInfo = authorPersonMap[article.author];
   const authorSchema = authorInfo
     ? {
         "@type": "Person",
+        "@id": `${SITE_URL}/equipe/${authorInfo.slug}/#person`,
         name: authorInfo.name,
-        url: authorInfo.url,
+        url: `${SITE_URL}/equipe/${authorInfo.slug}`,
         jobTitle: authorInfo.role,
+        sameAs: [authorInfo.url],
         worksFor: {
-          "@type": "Organization",
-          name: SITE_NAME,
-          url: SITE_URL,
+          "@id": ORG_ID,
         },
       }
     : {
         "@type": "Organization",
+        "@id": ORG_ID,
         name: SITE_NAME,
         url: SITE_URL,
       };
@@ -308,19 +309,21 @@ export interface PersonSchemaInput {
 }
 
 export function generatePersonSchema(person: PersonSchemaInput) {
+  const slug = person.name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
   return {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": person.url || `${SITE_URL}/a-propos/#${person.name.toLowerCase().replace(/\s+/g, "-")}`,
+    "@id": person.url || `${SITE_URL}/equipe/${slug}/#person`,
     name: person.name,
     jobTitle: person.role,
     description: person.description,
     worksFor: {
       "@id": ORG_ID,
     },
-    url: person.url || `${SITE_URL}/a-propos`,
+    url: person.url || `${SITE_URL}/equipe/${slug}`,
     image: person.image || `${SITE_URL}/images/logo-datasphere.png`,
-    knowsAbout: ["Data", "Intelligence Artificielle", "Analytics", "Transformation Digitale"],
+    knowsAbout: ["Data", "Intelligence Artificielle", "Analytics", "Transformation Digitale", "Cloud Computing", "Machine Learning"],
+    sameAs: person.url ? [person.url] : undefined,
   };
 }
 

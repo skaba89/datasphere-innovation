@@ -63,6 +63,15 @@ const AUTHOR_MAP: Record<string, { name: string; role: string; bio: string; link
 };
 
 export function BlogPostClient({ post }: { post: BlogPost }) {
+  // Map author names to their equipe page slugs
+  const AUTHOR_SLUG_MAP: Record<string, string> = {
+    "Sophie Martin": "sophie-martin",
+    "Thomas Dubois": "thomas-dubois",
+    "Léa Chen": "lea-chen",
+    "Marc Petit": "marc-petit",
+    "Équipe DataSphere": "",
+  };
+
   const [copied, setCopied] = React.useState(false);
 
   const shareUrl =
@@ -130,7 +139,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               {post.title}
             </h1>
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
-              <span>Par {post.author}</span>
+              <span>Par <Link href={`/equipe/${AUTHOR_SLUG_MAP[post.author] || ""}`} className="text-primary hover:underline font-medium">{post.author}</Link></span>
               <span>•</span>
               <span>
                 {new Date(post.date).toLocaleDateString("fr-FR", {
@@ -254,7 +263,15 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
                     <User size={24} className="text-primary" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h4 className="font-heading font-semibold text-base" itemProp="name">{authorInfo.name}</h4>
+                    <h4 className="font-heading font-semibold text-base" itemProp="name">
+                      {AUTHOR_SLUG_MAP[post.author] ? (
+                        <Link href={`/equipe/${AUTHOR_SLUG_MAP[post.author]}`} className="hover:text-primary transition-colors">
+                          {authorInfo.name}
+                        </Link>
+                      ) : (
+                        authorInfo.name
+                      )}
+                    </h4>
                     <p className="text-sm text-primary font-medium mb-1" itemProp="jobTitle">{authorInfo.role}</p>
                     <p className="text-xs text-muted-foreground/60 font-medium mb-2">{authorInfo.experience} d&apos;expérience</p>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-3" itemProp="description">{authorInfo.bio}</p>
@@ -276,8 +293,17 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
                       aria-label={`Profil LinkedIn de ${authorInfo.name}`}
                     >
                       <Linkedin size={14} />
-                      Voir le profil LinkedIn
+                      LinkedIn
                     </a>
+                    {AUTHOR_SLUG_MAP[post.author] && (
+                      <Link
+                        href={`/equipe/${AUTHOR_SLUG_MAP[post.author]}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary/80 hover:text-primary transition-colors ml-4"
+                      >
+                        Voir le profil complet
+                        <ArrowRight size={12} />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

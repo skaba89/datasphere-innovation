@@ -122,7 +122,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden bg-[hsl(222,25%,6%)] dark:bg-[hsl(222,20%,3%)]">
+    <footer className="relative overflow-hidden bg-[hsl(222,25%,6%)] dark:bg-[hsl(222,20%,3%)]" role="contentinfo">
       {/* Top accent line */}
       <div className="h-1 bg-gradient-to-r from-primary via-accent to-primary" />
 

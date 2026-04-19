@@ -22,6 +22,7 @@ export function HeroSection() {
       ref={ref}
       id="hero"
       aria-label="Bannière principale"
+      role="banner"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
@@ -110,10 +111,13 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-white/60 max-w-2xl mb-10 leading-relaxed"
+            data-section-summary
           >
             Nous accompagnons les entreprises ambitieuses dans l&apos;exploitation
             stratégique de leurs données — pour des décisions plus rapides, des
             processus automatisés et une croissance mesurable.
+            DataSphere Innovation : cabinet expert en data, IA et transformation digitale,
+            50+ projets délivrés, 98% satisfaction, 3x ROI moyen.
           </motion.p>
 
           <motion.div

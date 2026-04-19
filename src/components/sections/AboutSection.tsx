@@ -53,7 +53,7 @@ export const ABOUT_TEAM_MEMBERS = TEAM_MEMBERS;
 
 export function AboutSection() {
   return (
-    <section id="apropos" aria-label="À propos de DataSphere Innovation" className="section-padding bg-secondary/10 relative overflow-hidden">
+    <section id="apropos" aria-label="À propos de DataSphere Innovation" className="section-padding bg-secondary/10 relative overflow-hidden" role="region">
       {/* Background decoration */}
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
       <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-accent/3 blur-3xl pointer-events-none" />
@@ -68,15 +68,17 @@ export function AboutSection() {
               Un cabinet né de la{" "}
               <span className="gradient-text">passion data</span>
             </h2>
-            <p className="text-muted-foreground mb-4 leading-relaxed text-base">
-              DataSphere Innovation est un cabinet expert en data et intelligence artificielle, fondé pour aider les entreprises à exploiter pleinement le potentiel de leurs données et à accélérer leur transformation digitale.
+            <p className="text-muted-foreground mb-4 leading-relaxed text-base" data-section-summary>
+              DataSphere Innovation est un cabinet expert en data et intelligence artificielle, fondé pour aider les entreprises à exploiter pleinement le potentiel de leurs données et à accélérer leur transformation digitale. Plus de 50 projets délivrés, 98% de satisfaction client et 3x de ROI moyen.
             </p>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Fondé par des experts passionnés par la data et l&apos;intelligence
               artificielle, DataSphere Innovation est né d&apos;un constat simple :
               trop d&apos;entreprises sous-exploitent le potentiel de leurs données.
               Notre mission est de rendre la data et l&apos;IA accessibles, utiles et
-              performantes pour chaque organisation.
+              performantes pour chaque organisation. Découvrez nos
+              <Link href="/services/data-strategy" className="text-primary hover:underline"> services de stratégie data</Link> et
+              <Link href="/services/ai-solutions" className="text-primary hover:underline"> solutions IA</Link>.
             </p>
             <Link
               href="/a-propos"

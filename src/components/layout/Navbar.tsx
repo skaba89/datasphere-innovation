@@ -65,6 +65,12 @@ const NAV_DROPDOWNS: Record<string, DropdownItem[]> = {
       icon: Users,
     },
     {
+      label: "Notre équipe",
+      href: "/equipe",
+      description: "Experts certifiés data, IA et cloud",
+      icon: Users,
+    },
+    {
       label: "Carrières",
       href: "/carrieres",
       description: "Rejoignez l'aventure DataSphere",
@@ -194,6 +200,7 @@ export function Navbar() {
 
   return (
     <nav
+      role="navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/90 backdrop-blur-2xl border-b border-border/30 shadow-lg shadow-black/5"

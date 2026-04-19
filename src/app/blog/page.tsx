@@ -5,7 +5,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
-import { Clock, ArrowRight, Tag } from "lucide-react";
+import { Clock, ArrowRight, Tag, User } from "lucide-react";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -70,11 +70,21 @@ export default function BlogPage() {
             Articles, analyses et perspectives de nos experts sur la data,
             l&apos;intelligence artificielle et la transformation digitale.
           </p>
+          <p className="text-muted-foreground/70 max-w-2xl mt-2 text-sm">
+            Nos experts partagent leur vision sur la
+            <Link href="/services/data-strategy" className="text-primary hover:underline ml-1">stratégie data</Link>,
+            le <Link href="/services/ai-solutions" className="text-primary hover:underline">machine learning</Link>,
+            le <Link href="/services/data-engineering" className="text-primary hover:underline">data engineering</Link> et la
+            <Link href="/services/cloud-modernization" className="text-primary hover:underline"> migration cloud</Link>.
+            Retrouvez aussi nos
+            <Link href="/equipe" className="text-primary hover:underline ml-1"> profils d&apos;experts</Link>.
+          </p>
         </div>
       </section>
 
-      <section className="section-padding bg-background">
-        <div className="container mx-auto px-4">
+      <section className="section-padding bg-background" role="region" aria-label="Liste des articles">
+        <div className="container mx-auto px-4" data-section-summary>
+          <p className="sr-only">Blog DataSphere Innovation : articles d'experts sur la stratégie data, l'intelligence artificielle, le data engineering et le cloud. Par Sophie Martin, Thomas Dubois, Léa Chen et Marc Petit.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {blogPosts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
@@ -100,13 +110,17 @@ export default function BlogPage() {
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">
-                        {new Date(post.date).toLocaleDateString("fr-FR", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </span>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <span>
+                          {new Date(post.date).toLocaleDateString("fr-FR", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}
+                        </span>
+                        <span>•</span>
+                        <span>{post.author}</span>
+                      </div>
                       <span className="text-sm font-medium text-primary flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         Lire
                         <ArrowRight size={14} />

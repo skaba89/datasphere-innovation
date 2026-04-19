@@ -7,10 +7,12 @@ import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { SERVICES } from "@/lib/constants";
 import { blogPosts } from "@/lib/blog-data";
+import { AUTHORS } from "@/lib/author-data";
 import {
   Home,
   Briefcase,
   BookOpen,
+  Users,
   Scale,
   FileText,
   ChevronRight,
@@ -37,9 +39,18 @@ const SITE_SECTIONS = [
     links: [
       { label: "Accueil", href: "/" },
       { label: "À propos", href: "/a-propos" },
+      { label: "Notre équipe", href: "/equipe" },
       { label: "Carrières", href: "/carrieres" },
       { label: "Contact", href: "/#contact" },
     ],
+  },
+  {
+    icon: Users,
+    title: "Notre équipe",
+    links: AUTHORS.map((a) => ({
+      label: `${a.name} — ${a.role}`,
+      href: `/equipe/${a.slug}`,
+    })),
   },
   {
     icon: Briefcase,
