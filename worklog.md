@@ -172,3 +172,31 @@
 | Breadcrumbs | - | 10/10 | Visible breadcrumb nav on all sub-pages |
 | Sitemap | - | 10/10 | All 6 service URLs verified |
 | **Total** | **75/100** | **100/100** | |
+
+---
+Task ID: 1
+Agent: Main Agent
+Task: Implement GEO audit improvements for Datasphere Innovation website
+
+Work Log:
+- Assessed full project state: 14 pages, comprehensive JSON-LD, breadcrumbs on all sub-pages
+- Fixed missing WebPage schema on /a-propos page (was only Person + BreadcrumbList)
+- Enhanced FAQ section with microdata double-markup (FAQPage itemscope + Question/Answer itemprop)
+- Fixed sitemap lastmod dates - replaced future 2026 dates with realistic 2025 dates
+- Added robots.ts for proper crawl directives (allow /, disallow /admin/ and /api/)
+- Fixed ARIA accessibility gaps on 3 legal pages (added id="main-content" + aria-label)
+- Added <header role="banner"> landmark wrapper to Navbar component
+- Added aria-labelledby attributes to TestimonialsSection and ContactSection headings
+- Enhanced Review schema microdata with nested Rating and Person itemscope
+- Added ISR revalidation strategy (7-day = 604800s) in layout.tsx
+- Created lib/indexnow.ts utility with notifyIndexNow() and notifyIndexNowBatch() functions
+- Added video/infographic resource placeholders on service pages (multimodal content)
+- Added testimonial collection CTA in ContactSection (mailto:temoignages@ link)
+- Build verified successfully (31 pages generated, all routes working)
+- Pushed to GitHub (commit 8e8e5c5)
+
+Stage Summary:
+- All quick-impact actions implemented: JSON-LD verification, breadcrumbs (already existed), FAQ optimization with microdata
+- All structural optimizations implemented: team profiles (already existed), ARIA fixes, content refresh + IndexNow, multimodal placeholders
+- Long-term governance items addressed: GSC/BWMT meta tags, robots.ts, testimonial collection program
+- Build passes cleanly with 1-week revalidation on all pages
