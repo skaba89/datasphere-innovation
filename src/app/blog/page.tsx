@@ -27,7 +27,17 @@ import { generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, J
 export const metadata: Metadata = {
   title: "Blog — DataSphere Innovation",
   description:
-    "Articles et insights sur la data, l'intelligence artificielle et la transformation digitale par les experts DataSphere Innovation.",
+    "Articles et insights sur la data, l'IA et la transformation digitale par les experts certifiés DataSphere Innovation. Stratégie data, MLOps, cloud et automatisation.",
+  openGraph: {
+    title: "Blog — DataSphere Innovation",
+    description:
+      "Articles et insights sur la data, l'IA et la transformation digitale par les experts certifiés DataSphere Innovation.",
+    url: "https://datasphereinnovation.fr/blog",
+    type: "website",
+  },
+  alternates: {
+    canonical: "https://datasphereinnovation.fr/blog",
+  },
 };
 
 export default function BlogPage() {
@@ -119,13 +129,13 @@ export default function BlogPage() {
                     </p>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <span>
+                        <time dateTime={post.date}>
                           {new Date(post.date).toLocaleDateString("fr-FR", {
                             year: "numeric",
                             month: "long",
                             day: "numeric",
                           })}
-                        </span>
+                        </time>
                         <span>•</span>
                         {AUTHOR_SLUG_MAP[post.author] ? (
                           <Link

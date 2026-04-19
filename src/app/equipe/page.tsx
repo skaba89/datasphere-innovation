@@ -19,11 +19,11 @@ import { AuthorCard } from "./AuthorCard";
 export const metadata: Metadata = {
   title: "Notre Équipe — DataSphere Innovation",
   description:
-    "Découvrez les experts DataSphere Innovation : data strategy, data engineering, intelligence artificielle et architecture cloud. Certifiés AWS, Azure et GCP.",
+    "Découvrez les experts DataSphere Innovation : data strategy, data engineering, IA et cloud. Certifiés AWS, Azure et GCP. 10+ ans d'expérience en moyenne.",
   openGraph: {
     title: "Notre Équipe — DataSphere Innovation",
     description:
-      "Découvrez les experts DataSphere Innovation : data strategy, data engineering, IA et architecture cloud.",
+      "Experts certifiés AWS, Azure et GCP en data strategy, data engineering, IA et architecture cloud.",
     url: "https://datasphereinnovation.fr/equipe",
   },
   alternates: {

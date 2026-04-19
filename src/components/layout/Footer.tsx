@@ -299,6 +299,7 @@ export function Footer() {
               <li>
                 <a
                   href={COMPANY.phoneHref}
+                  aria-label={`Appeler au ${COMPANY.phone}`}
                   className="flex items-start gap-3 text-sm text-white/50 hover:text-primary transition-colors group"
                 >
                   <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">

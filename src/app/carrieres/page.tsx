@@ -32,11 +32,11 @@ import {
 export const metadata: Metadata = {
   title: "Carrières — DataSphere Innovation",
   description:
-    "Rejoignez DataSphere Innovation et participez à la transformation data & IA des entreprises. Découvrez nos offres d'emploi et notre culture d'entreprise.",
+    "Rejoignez DataSphere Innovation : cabinet expert data & IA. Projets impactants, formation continue, télétravail flexible. Découvrez nos offres d'emploi data et IA.",
   openGraph: {
     title: "Carrières — DataSphere Innovation",
     description:
-      "Rejoignez DataSphere Innovation et participez à la transformation data & IA des entreprises.",
+      "Rejoignez DataSphere Innovation : cabinet expert data & IA. Offres d'emploi et culture d'entreprise.",
     url: "https://datasphereinnovation.fr/carrieres",
   },
   alternates: {

@@ -171,6 +171,23 @@ export function HeroSection() {
             ))}
           </motion.div>
 
+          {/* TL;DR Synthesis — GEO optimized for AI answer engines */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="mt-8 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm max-w-2xl"
+            data-tldr
+          >
+            <p className="text-xs font-semibold text-primary/80 uppercase tracking-wider mb-2">En résumé</p>
+            <p className="text-sm text-white/70 leading-relaxed">
+              DataSphere Innovation est un cabinet expert en data et intelligence artificielle basé à Montreuil.
+              Nous accompagnons les entreprises dans leur stratégie data, BI &amp; dashboards, solutions IA,
+              data engineering, automatisation et migration cloud. 50+ projets délivrés, 98% de satisfaction client,
+              3x ROI moyen. Experts certifiés AWS, Azure et GCP. Conformité RGPD native.
+            </p>
+          </motion.div>
+
           {/* Trust badges */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -186,6 +203,7 @@ export function HeroSection() {
               href="https://www.mckinsey.com/capabilities/quantumblack/our-insights"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Référencé par McKinsey QuantumBlack"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/60 hover:text-white/80 hover:border-primary/20 transition-colors"
             >
               <span>Référencé par McKinsey</span>
@@ -194,6 +212,7 @@ export function HeroSection() {
               href="https://www.gartner.com/en/information-technology"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Cité par Gartner IT Research"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-white/60 hover:text-white/80 hover:border-primary/20 transition-colors"
             >
               <span>Cité par Gartner</span>

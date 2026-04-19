@@ -141,13 +141,28 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
               <span>Par <Link href={`/equipe/${AUTHOR_SLUG_MAP[post.author] || ""}`} className="text-primary hover:underline font-medium">{post.author}</Link></span>
               <span>•</span>
-              <span>
+              <time dateTime={post.date} className="flex items-center gap-1">
                 {new Date(post.date).toLocaleDateString("fr-FR", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                 })}
-              </span>
+              </time>
+              {post.dateModified && post.dateModified !== post.date && (
+                <>
+                  <span>•</span>
+                  <span className="text-xs text-muted-foreground/60 flex items-center gap-1">
+                    Mis à jour le{" "}
+                    <time dateTime={post.dateModified}>
+                      {new Date(post.dateModified).toLocaleDateString("fr-FR", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </span>
+                </>
+              )}
             </div>
           </motion.div>
         </div>
@@ -203,6 +218,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               <button
                 onClick={handleCopyLink}
                 className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Copier le lien de l'article"
               >
                 {copied ? "Lien copié !" : "Copier le lien"}
               </button>

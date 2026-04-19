@@ -36,11 +36,11 @@ import {
 export const metadata: Metadata = {
   title: "À propos — DataSphere Innovation",
   description:
-    "Découvrez DataSphere Innovation : cabinet expert en data, intelligence artificielle et transformation digitale. Notre histoire, nos valeurs, notre équipe.",
+    "Découvrez DataSphere Innovation : cabinet expert data & IA à Montreuil. Notre histoire, nos valeurs, notre équipe certifiée AWS, Azure et GCP. 50+ projets, 98% satisfaction.",
   openGraph: {
     title: "À propos — DataSphere Innovation",
     description:
-      "Découvrez DataSphere Innovation : cabinet expert en data, IA et transformation digitale.",
+      "Découvrez DataSphere Innovation : cabinet expert data & IA. Notre histoire, valeurs et équipe certifiée.",
     url: "https://datasphereinnovation.fr/a-propos",
   },
   alternates: {

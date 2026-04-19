@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 // Revalidate pages every 7 days (content refresh strategy for GEO)
 export const revalidate = 604800; // 7 days in seconds
@@ -32,7 +33,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "DataSphere Innovation — Cabinet Expert Data & IA",
   description:
-    "DataSphere Innovation : cabinet expert en data, intelligence artificielle, analytics et transformation digitale. Accompagnement stratégique, BI, IA, data engineering et cloud.",
+    "DataSphere Innovation, cabinet expert data & IA à Montreuil. Stratégie data, BI, IA, data engineering, automatisation et cloud. 50+ projets, 98% satisfaction, 3x ROI moyen.",
   keywords: [
     "DataSphere Innovation",
     "data strategy",
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DataSphere Innovation — Cabinet Expert Data & IA",
     description:
-      "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale. 50+ projets, 98% satisfaction, 3x ROI moyen.",
+      "DataSphere Innovation, cabinet expert data & IA à Montreuil. Stratégie data, BI, IA, cloud. 50+ projets, 98% satisfaction, 3x ROI moyen.",
     url: "https://datasphereinnovation.fr",
     siteName: "DataSphere Innovation",
     type: "website",
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "DataSphere Innovation — Cabinet Expert Data & IA",
     description:
-      "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale.",
+      "DataSphere Innovation : cabinet expert data & IA. Stratégie data, BI, solutions IA, cloud et automatisation.",
   },
   alternates: {
     canonical: "https://datasphereinnovation.fr",
@@ -125,6 +126,12 @@ export default function RootLayout({
           title="Sitemap"
           href="/sitemap.xml"
         />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="DataSphere Innovation — Blog RSS"
+          href="/rss.xml"
+        />
         <meta name="google-site-verification" content="PENDING_VERIFICATION" />
         <meta name="msvalidate.01" content="PENDING_VERIFICATION" />
       </head>
@@ -146,6 +153,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster richColors position="bottom-right" />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
