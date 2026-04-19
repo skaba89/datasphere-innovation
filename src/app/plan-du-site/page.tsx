@@ -9,6 +9,15 @@ import { SERVICES } from "@/lib/constants";
 import { blogPosts } from "@/lib/blog-data";
 import { AUTHORS } from "@/lib/author-data";
 import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
+import {
   Home,
   Briefcase,
   BookOpen,
@@ -83,12 +92,44 @@ const SITE_SECTIONS = [
 ];
 
 export default function PlanDuSitePage() {
+  const planDuSiteGraph = generateGraphSchema([
+    generateWebPageSchema({
+      title: "Plan du site — DataSphere Innovation",
+      description:
+        "Plan du site DataSphere Innovation : retrouvez l'ensemble de nos pages, services, articles et informations légales.",
+      url: "https://datasphereinnovation.fr/plan-du-site",
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Plan du site", url: "https://datasphereinnovation.fr/plan-du-site" },
+    ]),
+  ]);
+
   return (
+    <>
+      <JsonLd data={planDuSiteGraph} />
     <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Accueil</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Plan du site</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
       {/* Hero Section */}
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-16 pb-16 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-accent/5 to-transparent" />
         <div className="absolute inset-0 grid-bg opacity-20" />
         <div className="container mx-auto px-4 relative z-10">
@@ -183,5 +224,6 @@ export default function PlanDuSitePage() {
       <ChatWidget />
       <CookieConsent />
     </main>
+    </>
   );
 }

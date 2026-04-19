@@ -6,6 +6,14 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { Clock, ArrowRight, Tag, User } from "lucide-react";
+
+// Map author names to their equipe page slugs
+const AUTHOR_SLUG_MAP: Record<string, string> = {
+  "Sophie Martin": "sophie-martin",
+  "Thomas Dubois": "thomas-dubois",
+  "Léa Chen": "lea-chen",
+  "Marc Petit": "marc-petit",
+};
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -119,7 +127,16 @@ export default function BlogPage() {
                           })}
                         </span>
                         <span>•</span>
-                        <span>{post.author}</span>
+                        {AUTHOR_SLUG_MAP[post.author] ? (
+                          <Link
+                            href={`/equipe/${AUTHOR_SLUG_MAP[post.author]}`}
+                            className="hover:text-primary transition-colors"
+                          >
+                            {post.author}
+                          </Link>
+                        ) : (
+                          <span>{post.author}</span>
+                        )}
                       </div>
                       <span className="text-sm font-medium text-primary flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         Lire

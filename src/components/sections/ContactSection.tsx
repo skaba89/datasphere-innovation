@@ -174,7 +174,7 @@ export function ContactSection() {
           {/* Form */}
           <SectionReveal delay={0.2}>
             <div className="lg:col-span-2 p-6 md:p-8 rounded-2xl border border-border/30 bg-card">
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-label="Formulaire de contact">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Nom complet *</Label>
@@ -184,6 +184,8 @@ export function ContactSection() {
                       onChange={(e) => updateField("name", e.target.value)}
                       placeholder="Jean Dupont"
                       required
+                      aria-required="true"
+                      aria-invalid={form.name.trim() === "" ? "true" : undefined}
                     />
                   </div>
                   <div className="space-y-2">
@@ -195,6 +197,8 @@ export function ContactSection() {
                       onChange={(e) => updateField("email", e.target.value)}
                       placeholder="jean@entreprise.fr"
                       required
+                      aria-required="true"
+                      aria-invalid={form.email.trim() !== "" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email) ? "true" : undefined}
                     />
                   </div>
                 </div>
@@ -223,10 +227,14 @@ export function ContactSection() {
                   <Select
                     value={form.subject}
                     onValueChange={(value) => updateField("subject", value)}
+                    required
+                    aria-required="true"
+                    aria-invalid={form.subject === "" ? "true" : undefined}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger id="subject" aria-describedby="subject-desc">
                       <SelectValue placeholder="Sélectionnez un sujet" />
                     </SelectTrigger>
+                    <span id="subject-desc" className="sr-only">Choisissez le sujet de votre demande</span>
                     <SelectContent>
                       {CONTACT_SUBJECTS.map((subject) => (
                         <SelectItem key={subject.value} value={subject.value}>
@@ -245,6 +253,8 @@ export function ContactSection() {
                     placeholder="Décrivez votre projet ou votre besoin..."
                     rows={5}
                     required
+                    aria-required="true"
+                    aria-invalid={form.message.trim().length > 0 && form.message.trim().length < 10 ? "true" : undefined}
                   />
                 </div>
                 <div className="flex items-start gap-3">
@@ -254,8 +264,10 @@ export function ContactSection() {
                     onCheckedChange={(checked) =>
                       updateField("rgpd", checked as boolean)
                     }
+                    aria-required="true"
+                    aria-describedby="rgpd-desc"
                   />
-                  <Label htmlFor="rgpd" className="text-xs text-muted-foreground leading-relaxed font-normal">
+                  <Label htmlFor="rgpd" id="rgpd-desc" className="text-xs text-muted-foreground leading-relaxed font-normal">
                     J&apos;accepte que mes données soient traitées conformément à
                     la{" "}
                     <Link

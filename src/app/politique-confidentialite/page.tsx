@@ -5,6 +5,15 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité — DataSphere Innovation",
@@ -13,10 +22,43 @@ export const metadata: Metadata = {
 };
 
 export default function PolitiqueConfidentialitePage() {
+  const privacyGraph = generateGraphSchema([
+    generateWebPageSchema({
+      title: "Politique de confidentialité — DataSphere Innovation",
+      description:
+        "Politique de confidentialité de DataSphere Innovation. Informations sur le traitement de vos données personnelles.",
+      url: "https://datasphereinnovation.fr/politique-confidentialite",
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Politique de confidentialité", url: "https://datasphereinnovation.fr/politique-confidentialite" },
+    ]),
+  ]);
+
   return (
+    <>
+      <JsonLd data={privacyGraph} />
     <main className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="pt-32 pb-20">
+
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Accueil</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Politique de confidentialité</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
+      <section className="pt-16 pb-20">
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-heading font-bold mb-8">
             Politique de{" "}
@@ -210,5 +252,6 @@ export default function PolitiqueConfidentialitePage() {
       <ChatWidget />
       <CookieConsent />
     </main>
+    </>
   );
 }

@@ -77,6 +77,8 @@ export function TestimonialsSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
+                  itemScope
+                  itemType="https://schema.org/Review"
                 >
                   <div className="flex items-center gap-1 mb-6">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
@@ -84,19 +86,22 @@ export function TestimonialsSection() {
                         key={i}
                         size={18}
                         className="text-accent fill-accent"
+                        itemProp="reviewRating"
                       />
                     ))}
+                    <meta itemProp="ratingValue" content={String(testimonial.rating)} />
                   </div>
-                  <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-8">
+                  <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-8" itemProp="reviewBody">
                     &ldquo;{testimonial.text}&rdquo;
                   </blockquote>
                   <div>
-                    <p className="font-heading font-semibold text-foreground">
+                    <p className="font-heading font-semibold text-foreground" itemProp="author">
                       {testimonial.name}
                     </p>
                     <p className="text-sm text-muted-foreground">
                       {testimonial.role} — {testimonial.company}
                     </p>
+                    <meta itemProp="itemReviewed" itemType="https://schema.org/Organization" content="DataSphere Innovation" />
                   </div>
                 </motion.div>
               </AnimatePresence>

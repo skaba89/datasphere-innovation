@@ -6,6 +6,15 @@ import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { COMPANY } from "@/lib/constants";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Conditions générales de vente — DataSphere Innovation",
@@ -22,10 +31,43 @@ export const metadata: Metadata = {
 };
 
 export default function ConditionsGeneralesPage() {
+  const cgvGraph = generateGraphSchema([
+    generateWebPageSchema({
+      title: "Conditions générales de vente — DataSphere Innovation",
+      description:
+        "Conditions générales de vente de DataSphere Innovation. Consultez nos termes et conditions pour nos services de consulting data et IA.",
+      url: "https://datasphereinnovation.fr/conditions-generales",
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Conditions générales", url: "https://datasphereinnovation.fr/conditions-generales" },
+    ]),
+  ]);
+
   return (
+    <>
+      <JsonLd data={cgvGraph} />
     <main className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="pt-32 pb-20">
+
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Accueil</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Conditions générales de vente</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
+      <section className="pt-16 pb-20">
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-heading font-bold mb-2">
             Conditions générales de{" "}
@@ -357,5 +399,6 @@ export default function ConditionsGeneralesPage() {
       <ChatWidget />
       <CookieConsent />
     </main>
+    </>
   );
 }

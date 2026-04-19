@@ -201,6 +201,7 @@ export function Navbar() {
   return (
     <nav
       role="navigation"
+      aria-label="Navigation principale"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/90 backdrop-blur-2xl border-b border-border/30 shadow-lg shadow-black/5"
@@ -242,6 +243,7 @@ export function Navbar() {
                   <button
                     aria-expanded={activeDropdown === dropdownKey}
                     aria-haspopup="true"
+                    aria-label={`Menu ${dropdownKey}`}
                     className={`relative flex items-center gap-1.5 text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
                       activeDropdown === dropdownKey || isActive
                         ? "text-primary font-medium bg-primary/5"

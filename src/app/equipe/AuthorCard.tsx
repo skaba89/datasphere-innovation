@@ -7,7 +7,7 @@ import type { AuthorData } from "@/lib/author-data";
 
 export function AuthorCard({ author }: { author: AuthorData }) {
   return (
-    <GlassCard hover className="p-8 glow-card h-full flex flex-col">
+    <GlassCard hover className="p-8 glow-card h-full flex flex-col" itemScope itemType="https://schema.org/Person">
       <div className="flex items-start gap-5 mb-4">
         <div
           className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0"
@@ -18,17 +18,18 @@ export function AuthorCard({ author }: { author: AuthorData }) {
           </span>
         </div>
         <div className="flex-1 min-w-0">
-          <h2 className="font-heading font-semibold text-xl mb-0.5">
+          <h2 className="font-heading font-semibold text-xl mb-0.5" itemProp="name">
             <Link href={`/equipe/${author.slug}`} className="hover:text-primary transition-colors">
               {author.name}
             </Link>
           </h2>
-          <p className="text-sm text-primary font-medium">{author.role}</p>
+          <p className="text-sm text-primary font-medium" itemProp="jobTitle">{author.role}</p>
           <p className="text-xs text-muted-foreground/60 font-medium">{author.experience} d&apos;expérience</p>
+          <meta itemProp="url" content={`https://datasphereinnovation.fr/equipe/${author.slug}`} />
         </div>
       </div>
 
-      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-grow">{author.bio}</p>
+      <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-grow" itemProp="description">{author.bio}</p>
 
       {author.certifications && author.certifications.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mb-4">
@@ -51,16 +52,17 @@ export function AuthorCard({ author }: { author: AuthorData }) {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary/80 hover:text-primary transition-colors"
           aria-label={`Profil LinkedIn de ${author.name}`}
+          itemProp="sameAs"
         >
           <Linkedin size={14} />
           LinkedIn
         </a>
         <Link
           href={`/equipe/${author.slug}`}
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary/80 hover:text-primary transition-colors ml-auto"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/80 transition-colors ml-auto group/profile"
         >
-          Voir le profil complet
-          <ArrowRight size={12} />
+          Voir le profil
+          <ArrowRight size={14} className="group-hover/profile:translate-x-0.5 transition-transform" />
         </Link>
       </div>
 

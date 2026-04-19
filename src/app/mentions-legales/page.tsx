@@ -5,6 +5,15 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Mentions légales — DataSphere Innovation",
@@ -12,10 +21,42 @@ export const metadata: Metadata = {
 };
 
 export default function MentionsLegalesPage() {
+  const mentionsLegalesGraph = generateGraphSchema([
+    generateWebPageSchema({
+      title: "Mentions légales — DataSphere Innovation",
+      description: "Mentions légales du site DataSphere Innovation.",
+      url: "https://datasphereinnovation.fr/mentions-legales",
+    }),
+    generateBreadcrumbSchema([
+      { name: "Accueil", url: "https://datasphereinnovation.fr" },
+      { name: "Mentions légales", url: "https://datasphereinnovation.fr/mentions-legales" },
+    ]),
+  ]);
+
   return (
+    <>
+      <JsonLd data={mentionsLegalesGraph} />
     <main className="min-h-screen flex flex-col">
       <Navbar />
-      <section className="pt-32 pb-20">
+
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Fil d'Ariane" className="container mx-auto px-4 pt-24 pb-2 relative z-50">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="/">Accueil</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Mentions légales</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </nav>
+
+      <section className="pt-16 pb-20">
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="text-3xl md:text-4xl font-heading font-bold mb-8">
             Mentions <span className="gradient-text">légales</span>
@@ -156,5 +197,6 @@ export default function MentionsLegalesPage() {
       <ChatWidget />
       <CookieConsent />
     </main>
+    </>
   );
 }

@@ -252,6 +252,32 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
             </div>
           </div>
 
+          {/* Related Services — Internal linking for SEO */}
+          <div className="mt-8 p-6 rounded-2xl border border-border/30 bg-card">
+            <h3 className="font-heading font-semibold text-base mb-3">
+              Services liés
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {[
+                { label: "Stratégie Data", href: "/services/data-strategy" },
+                { label: "BI & Dashboards", href: "/services/bi-dashboards" },
+                { label: "Solutions IA", href: "/services/ai-solutions" },
+                { label: "Data Engineering", href: "/services/data-engineering" },
+                { label: "Automatisation", href: "/services/process-automation" },
+                { label: "Cloud & Modernisation", href: "/services/cloud-modernization" },
+              ].map((service) => (
+                <Link
+                  key={service.href}
+                  href={service.href}
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors py-1"
+                >
+                  <ArrowRight size={12} className="text-primary/50" />
+                  {service.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           {/* Author Card — Enhanced for E-E-A-T */}
           {(() => {
             const authorInfo = AUTHOR_MAP[post.author];

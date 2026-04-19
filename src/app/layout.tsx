@@ -121,6 +121,8 @@ export default function RootLayout({
           title="Sitemap"
           href="/sitemap.xml"
         />
+        <meta name="google-site-verification" content="PENDING_VERIFICATION" />
+        <meta name="msvalidate.01" content="PENDING_VERIFICATION" />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-background text-foreground font-sans`}

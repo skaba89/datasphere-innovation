@@ -160,7 +160,7 @@ export function Footer() {
                 <Send size={12} className="text-primary" />
                 Newsletter
               </p>
-              <form onSubmit={handleNewsletter} className="relative">
+              <form onSubmit={handleNewsletter} className="relative" aria-label="Inscription newsletter">
                 <input
                   type="email"
                   value={email}
@@ -200,7 +200,7 @@ export function Footer() {
             </div>
 
             {/* Social links */}
-            <div className="flex items-center gap-2 mt-6">
+            <div className="flex items-center gap-2 mt-6" aria-label="Liens sociaux">
               {[
                 { href: COMPANY.linkedin, icon: Linkedin, label: "LinkedIn" },
                 { href: COMPANY.twitter, icon: Twitter, label: "Twitter" },

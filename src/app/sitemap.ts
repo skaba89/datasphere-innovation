@@ -10,31 +10,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date("2026-03-15"),
+      lastModified: new Date("2026-04-15"),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${BASE_URL}/a-propos`,
-      lastModified: new Date("2026-02-20"),
+      lastModified: new Date("2026-04-10"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/equipe`,
-      lastModified: new Date("2026-02-20"),
+      lastModified: new Date("2026-04-10"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/carrieres`,
-      lastModified: new Date("2026-01-10"),
+      lastModified: new Date("2026-03-15"),
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: new Date("2026-03-10"),
+      lastModified: new Date("2026-04-12"),
       changeFrequency: "weekly",
       priority: 0.8,
     },
@@ -58,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/plan-du-site`,
-      lastModified: new Date("2026-02-20"),
+      lastModified: new Date("2026-04-10"),
       changeFrequency: "monthly",
       priority: 0.4,
     },
@@ -67,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Author pages
   const authorPages: MetadataRoute.Sitemap = AUTHORS.map((author) => ({
     url: `${BASE_URL}/equipe/${author.slug}`,
-    lastModified: new Date("2026-02-20"),
+    lastModified: new Date("2026-04-10"),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
@@ -75,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Service pages — use actual content update dates
   const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${BASE_URL}/services/${service.slug}`,
-    lastModified: new Date("2026-03-01"),
+    lastModified: new Date("2026-04-01"),
     changeFrequency: "monthly" as const,
     priority: 0.9,
   }));
