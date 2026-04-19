@@ -23,7 +23,6 @@ import {
   MapPin,
   Clock,
   ArrowRight,
-  Users,
   Lightbulb,
   Globe,
   Coffee,

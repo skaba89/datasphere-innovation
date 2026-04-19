@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -51,7 +52,7 @@ export function TestimonialsSection() {
             </h2>
             <p className="text-muted-foreground max-w-2xl text-base">
               Avec un taux de satisfaction de 98% et un ROI moyen de 3x, nos clients témoignent de l&apos;impact concret de nos
-              <a href="/#services" className="text-primary hover:underline"> services data & IA</a> sur leur performance.
+              <Link href="/#services" className="text-primary hover:underline"> services data & IA</Link> sur leur performance.
               Découvrez leurs retours d&apos;expérience.
             </p>
           </div>

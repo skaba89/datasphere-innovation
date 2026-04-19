@@ -2,8 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Sparkles } from "lucide-react";
-import Image from "next/image";
+import { X, Sparkles } from "lucide-react";
 import { ChatPanel } from "./ChatPanel";
 
 export function ChatWidget() {

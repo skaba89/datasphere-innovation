@@ -11,7 +11,6 @@ import {
   Home,
   Briefcase,
   BookOpen,
-  Users,
   Scale,
   FileText,
   ChevronRight,
@@ -74,7 +73,7 @@ const SITE_SECTIONS = [
 
 export default function PlanDuSitePage() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
       {/* Hero Section */}

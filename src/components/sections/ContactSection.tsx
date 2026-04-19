@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
@@ -108,10 +109,10 @@ export function ContactSection() {
               recevez une réponse sous 24h.
             </p>
             <p className="text-muted-foreground/70 max-w-3xl mt-3 text-sm">
-              Que vous ayez besoin d&apos;une <a href="/services/data-strategy" className="text-primary hover:underline">stratégie data</a>, de
-              <a href="/services/bi-dashboards" className="text-primary hover:underline"> dashboards BI</a>, de
-              <a href="/services/ai-solutions" className="text-primary hover:underline"> solutions IA</a> ou d&apos;une
-              <a href="/services/cloud-modernization" className="text-primary hover:underline"> migration cloud</a>, notre équipe vous accompagne.
+              Que vous ayez besoin d&apos;une <Link href="/services/data-strategy" className="text-primary hover:underline">stratégie data</Link>, de
+              <Link href="/services/bi-dashboards" className="text-primary hover:underline"> dashboards BI</Link>, de
+              <Link href="/services/ai-solutions" className="text-primary hover:underline"> solutions IA</Link> ou d&apos;une
+              <Link href="/services/cloud-modernization" className="text-primary hover:underline"> migration cloud</Link>, notre équipe vous accompagne.
             </p>
           </div>
         </SectionReveal>
@@ -257,12 +258,12 @@ export function ContactSection() {
                   <Label htmlFor="rgpd" className="text-xs text-muted-foreground leading-relaxed font-normal">
                     J&apos;accepte que mes données soient traitées conformément à
                     la{" "}
-                    <a
+                    <Link
                       href="/politique-confidentialite"
                       className="text-primary hover:underline"
                     >
                       politique de confidentialité
-                    </a>{" "}
+                    </Link>{" "}
                     de DataSphere Innovation. *
                   </Label>
                 </div>

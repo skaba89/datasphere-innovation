@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Tag, Share2, Twitter, Linkedin, ArrowRight, User, ChevronRight, BadgeCheck } from "lucide-react";
+import { ArrowLeft, Clock, Tag, Share2, Twitter, Linkedin, ArrowRight, User, BadgeCheck } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
@@ -201,6 +201,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
                 href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Partager sur Twitter"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Twitter size={18} />
@@ -209,6 +210,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Partager sur LinkedIn"
                 className="text-muted-foreground hover:text-primary transition-colors"
               >
                 <Linkedin size={18} />

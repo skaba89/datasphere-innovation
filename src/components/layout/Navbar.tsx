@@ -233,6 +233,8 @@ export function Navbar() {
                   onMouseLeave={handleDropdownLeave}
                 >
                   <button
+                    aria-expanded={activeDropdown === dropdownKey}
+                    aria-haspopup="true"
                     className={`relative flex items-center gap-1.5 text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
                       activeDropdown === dropdownKey || isActive
                         ? "text-primary font-medium bg-primary/5"
@@ -370,6 +372,7 @@ export function Navbar() {
           {/* Phone number */}
           <a
             href={COMPANY.phoneHref}
+            aria-label={`Appeler au ${COMPANY.phone}`}
             className={`flex items-center gap-1.5 text-xs transition-colors px-2 ${scrolled ? "text-muted-foreground hover:text-primary" : "text-white/60 hover:text-white"}`}
           >
             <Phone size={13} />
@@ -475,6 +478,7 @@ export function Navbar() {
                     <div key={dropdownKey}>
                       <button
                         onClick={() => toggleMobileExpand(dropdownKey)}
+                        aria-expanded={isExpanded}
                         className="flex items-center justify-between w-full text-foreground font-heading text-lg py-2.5 px-3 rounded-xl hover:bg-secondary/50 transition-colors"
                       >
                         {link.label}

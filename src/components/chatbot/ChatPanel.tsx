@@ -1,7 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { X, Bot, Sparkles, ArrowRight, ExternalLink, Phone } from "lucide-react";
+import { X, Sparkles, ArrowRight, ExternalLink, Phone } from "lucide-react";
+import Link from "next/link";
 import { ChatMessage, type Message } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
 import { CHAT_SUGGESTED_QUESTIONS, CHAT_WELCOME_MESSAGE, CHAT_ERROR_MESSAGE, CHAT_NETWORK_ERROR, COMPANY } from "@/lib/constants";
@@ -186,13 +187,13 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
             <p className="text-xs text-muted-foreground mb-2">
               Besoin d&apos;un expert ? Parlons de votre projet !
             </p>
-            <a
+            <Link
               href="/#contact"
               onClick={() => onClose()}
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
             >
               Contacter un expert <ExternalLink size={12} />
-            </a>
+            </Link>
           </div>
         )}
       </div>

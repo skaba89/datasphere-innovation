@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Award, Globe, Handshake, Sparkles, Database, Workflow, BrainCircuit, Cloud, ArrowRight, Linkedin, ExternalLink, Quote, BadgeCheck, ShieldCheck, TrendingUp, Users } from "lucide-react";
+import { Award, Globe, Handshake, Sparkles, Database, Workflow, BrainCircuit, Cloud, ArrowRight, Linkedin, ExternalLink, BadgeCheck, ShieldCheck, TrendingUp } from "lucide-react";
 
 const TEAM_MEMBERS = [
   {
