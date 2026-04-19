@@ -238,20 +238,14 @@ export const PARTNERS = [
 // ─── Clients ────────────────────────────────────────────────────────────────
 
 export const CLIENTS = [
+  "Interact Software",
   "Michelin",
   "Sanofi",
   "TotalEnergies",
   "Airbus",
   "Thales",
   "L'Oréal",
-  "Vinci",
-  "Carrefour",
-  "LVMH",
   "Schneider Electric",
-  "Orange",
-  "EDF",
-  "Renault",
-  "Danone",
 ] as const;
 
 // ─── Differentiators ────────────────────────────────────────────────────────

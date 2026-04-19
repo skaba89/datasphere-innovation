@@ -1,8 +1,20 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { CLIENTS } from "@/lib/constants";
+
+// Client logo mapping
+const CLIENT_LOGOS: { name: string; logo: string }[] = [
+  { name: "Interact Software", logo: "/images/clients/interact-software.png" },
+  { name: "Michelin", logo: "/images/clients/michelin.png" },
+  { name: "Sanofi", logo: "/images/clients/sanofi.png" },
+  { name: "TotalEnergies", logo: "/images/clients/totalenergies.png" },
+  { name: "Airbus", logo: "/images/clients/airbus.png" },
+  { name: "Thales", logo: "/images/clients/thales.png" },
+  { name: "L'Oréal", logo: "/images/clients/loreal.png" },
+  { name: "Schneider Electric", logo: "/images/clients/schneider-electric.png" },
+];
 
 export function ClientsSection() {
   return (
@@ -24,13 +36,24 @@ export function ClientsSection() {
         </SectionReveal>
 
         <SectionReveal>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
-            {CLIENTS.map((client) => (
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-4">
+            {CLIENT_LOGOS.map((client) => (
               <div
-                key={client}
-                className="flex items-center justify-center h-16 rounded-xl bg-white/5 border border-white/5 text-sm font-semibold text-white/60 hover:text-primary hover:border-primary/20 hover:bg-primary/5 transition-all duration-200"
+                key={client.name}
+                className="flex flex-col items-center justify-center gap-2 h-24 rounded-xl bg-white/5 border border-white/5 hover:border-primary/20 hover:bg-primary/5 transition-all duration-300 group p-3"
               >
-                {client}
+                <div className="relative w-12 h-12 flex-shrink-0">
+                  <Image
+                    src={client.logo}
+                    alt={`Logo ${client.name}`}
+                    fill
+                    className="object-contain transition-all duration-300 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                    sizes="48px"
+                  />
+                </div>
+                <span className="text-[10px] font-medium text-white/70 group-hover:text-primary transition-colors text-center leading-tight">
+                  {client.name}
+                </span>
               </div>
             ))}
           </div>
