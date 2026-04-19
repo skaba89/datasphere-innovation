@@ -9,6 +9,9 @@ import { DifferentiatorsSection } from "@/components/sections/DifferentiatorsSec
 import { UseCasesSection } from "@/components/sections/UseCasesSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { MethodSection } from "@/components/sections/MethodSection";
+import { MultimodalSection } from "@/components/sections/MultimodalSection";
+import { ComparisonSection } from "@/components/sections/ComparisonSection";
+import { GeoToolsSection } from "@/components/sections/GeoToolsSection";
 import { InsightsSection } from "@/components/sections/InsightsSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { FAQSection } from "@/components/sections/FAQSection";
@@ -30,6 +33,9 @@ export default function HomePage() {
         <UseCasesSection />
         <TestimonialsSection />
         <MethodSection />
+        <MultimodalSection />
+        <ComparisonSection />
+        <GeoToolsSection />
         <InsightsSection />
         <AboutSection />
         <FAQSection />

@@ -358,6 +358,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive ? "page" : undefined}
                 className={`relative text-sm px-4 py-2 rounded-lg transition-all duration-300 ${
                   isActive
                     ? "text-primary font-medium bg-primary/5"
@@ -461,7 +462,9 @@ export function Navbar() {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`p-2 rounded-lg transition-colors ${scrolled ? "text-foreground hover:bg-secondary/50" : "text-white hover:bg-white/10"}`}
-            aria-label="Menu"
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -472,11 +475,14 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="lg:hidden bg-background/98 backdrop-blur-2xl border-b border-border/30 overflow-hidden"
+            role="navigation"
+            aria-label="Menu de navigation mobile"
           >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-1 max-h-[85vh] overflow-y-auto">
               {NAV_LINKS.map((link) => {

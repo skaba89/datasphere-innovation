@@ -142,6 +142,28 @@ export default function RootLayout({
         { name: "Suivi & Optimisation", text: "Monitoring, ajustements et amélioration continue." },
       ]
     ),
+    // Homepage Article schema for AI answer engines
+    {
+      "@type": "Article",
+      "@id": "https://datasphereinnovation.fr/#homepage-article",
+      headline: "DataSphere Innovation — Cabinet Expert Data & IA",
+      description: "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale. 50+ projets, 98% satisfaction, 3x ROI moyen.",
+      author: { "@id": "https://datasphereinnovation.fr/#organization" },
+      publisher: { "@id": "https://datasphereinnovation.fr/#organization" },
+      datePublished: "2021-01-01",
+      dateModified: new Date().toISOString().split("T")[0],
+      url: "https://datasphereinnovation.fr",
+      mainEntityOfPage: { "@type": "WebPage", "@id": "https://datasphereinnovation.fr" },
+      articleSection: "Consulting Data & IA",
+      inLanguage: "fr",
+      image: { "@type": "ImageObject", url: "https://datasphereinnovation.fr/images/logo-datasphere.png" },
+    },
+    // BreadcrumbList for homepage
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://datasphereinnovation.fr/#breadcrumb",
+      itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: "https://datasphereinnovation.fr" }],
+    },
   ]);
 
   return (

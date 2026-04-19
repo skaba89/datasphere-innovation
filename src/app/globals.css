@@ -341,3 +341,36 @@
 .dark .stat-glow {
   text-shadow: 0 0 40px hsl(195 100% 55% / 0.4);
 }
+
+/* Accessibility — Focus visible styles */
+*:focus-visible {
+  outline: 2px solid hsl(195 100% 45%);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Ensure sufficient contrast for interactive elements */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(195 100% 45%);
+  outline-offset: 2px;
+}
+
+.dark *:focus-visible,
+.dark a:focus-visible,
+.dark button:focus-visible,
+.dark [role="button"]:focus-visible,
+.dark input:focus-visible,
+.dark select:focus-visible,
+.dark textarea:focus-visible {
+  outline-color: hsl(195 100% 55%);
+}
+
+/* Skip to content link enhancement */
+.skip-link:focus {
+  z-index: 9999;
+}
