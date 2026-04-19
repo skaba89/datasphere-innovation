@@ -18,6 +18,8 @@ import {
   HardHat,
   Cog,
   Cloud,
+  PlayCircle,
+  FileBarChart,
   type LucideIcon,
 } from "lucide-react";
 import { Navbar } from "@/components/layout/Navbar";
@@ -367,6 +369,83 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
                 </SectionReveal>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Resources — Video & Infographic placeholders for multimodal content */}
+      <section className="section-padding bg-secondary/20" role="region" aria-label="Ressources multimédia">
+        <div className="container mx-auto px-4">
+          <SectionReveal>
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                Ressources
+              </span>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold">
+                Explorez nos <span className="gradient-text">ressources</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+                Des contenus multimédia pour approfondir votre compréhension de nos solutions {service.shortTitle.toLowerCase()}.
+              </p>
+            </div>
+          </SectionReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Video placeholder */}
+            <SectionReveal>
+              <div className="glass-card rounded-xl overflow-hidden group cursor-pointer hover:shadow-lg transition-all duration-300">
+                <div className="relative h-52 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                    <PlayCircle size={32} className="text-primary" />
+                  </div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="bg-background/80 backdrop-blur-sm rounded-lg px-3 py-2">
+                      <p className="text-xs font-heading font-semibold text-foreground">
+                        Vidéo : {service.shortTitle} en 3 minutes
+                      </p>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">
+                        Découvrez les concepts clés et cas d&apos;usage
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-heading font-semibold text-base mb-2 group-hover:text-primary transition-colors">
+                    Comprendre {service.shortTitle} en vidéo
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Nos experts vous présentent les enjeux, la méthodologie et les résultats concrets de notre approche {service.shortTitle.toLowerCase()}. Une introduction accessible pour les décideurs et les équipes techniques.
+                  </p>
+                </div>
+              </div>
+            </SectionReveal>
+            {/* Infographic placeholder */}
+            <SectionReveal>
+              <div className="glass-card rounded-xl overflow-hidden group cursor-pointer hover:shadow-lg transition-all duration-300">
+                <div className="relative h-52 bg-gradient-to-br from-accent/10 via-primary/5 to-accent/5 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 group-hover:scale-110 transition-all duration-300">
+                    <FileBarChart size={32} className="text-accent" />
+                  </div>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="bg-background/80 backdrop-blur-sm rounded-lg px-3 py-2">
+                      <p className="text-xs font-heading font-semibold text-foreground">
+                        Infographie : Le parcours {service.shortTitle}
+                      </p>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">
+                        Visualisez le processus étape par étape
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <h3 className="font-heading font-semibold text-base mb-2 group-hover:text-primary transition-colors">
+                    Infographie {service.shortTitle}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    Un guide visuel du parcours complet : du diagnostic initial au déploiement en production. Téléchargez notre infographie pour partager la vision avec vos équipes et aligner les parties prenantes.
+                  </p>
+                </div>
+              </div>
+            </SectionReveal>
           </div>
         </div>
       </section>

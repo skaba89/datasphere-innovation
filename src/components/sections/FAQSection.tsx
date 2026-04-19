@@ -85,7 +85,7 @@ const FAQ_SERVICE_LINKS: { label: string; href: string }[][] = [
 
 export function FAQSection() {
   return (
-    <section id="faq" role="region" aria-label="Questions fréquentes" aria-labelledby="faq-heading" className="section-padding bg-secondary/10">
+    <section id="faq" role="region" aria-label="Questions fréquentes" aria-labelledby="faq-heading" className="section-padding bg-secondary/10" itemScope itemType="https://schema.org/FAQPage">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="mb-14">
@@ -111,12 +111,12 @@ export function FAQSection() {
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="w-full">
               {FAQ_ITEMS.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-border/30">
+                <AccordionItem key={index} value={`item-${index}`} className="border-border/30" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                   <AccordionTrigger className="text-left font-heading font-medium hover:text-primary transition-colors">
-                    <h3>{faq.question}</h3>
+                    <h3 itemProp="name">{faq.question}</h3>
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed">
-                    <p>{faq.answer}</p>
+                  <AccordionContent className="text-muted-foreground leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                    <p itemProp="text">{faq.answer}</p>
                     {/* Links to relevant service pages */}
                     {FAQ_SERVICE_LINKS[index] && FAQ_SERVICE_LINKS[index].length > 0 && (
                       <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-border/20">

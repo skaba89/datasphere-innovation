@@ -3,6 +3,10 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
+
+// Revalidate pages every 7 days (content refresh strategy for GEO)
+export const revalidate = 604800; // 7 days in seconds
+
 import {
   generateOrganizationSchema,
   generateLocalBusinessSchema,

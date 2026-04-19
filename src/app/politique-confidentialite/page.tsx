@@ -38,7 +38,7 @@ export default function PolitiqueConfidentialitePage() {
   return (
     <>
       <JsonLd data={privacyGraph} />
-    <main className="min-h-screen flex flex-col">
+    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
       {/* Breadcrumb Navigation */}

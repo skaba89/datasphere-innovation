@@ -6,7 +6,7 @@ import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 import { STATS, DIFFERENTIATORS, PARTNERS, CLIENTS } from "@/lib/constants";
-import { generatePersonSchema, generateBreadcrumbSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
+import { generatePersonSchema, generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -147,6 +147,12 @@ const TEAM_VALUES = [
 
 export default function AProposPage() {
   const aboutGraph = generateGraphSchema([
+    generateWebPageSchema({
+      title: "À propos — DataSphere Innovation",
+      description:
+        "Découvrez DataSphere Innovation : cabinet expert en data, intelligence artificielle et transformation digitale. Notre histoire, nos valeurs, notre équipe.",
+      url: "https://datasphereinnovation.fr/a-propos",
+    }),
     ...TEAM_MEMBERS.map((member) =>
       generatePersonSchema({
         name: member.name,

@@ -33,7 +33,9 @@ export function TestimonialsSection() {
   return (
     <section
       id="temoignages"
+      role="region"
       aria-label="Témoignages clients"
+      aria-labelledby="temoignages-heading"
       className="section-padding bg-background relative overflow-hidden"
     >
       {/* Background glow */}
@@ -46,7 +48,7 @@ export function TestimonialsSection() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
               Témoignages
             </span>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+            <h2 id="temoignages-heading" className="text-3xl md:text-5xl font-heading font-bold mb-4">
               Ce que disent nos{" "}
               <span className="gradient-text">clients</span>
             </h2>
@@ -80,28 +82,29 @@ export function TestimonialsSection() {
                   itemScope
                   itemType="https://schema.org/Review"
                 >
-                  <div className="flex items-center gap-1 mb-6">
+                  <div className="flex items-center gap-1 mb-6" aria-label={`${testimonial.rating} étoiles sur 5`}>
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
                       <Star
                         key={i}
                         size={18}
                         className="text-accent fill-accent"
-                        itemProp="reviewRating"
                       />
                     ))}
-                    <meta itemProp="ratingValue" content={String(testimonial.rating)} />
+                    <span className="sr-only">{testimonial.rating} sur 5</span>
+                    <meta itemProp="reviewRating" itemType="https://schema.org/Rating" content={String(testimonial.rating)} />
                   </div>
                   <blockquote className="text-lg md:text-xl text-foreground leading-relaxed mb-8" itemProp="reviewBody">
                     &ldquo;{testimonial.text}&rdquo;
                   </blockquote>
                   <div>
-                    <p className="font-heading font-semibold text-foreground" itemProp="author">
-                      {testimonial.name}
+                    <p className="font-heading font-semibold text-foreground" itemProp="author" itemScope itemType="https://schema.org/Person">
+                      <span itemProp="name">{testimonial.name}</span>
                     </p>
                     <p className="text-sm text-muted-foreground">
                       {testimonial.role} — {testimonial.company}
                     </p>
                     <meta itemProp="itemReviewed" itemType="https://schema.org/Organization" content="DataSphere Innovation" />
+                    <meta itemProp="datePublished" content="2024-09-15" />
                   </div>
                 </motion.div>
               </AnimatePresence>

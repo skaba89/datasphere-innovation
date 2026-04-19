@@ -36,7 +36,7 @@ export default function MentionsLegalesPage() {
   return (
     <>
       <JsonLd data={mentionsLegalesGraph} />
-    <main className="min-h-screen flex flex-col">
+    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
       <Navbar />
 
       {/* Breadcrumb Navigation */}

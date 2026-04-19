@@ -17,7 +17,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Phone, Mail, MapPin, MessageSquareHeart } from "lucide-react";
 import { CONTACT_SUBJECTS, COMPANY } from "@/lib/constants";
 
 interface FormState {
@@ -89,7 +89,7 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" aria-label="Contactez-nous" className="section-padding bg-secondary/10 relative overflow-hidden">
+    <section id="contact" role="region" aria-label="Contactez-nous" aria-labelledby="contact-heading" className="section-padding bg-secondary/10 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-accent/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
@@ -100,7 +100,7 @@ export function ContactSection() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
               Contact
             </span>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+            <h2 id="contact-heading" className="text-3xl md:text-5xl font-heading font-bold mb-4">
               Parlons de votre{" "}
               <span className="gradient-text">projet</span>
             </h2>
@@ -297,6 +297,27 @@ export function ContactSection() {
             </div>
           </SectionReveal>
         </div>
+
+        {/* Testimonial Collection CTA */}
+        <SectionReveal>
+          <div className="mt-12 max-w-3xl mx-auto p-6 rounded-2xl border border-primary/15 bg-primary/5 flex flex-col sm:flex-row items-center gap-6">
+            <div className="w-14 h-14 rounded-2xl bg-primary/15 flex items-center justify-center shrink-0">
+              <MessageSquareHeart size={28} className="text-primary" />
+            </div>
+            <div className="flex-1 text-center sm:text-left">
+              <h3 className="font-heading font-semibold text-base mb-1">Vous êtes un de nos clients ?</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Partagez votre expérience avec DataSphere Innovation. Votre témoignage nous aide à améliorer nos services et guide les futures entreprises dans leur choix.
+              </p>
+            </div>
+            <a
+              href={`mailto:temoignages@datasphereinnovation.fr?subject=Mon témoignage DataSphere Innovation`}
+              className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-heading font-semibold text-sm hover:bg-primary/90 transition-colors glow-ring"
+            >
+              Partager mon témoignage
+            </a>
+          </div>
+        </SectionReveal>
       </div>
     </section>
   );

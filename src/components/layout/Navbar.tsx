@@ -199,6 +199,9 @@ export function Navbar() {
   };
 
   return (
+    <header
+      role="banner"
+    >
     <nav
       role="navigation"
       aria-label="Navigation principale"
@@ -605,5 +608,6 @@ export function Navbar() {
         )}
       </AnimatePresence>
     </nav>
+    </header>
   );
 }
