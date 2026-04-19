@@ -5,7 +5,6 @@ import { BlogPostClient } from "./BlogPostClient";
 import {
   generateArticleSchema,
   generateBreadcrumbSchema,
-  generateOrganizationSchema,
   generateWebPageSchema,
   generateGraphSchema,
   JsonLd,
@@ -63,7 +62,6 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const blogGraph = generateGraphSchema([
-    generateOrganizationSchema(),
     generateWebPageSchema({
       title: `${post.title} — DataSphere Innovation`,
       description: post.excerpt,
@@ -75,8 +73,10 @@ export default async function BlogPostPage({ params }: PageProps) {
       title: post.title,
       excerpt: post.excerpt,
       date: post.date,
+      dateModified: post.dateModified || post.date,
       author: post.author,
       category: post.category,
+      image: `https://datasphereinnovation.fr/images/blog-${post.slug}.png`,
     }),
     generateBreadcrumbSchema([
       { name: "Accueil", url: "https://datasphereinnovation.fr" },

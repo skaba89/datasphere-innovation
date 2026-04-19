@@ -134,11 +134,12 @@ export default function RootLayout({
         />
         <meta name="google-site-verification" content="PENDING_VERIFICATION" />
         <meta name="msvalidate.01" content="PENDING_VERIFICATION" />
+        {/* Global JSON-LD structured data — placed in <head> for search engine visibility */}
+        <JsonLd data={graphSchema} />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-background text-foreground font-sans`}
       >
-        <JsonLd data={graphSchema} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg"

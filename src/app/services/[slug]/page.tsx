@@ -4,7 +4,6 @@ import { ServicePageClient } from "./ServicePageClient";
 import {
   generateServiceSchema,
   generateBreadcrumbSchema,
-  generateOrganizationSchema,
   generateWebPageSchema,
   generateGraphSchema,
   JsonLd,
@@ -46,7 +45,6 @@ export default async function ServicePage({ params }: PageProps) {
   }
 
   const serviceGraph = generateGraphSchema([
-    generateOrganizationSchema(),
     generateWebPageSchema({
       title: `${service.title} — DataSphere Innovation`,
       description: service.description,

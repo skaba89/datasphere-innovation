@@ -242,8 +242,11 @@ export interface ArticleSchemaInput {
   title: string;
   excerpt: string;
   date: string;
+  dateModified?: string;
   author: string;
   category: string;
+  image?: string;
+  wordCount?: number;
 }
 
 export function generateArticleSchema(article: ArticleSchemaInput) {
@@ -275,14 +278,14 @@ export function generateArticleSchema(article: ArticleSchemaInput) {
         url: SITE_URL,
       };
 
-  return {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
     "@id": `${SITE_URL}/blog/${article.slug}/#article`,
     headline: article.title,
     description: article.excerpt,
     datePublished: article.date,
-    dateModified: article.date,
+    dateModified: article.dateModified || article.date,
     author: authorSchema,
     publisher: {
       "@id": ORG_ID,
@@ -294,8 +297,18 @@ export function generateArticleSchema(article: ArticleSchemaInput) {
     },
     articleSection: article.category,
     inLanguage: "fr",
-    wordCount: 1200,
+    wordCount: article.wordCount || 1200,
   };
+
+  // Add image if provided — Google recommends image for rich results
+  if (article.image) {
+    schema.image = {
+      "@type": "ImageObject",
+      url: article.image,
+    };
+  }
+
+  return schema;
 }
 
 // ─── Person Schema ──────────────────────────────────────────────────────────
@@ -325,6 +338,54 @@ export function generatePersonSchema(person: PersonSchemaInput) {
     knowsAbout: ["Data", "Intelligence Artificielle", "Analytics", "Transformation Digitale", "Cloud Computing", "Machine Learning"],
     sameAs: person.url ? [person.url] : undefined,
   };
+}
+
+// ─── ProfilePage Schema ─────────────────────────────────────────────────────
+
+export interface ProfilePageSchemaInput {
+  slug: string;
+  name: string;
+  role: string;
+  description: string;
+  url?: string;
+  image?: string;
+  dateCreated?: string;
+}
+
+export function generateProfilePageSchema(profile: ProfilePageSchemaInput) {
+  const profileUrl = `${SITE_URL}/equipe/${profile.slug}`;
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${profileUrl}/#profilepage`,
+    name: profile.name,
+    description: profile.description,
+    url: profileUrl,
+    inLanguage: "fr",
+    isPartOf: {
+      "@id": `${SITE_URL}/#website`,
+    },
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${profileUrl}/#person`,
+      name: profile.name,
+      jobTitle: profile.role,
+      worksFor: {
+        "@id": ORG_ID,
+      },
+    },
+    dateCreated: profile.dateCreated || "2021-01-01",
+  };
+
+  if (profile.image) {
+    (schema.mainEntity as Record<string, unknown>).image = profile.image;
+  }
+
+  if (profile.url) {
+    (schema.mainEntity as Record<string, unknown>).sameAs = [profile.url];
+  }
+
+  return schema;
 }
 
 // ─── BreadcrumbList Schema ──────────────────────────────────────────────────

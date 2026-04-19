@@ -13,7 +13,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { generateBreadcrumbSchema, generatePersonSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
+import { generateBreadcrumbSchema, generatePersonSchema, generateProfilePageSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
 import { AUTHORS, getAuthorBySlug } from "@/lib/author-data";
 import { BadgeCheck, Linkedin, Clock, ArrowRight, Tag } from "lucide-react";
 
@@ -58,6 +58,14 @@ export default async function AuthorPage({ params }: PageProps) {
       title: `${author.name} — ${author.role} — DataSphere Innovation`,
       description: author.bio,
       url: `https://datasphereinnovation.fr/equipe/${author.slug}`,
+    }),
+    generateProfilePageSchema({
+      slug: author.slug,
+      name: author.name,
+      role: author.role,
+      description: author.longBio,
+      url: author.linkedin,
+      image: author.image,
     }),
     generatePersonSchema({
       name: author.name,
