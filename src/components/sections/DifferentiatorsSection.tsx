@@ -102,7 +102,7 @@ export function DifferentiatorsSection() {
               Plus qu&apos;un prestataire, un partenaire engagé dans la réussite de
               vos projets data & IA.
             </p>
-            <p className="text-white/50 max-w-3xl mt-3 text-base">
+            <p className="text-white/70 max-w-3xl mt-3 text-base">
               Notre différenciation repose sur une expertise ciblée, un impact mesurable et une approche sur mesure.
               Selon <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener noreferrer" className="text-accent/80 hover:text-accent underline underline-offset-2">McKinsey</a>, les entreprises
               data-driven sont 23 fois plus susceptibles d&apos;acquérir des clients. Selon
@@ -128,7 +128,7 @@ export function DifferentiatorsSection() {
                   <p className="text-sm font-medium text-primary mb-2">
                     {item.subtitle}
                   </p>
-                  <p className="text-sm text-white/50 leading-relaxed mb-4 flex-1">
+                  <p className="text-sm text-white/70 leading-relaxed mb-4 flex-1">
                     {item.description}
                   </p>
                   {/* CTA links to services and contact */}

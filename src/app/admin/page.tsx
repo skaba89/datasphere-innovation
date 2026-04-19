@@ -86,7 +86,7 @@ export default function AdminDashboardPage() {
 
   if (!authenticated) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-background px-4">
+      <main id="main-content" className="min-h-screen flex items-center justify-center bg-background px-4">
         <div className="text-center">
           <h1 className="text-2xl font-heading font-bold mb-4">
             Accès restreint
@@ -106,7 +106,7 @@ export default function AdminDashboardPage() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
+    <main id="main-content" className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border/50 bg-secondary/30 px-4 py-4">
         <div className="container mx-auto flex items-center justify-between">

@@ -57,7 +57,7 @@ export function PartnersSection() {
                     sizes="48px"
                   />
                 </div>
-                <span className="text-[10px] font-medium text-white/50 group-hover:text-primary transition-colors text-center leading-tight">
+                <span className="text-[10px] font-medium text-white/70 group-hover:text-primary transition-colors text-center leading-tight">
                   {partner.name}
                 </span>
               </div>

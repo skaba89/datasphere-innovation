@@ -171,43 +171,91 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
       <section className="section-padding bg-background" role="region" aria-label="Contenu de l'article">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="prose prose-lg max-w-none">
-            {post.content.split("\n").map((line, i) => {
-              const trimmed = line.trim();
-              if (!trimmed) return <br key={i} />;
-              if (trimmed.startsWith("## ")) {
-                return (
-                  <h2 key={i} className="text-2xl font-heading font-bold mt-8 mb-4">
-                    {trimmed.replace("## ", "")}
-                  </h2>
-                );
-              }
-              if (trimmed.startsWith("### ")) {
-                return (
-                  <h3 key={i} className="text-xl font-heading font-semibold mt-6 mb-3">
-                    {trimmed.replace("### ", "")}
-                  </h3>
-                );
-              }
-              if (trimmed.startsWith("- ")) {
-                return (
-                  <li key={i} className="text-muted-foreground ml-4">
-                    {trimmed.replace("- ", "")}
-                  </li>
-                );
-              }
-              if (trimmed.startsWith("**") && trimmed.endsWith("**")) {
-                return (
-                  <p key={i} className="font-semibold text-foreground mt-4">
-                    {trimmed.replace(/\*\*/g, "")}
-                  </p>
-                );
-              }
-              return (
-                <p key={i} className="text-muted-foreground leading-relaxed mb-2">
-                  {trimmed}
-                </p>
-              );
-            })}
+            {(() => {
+              const lines = post.content.split("\n");
+              type BlockType = "heading2" | "heading3" | "list" | "bold" | "paragraph" | "break";
+              const blocks: { type: BlockType; content: string[] }[] = [];
+              let currentList: string[] = [];
+
+              const flushList = () => {
+                if (currentList.length > 0) {
+                  blocks.push({ type: "list", content: [...currentList] });
+                  currentList = [];
+                }
+              };
+
+              lines.forEach((line) => {
+                const trimmed = line.trim();
+                if (!trimmed) {
+                  flushList();
+                  blocks.push({ type: "break", content: [] });
+                  return;
+                }
+                if (trimmed.startsWith("## ")) {
+                  flushList();
+                  blocks.push({ type: "heading2", content: [trimmed.replace("## ", "")] });
+                  return;
+                }
+                if (trimmed.startsWith("### ")) {
+                  flushList();
+                  blocks.push({ type: "heading3", content: [trimmed.replace("### ", "")] });
+                  return;
+                }
+                if (trimmed.startsWith("- ")) {
+                  currentList.push(trimmed.replace("- ", ""));
+                  return;
+                }
+                if (trimmed.startsWith("**") && trimmed.endsWith("**")) {
+                  flushList();
+                  blocks.push({ type: "bold", content: [trimmed.replace(/\*\*/g, "")] });
+                  return;
+                }
+                flushList();
+                blocks.push({ type: "paragraph", content: [trimmed] });
+              });
+              flushList();
+
+              return blocks.map((block, i) => {
+                switch (block.type) {
+                  case "break":
+                    return <br key={i} />;
+                  case "heading2":
+                    return (
+                      <h2 key={i} className="text-2xl font-heading font-bold mt-8 mb-4">
+                        {block.content[0]}
+                      </h2>
+                    );
+                  case "heading3":
+                    return (
+                      <h3 key={i} className="text-xl font-heading font-semibold mt-6 mb-3">
+                        {block.content[0]}
+                      </h3>
+                    );
+                  case "list":
+                    return (
+                      <ul key={i} className="list-disc ml-6 space-y-1 my-2">
+                        {block.content.map((item, j) => (
+                          <li key={j} className="text-muted-foreground">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  case "bold":
+                    return (
+                      <p key={i} className="font-semibold text-foreground mt-4">
+                        {block.content[0]}
+                      </p>
+                    );
+                  case "paragraph":
+                    return (
+                      <p key={i} className="text-muted-foreground leading-relaxed mb-2">
+                        {block.content[0]}
+                      </p>
+                    );
+                }
+              });
+            })()}
           </div>
 
           {/* Share */}

@@ -150,13 +150,13 @@ export function Footer() {
                 DataSphere<span className="text-primary"> Innovation</span>
               </span>
             </Link>
-            <p className="text-sm text-white/50 mb-6 leading-relaxed max-w-sm">
+            <p className="text-sm text-white/70 mb-6 leading-relaxed max-w-sm">
               {COMPANY.tagline}. Nous accompagnons les entreprises ambitieuses dans leur transformation data et IA.
             </p>
 
             {/* Newsletter */}
             <div className="space-y-3">
-              <p className="text-xs font-bold text-white/40 uppercase tracking-[0.15em] flex items-center gap-2">
+              <p className="text-xs font-bold text-white/60 uppercase tracking-[0.15em] flex items-center gap-2">
                 <Send size={12} className="text-primary" />
                 Newsletter
               </p>
@@ -166,7 +166,7 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Votre email professionnel"
-                  className="w-full pl-4 pr-12 py-3 rounded-xl border border-white/10 bg-white/5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all placeholder:text-white/25"
+                  className="w-full pl-4 pr-12 py-3 rounded-xl border border-white/10 bg-white/5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary/40 transition-all placeholder:text-white/50"
                   required
                   aria-label="Email pour la newsletter"
                 />
@@ -210,7 +210,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 hover:bg-primary/10 transition-all duration-300"
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-primary hover:border-primary/30 hover:bg-primary/10 transition-all duration-300"
                   aria-label={social.label}
                 >
                   <social.icon size={17} />
@@ -221,7 +221,7 @@ export function Footer() {
 
           {/* Services — 3 columns */}
           <div className="lg:col-span-3">
-            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-5 flex items-center gap-2">
+            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/60 mb-5 flex items-center gap-2">
               <span className="w-4 h-px bg-primary" />
               Services
             </h3>
@@ -240,7 +240,7 @@ export function Footer() {
                           <Icon size={13} className="text-primary" />
                         </div>
                       )}
-                      <span className="text-sm text-white/50 group-hover:text-primary transition-colors duration-200 relative">
+                      <span className="text-sm text-white/70 group-hover:text-primary transition-colors duration-200 relative">
                         {service.label}
                         <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
                       </span>
@@ -253,7 +253,7 @@ export function Footer() {
 
           {/* Navigation — 2 columns */}
           <div className="lg:col-span-2">
-            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-5 flex items-center gap-2">
+            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/60 mb-5 flex items-center gap-2">
               <span className="w-4 h-px bg-primary" />
               Navigation
             </h3>
@@ -262,7 +262,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="group flex items-center gap-2 text-sm text-white/50 hover:text-primary transition-colors duration-300"
+                    className="group flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors duration-300"
                   >
                     <ChevronRight
                       size={13}
@@ -280,7 +280,7 @@ export function Footer() {
 
           {/* Resources + Contact — 3 columns */}
           <div className="lg:col-span-3">
-            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-5 flex items-center gap-2">
+            <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/60 mb-5 flex items-center gap-2">
               <span className="w-4 h-px bg-primary" />
               Contact
             </h3>
@@ -288,7 +288,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${COMPANY.email}`}
-                  className="flex items-start gap-3 text-sm text-white/50 hover:text-primary transition-colors group"
+                  className="flex items-start gap-3 text-sm text-white/70 hover:text-primary transition-colors group"
                 >
                   <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
                     <Mail size={15} className="text-primary" />
@@ -300,7 +300,7 @@ export function Footer() {
                 <a
                   href={COMPANY.phoneHref}
                   aria-label={`Appeler au ${COMPANY.phone}`}
-                  className="flex items-start gap-3 text-sm text-white/50 hover:text-primary transition-colors group"
+                  className="flex items-start gap-3 text-sm text-white/70 hover:text-primary transition-colors group"
                 >
                   <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
                     <Phone size={15} className="text-primary" />
@@ -309,7 +309,7 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 text-sm text-white/50">
+                <div className="flex items-start gap-3 text-sm text-white/70">
                   <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/15 flex items-center justify-center shrink-0">
                     <MapPin size={15} className="text-primary" />
                   </div>
@@ -332,7 +332,7 @@ export function Footer() {
 
             {/* Resources */}
             <div className="mt-8">
-              <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/30 mb-4 flex items-center gap-2">
+              <h3 className="font-heading font-bold text-xs uppercase tracking-[0.15em] text-white/60 mb-4 flex items-center gap-2">
                 <span className="w-4 h-px bg-primary" />
                 Ressources
               </h3>
@@ -341,7 +341,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="group flex items-center gap-2 text-sm text-white/50 hover:text-primary transition-colors duration-300"
+                      className="group flex items-center gap-2 text-sm text-white/70 hover:text-primary transition-colors duration-300"
                     >
                       <ChevronRight
                         size={13}
@@ -362,27 +362,27 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-white/25">
+            <p className="text-xs text-white/55">
               &copy; {new Date().getFullYear()} {COMPANY.name}. Tous droits réservés.
             </p>
             <div className="flex items-center gap-3 flex-wrap justify-center">
               {LEGAL_LINKS.map((link, i) => (
                 <React.Fragment key={link.href}>
                   {i > 0 && (
-                    <span className="text-white/15">|</span>
+                    <span className="text-white/30">|</span>
                   )}
                   <Link
                     href={link.href}
-                    className="text-xs text-white/25 hover:text-primary transition-colors duration-300"
+                    className="text-xs text-white/55 hover:text-primary transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
                 </React.Fragment>
               ))}
-              <span className="text-white/15">|</span>
+              <span className="text-white/30">|</span>
               <Link
                 href="/plan-du-site"
-                className="text-xs text-white/25 hover:text-primary transition-colors duration-300"
+                className="text-xs text-white/55 hover:text-primary transition-colors duration-300"
               >
                 Plan du site
               </Link>

@@ -110,7 +110,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/60 max-w-2xl mb-10 leading-relaxed"
+            className="text-lg md:text-xl text-white/70 max-w-2xl mb-10 leading-relaxed"
             data-section-summary
           >
             Nous accompagnons les entreprises ambitieuses dans l&apos;exploitation
@@ -230,10 +230,10 @@ export function HeroSection() {
       >
         <Link href="/#services" aria-label="Défiler vers le bas">
           <div className="flex flex-col items-center gap-2">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/30 font-medium">Scroll</span>
+            <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-medium">Scroll</span>
             <ChevronDown
               size={20}
-              className="text-white/30 animate-bounce"
+              className="text-white/50 animate-bounce"
             />
           </div>
         </Link>

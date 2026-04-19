@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Revalidate pages every 7 days (content refresh strategy for GEO)
 export const revalidate = 604800; // 7 days in seconds
@@ -12,11 +13,16 @@ import {
   generateOrganizationSchema,
   generateLocalBusinessSchema,
   generateWebSiteSchema,
+  generateWebPageSchema,
   generateGraphSchema,
   generateReviewSchema,
   generateHowToSchema,
+  generateFAQSchema,
+  generateServiceSchema,
+  generateVideoObjectSchema,
   JsonLd,
 } from "@/lib/json-ld";
+import { FAQ_ITEMS, SERVICES } from "@/lib/constants";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -87,6 +93,27 @@ export default function RootLayout({
     generateOrganizationSchema(),
     generateLocalBusinessSchema(),
     generateWebSiteSchema(),
+    generateWebPageSchema({
+      title: "DataSphere Innovation — Cabinet Expert Data & IA",
+      description:
+        "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale. 50+ projets, 98% satisfaction, 3x ROI moyen.",
+      url: "https://datasphereinnovation.fr",
+    }),
+    generateFAQSchema(FAQ_ITEMS),
+    ...SERVICES.map((service) =>
+      generateServiceSchema({
+        slug: service.slug,
+        title: service.shortTitle,
+        description: service.description,
+        features: service.features,
+        benefits: service.benefits,
+      })
+    ),
+    generateVideoObjectSchema({
+      name: "DataSphere Innovation — Votre partenaire Data & IA",
+      description: "Découvrez comment DataSphere Innovation accompagne les entreprises dans leur transformation data et IA. Méthodologie, expertise et résultats concrets.",
+      url: "https://datasphereinnovation.fr/#video-presentation",
+    }),
     generateReviewSchema({
       author: "Marie Dupont",
       reviewBody: "DataSphere Innovation a transformé notre approche data. En 6 mois, nous avons mis en place une gouvernance robuste et des dashboards qui ont révolutionné nos prises de décision. Le ROI a dépassé nos attentes.",
@@ -155,6 +182,7 @@ export default function RootLayout({
           {children}
           <Toaster richColors position="bottom-right" />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>

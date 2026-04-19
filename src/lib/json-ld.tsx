@@ -481,6 +481,35 @@ export function generateHowToSchema(name: string, description: string, steps: Ho
   };
 }
 
+// ─── VideoObject Schema ─────────────────────────────────────────────────────
+
+export interface VideoObjectSchemaInput {
+  name: string;
+  description: string;
+  url: string;
+  duration?: string;
+  uploadDate?: string;
+  thumbnailUrl?: string;
+}
+
+export function generateVideoObjectSchema(video: VideoObjectSchemaInput) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    "@id": `${video.url}/#video`,
+    name: video.name,
+    description: video.description,
+    url: video.url,
+    duration: video.duration || "PT3M",
+    uploadDate: video.uploadDate || "2025-01-15",
+    thumbnailUrl: video.thumbnailUrl || `${SITE_URL}/images/video-thumbnail.png`,
+    publisher: {
+      "@id": ORG_ID,
+    },
+    inLanguage: "fr",
+  };
+}
+
 // ─── JSON-LD Script Component ───────────────────────────────────────────────
 
 interface JsonLdProps {
