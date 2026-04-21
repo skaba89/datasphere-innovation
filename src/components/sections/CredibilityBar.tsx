@@ -7,8 +7,9 @@ export function CredibilityBar() {
   const partners = [...PARTNERS, ...PARTNERS];
 
   return (
-    <section aria-label="Technologies de confiance" className="py-8 overflow-hidden border-b border-white/5 bg-[hsl(222,20%,4%)]">
+    <section aria-labelledby="credibility-heading" className="py-8 overflow-hidden border-b border-white/5 bg-[hsl(222,20%,4%)]">
       <div className="container mx-auto px-4 mb-4">
+        <h2 id="credibility-heading" className="sr-only">Technologies de confiance</h2>
         <p className="text-center text-xs font-medium uppercase tracking-[0.2em] text-white/60">
           Technologies de confiance utilisées par nos experts
         </p>

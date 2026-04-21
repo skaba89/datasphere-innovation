@@ -77,7 +77,7 @@ export function DifferentiatorsSection() {
   return (
     <section
       id="differentiateurs"
-      aria-label="Nos différenciateurs"
+      aria-labelledby="differentiateurs-heading"
       className="section-padding bg-[hsl(222,20%,4%)] relative overflow-hidden"
     >
       {/* Background decoration */}
@@ -94,7 +94,7 @@ export function DifferentiatorsSection() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 text-accent text-sm font-medium mb-4">
               Pourquoi nous
             </span>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 text-white">
+            <h2 id="differentiateurs-heading" className="text-3xl md:text-5xl font-heading font-bold mb-4 text-white">
               Ce qui nous{" "}
               <span className="gradient-text">distingue</span>
             </h2>

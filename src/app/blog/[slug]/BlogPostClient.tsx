@@ -139,7 +139,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               {post.title}
             </h1>
             <div className="flex items-center gap-4 text-sm text-muted-foreground mb-8">
-              <span>Par <Link href={`/equipe/${AUTHOR_SLUG_MAP[post.author] || ""}`} className="text-primary hover:underline font-medium">{post.author}</Link></span>
+              <span itemProp="author">Par <Link href={`/equipe/${AUTHOR_SLUG_MAP[post.author] || ""}`} className="text-primary hover:underline font-medium" rel="author">{post.author}</Link></span>
               <span>•</span>
               <time dateTime={post.date} className="flex items-center gap-1">
                 {new Date(post.date).toLocaleDateString("fr-FR", {

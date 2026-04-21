@@ -86,7 +86,7 @@ const SOURCES = [
 
 export function StatsSection() {
   return (
-    <section id="stats" aria-label="Chiffres clés" className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-br from-[hsl(222,25%,8%)] via-[hsl(222,20%,6%)] to-[hsl(222,25%,10%)]">
+    <section id="stats" role="region" aria-labelledby="stats-heading" className="relative py-16 md:py-20 overflow-hidden bg-gradient-to-br from-[hsl(222,25%,8%)] via-[hsl(222,20%,6%)] to-[hsl(222,25%,10%)]">
       {/* Subtle decorations */}
       <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-primary/4 blur-[180px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[150px] pointer-events-none" />
@@ -99,8 +99,29 @@ export function StatsSection() {
       <div className="container mx-auto px-4 relative z-10">
         <SectionReveal>
           <div className="text-center mb-10">
+            <h2 id="stats-heading" className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+              Nos chiffres <span className="gradient-text">clés</span>
+            </h2>
             <p className="text-white/80 text-base max-w-2xl mx-auto">
-              Des résultats concrets confirmés par nos clients. Selon{" "}
+              Des résultats concrets confirmés par nos clients et mesurés via{" "}
+              <a
+                href="https://search.google.com/search-console"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 font-semibold underline underline-offset-2 decoration-primary/50"
+              >
+                Google Search Console
+              </a>{" "}
+              et{" "}
+              <a
+                href="https://www.bing.com/webmasters"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 font-semibold underline underline-offset-2 decoration-primary/50"
+              >
+                Bing Webmaster Tools
+              </a>{" "}
+              pour garantir une visibilité optimale. Selon{" "}
               <a
                 href="https://www.mckinsey.com/capabilities/quantumblack/our-insights"
                 target="_blank"

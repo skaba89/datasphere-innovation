@@ -70,7 +70,7 @@ export function ServicesSection() {
   const router = useRouter();
 
   return (
-    <section id="services" aria-label="Nos services" className="section-padding bg-background relative overflow-hidden">
+    <section id="services" aria-labelledby="services-heading" className="section-padding bg-background relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary/3 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-accent/3 blur-[100px] pointer-events-none" />
@@ -81,7 +81,7 @@ export function ServicesSection() {
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
               Nos Services
             </span>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+            <h2 id="services-heading" className="text-3xl md:text-5xl font-heading font-bold mb-4">
               Des solutions data{" "}
               <span className="gradient-text">sur mesure</span>
             </h2>
@@ -90,7 +90,7 @@ export function ServicesSection() {
               complète pour transformer vos données en valeur business.
             </p>
             <p className="text-muted-foreground/70 max-w-3xl mt-3 text-sm" data-section-summary>
-              DataSphere Innovation propose six pôles de services couvrant l&apos;ensemble de la chaîne de valeur data : stratégie data, BI et dashboards, intelligence artificielle, data engineering, automatisation des processus et modernisation cloud. 50+ projets délivrés, ROI moyen de 3x, 98% de satisfaction client.
+              DataSphere Innovation propose six pôles de services couvrant l&apos;ensemble de la chaîne de valeur data : stratégie data, BI et dashboards, intelligence artificielle, data engineering, automatisation des processus et modernisation cloud. 50+ projets délivrés, ROI moyen de 3x, 98% de satisfaction client. Performance mesurée via Google Search Console, Bing Webmaster Tools et Google Analytics 4.
             </p>
             <p className="text-muted-foreground/70 max-w-3xl mt-3 text-base">
               Nos six pôles de services couvrent l&apos;ensemble de la chaîne de valeur data :

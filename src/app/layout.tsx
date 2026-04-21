@@ -145,13 +145,21 @@ export default function RootLayout({
         { name: "Suivi & Optimisation", text: "Monitoring, ajustements et amélioration continue." },
       ]
     ),
-    // Homepage Article schema for AI answer engines
+    // Homepage Article schema for AI answer engines — Person author for E-E-A-T
     {
       "@type": "Article",
       "@id": "https://datasphereinnovation.fr/#homepage-article",
       headline: "DataSphere Innovation — Cabinet Expert Data & IA",
       description: "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale. 50+ projets, 98% satisfaction, 3x ROI moyen.",
-      author: { "@id": "https://datasphereinnovation.fr/#organization" },
+      author: {
+        "@type": "Person",
+        "@id": "https://datasphereinnovation.fr/equipe/sophie-martin/#person",
+        name: "Sophie Martin",
+        jobTitle: "Directrice Data Strategy",
+        url: "https://datasphereinnovation.fr/equipe/sophie-martin",
+        worksFor: { "@id": "https://datasphereinnovation.fr/#organization" },
+        sameAs: ["https://www.linkedin.com/in/sophie-martin-datasphere"],
+      },
       publisher: { "@id": "https://datasphereinnovation.fr/#organization" },
       datePublished: "2021-01-01",
       dateModified: new Date().toISOString().split("T")[0],

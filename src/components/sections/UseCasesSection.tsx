@@ -34,14 +34,14 @@ const USE_CASE_LINKS: { label: string; href: string }[][] = [
 
 export function UseCasesSection() {
   return (
-    <section id="cas-usage" aria-label="Cas d'usage" className="section-padding bg-background">
+    <section id="cas-usage" aria-labelledby="cas-usage-heading" className="section-padding bg-background">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
               Cas d&apos;usage
             </span>
-            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">
+            <h2 id="cas-usage-heading" className="text-3xl md:text-5xl font-heading font-bold mb-4">
               Des résultats concrets,{" "}
               <span className="gradient-text">sector par secteur</span>
             </h2>

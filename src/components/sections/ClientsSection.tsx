@@ -18,14 +18,14 @@ const CLIENT_LOGOS: { name: string; logo: string }[] = [
 
 export function ClientsSection() {
   return (
-    <section aria-label="Nos clients" className="py-12 bg-[hsl(222,20%,6%)] border-t border-white/5">
+    <section aria-labelledby="clients-heading" className="py-12 bg-[hsl(222,20%,6%)] border-t border-white/5">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="text-center mb-8">
             <span className="inline-block px-4 py-1.5 rounded-full border border-accent/20 bg-accent/5 text-accent text-sm font-medium mb-4">
               Clients
             </span>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-2 text-white">
+            <h2 id="clients-heading" className="text-2xl md:text-3xl font-heading font-bold mb-2 text-white">
               Ils nous font{" "}
               <span className="gradient-text">confiance</span>
             </h2>

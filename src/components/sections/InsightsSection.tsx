@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Clock, TrendingUp } from "lucide-react";
+import { ArrowRight, Calendar, Clock, TrendingUp, User } from "lucide-react";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 
 const INSIGHTS = [
@@ -15,6 +15,8 @@ const INSIGHTS = [
     excerpt: "Découvrez les 5 tendances clés qui redéfinissent la stratégie data des entreprises en 2025, de l'IA générative aux data products.",
     readTime: "6 min",
     date: "15 Jan 2025",
+    author: "Sophie Martin",
+    authorSlug: "sophie-martin",
     image: "/images/services/data-strategy.png",
   },
   {
@@ -24,6 +26,8 @@ const INSIGHTS = [
     excerpt: "Les meilleures pratiques pour industrialiser vos modèles de Machine Learning et garantir leur performance en production.",
     readTime: "8 min",
     date: "28 Déc 2024",
+    author: "Léa Chen",
+    authorSlug: "lea-chen",
     image: "/images/services/ai-solutions.png",
   },
   {
@@ -33,13 +37,15 @@ const INSIGHTS = [
     excerpt: "Guide complet pour choisir la plateforme cloud data adaptée à votre contexte : coûts, performances, écosystème et cas d'usage.",
     readTime: "10 min",
     date: "12 Déc 2024",
+    author: "Marc Petit",
+    authorSlug: "marc-petit",
     image: "/images/services/cloud-modernization.png",
   },
 ];
 
 export function InsightsSection() {
   return (
-    <section id="insights" aria-label="Publications et insights" className="section-padding bg-background relative overflow-hidden">
+    <section id="insights" aria-labelledby="insights-heading" className="section-padding bg-background relative overflow-hidden">
       {/* Background */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-primary/2 blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-accent/2 blur-[120px] pointer-events-none" />
@@ -53,7 +59,7 @@ export function InsightsSection() {
                 <TrendingUp size={16} className="text-primary" />
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Insights & Perspectives</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-heading font-bold">
+              <h2 id="insights-heading" className="text-3xl md:text-5xl font-heading font-bold">
                 Nos dernières <span className="gradient-text">publications</span>
               </h2>
               <p className="text-muted-foreground mt-3 max-w-xl text-lg">
@@ -117,6 +123,10 @@ export function InsightsSection() {
                       <span className="flex items-center gap-1">
                         <Clock size={11} />
                         {article.readTime}
+                      </span>
+                      <span className="flex items-center gap-1" itemProp="author">
+                        <User size={11} />
+                        <Link href={`/equipe/${article.authorSlug}`} className="text-primary/70 hover:text-primary hover:underline" rel="author">{article.author}</Link>
                       </span>
                     </div>
 

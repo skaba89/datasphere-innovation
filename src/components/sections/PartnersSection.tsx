@@ -24,14 +24,14 @@ const PARTNER_LOGOS: { name: string; logo: string }[] = [
 
 export function PartnersSection() {
   return (
-    <section aria-label="Partenaires technologiques" className="py-16 bg-[hsl(222,20%,4%)] border-t border-white/5">
+    <section aria-labelledby="partners-heading" className="py-16 bg-[hsl(222,20%,4%)] border-t border-white/5">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="text-center mb-10">
             <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
               Partenaires
             </span>
-            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-2 text-white">
+            <h2 id="partners-heading" className="text-2xl md:text-3xl font-heading font-bold mb-2 text-white">
               Nos partenaires{" "}
               <span className="gradient-text">technologiques</span>
             </h2>

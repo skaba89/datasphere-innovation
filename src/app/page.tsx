@@ -23,7 +23,21 @@ import { CookieConsent } from "@/components/ui/CookieConsent";
 
 export default function HomePage() {
   return (
-    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col">
+    <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col" itemScope itemType="https://schema.org/Article">
+      <meta itemProp="headline" content="DataSphere Innovation — Cabinet Expert Data & IA" />
+      <meta itemProp="datePublished" content="2021-01-01" />
+      <meta itemProp="dateModified" content={new Date().toISOString().split("T")[0]} />
+      <meta itemProp="inLanguage" content="fr" />
+      <meta itemProp="articleSection" content="Consulting Data & IA" />
+      <span itemProp="author" itemScope itemType="https://schema.org/Person" className="sr-only">
+        <span itemProp="name">Sophie Martin</span>
+        <span itemProp="jobTitle">Directrice Data Strategy</span>
+        <span itemProp="url">https://datasphereinnovation.fr/equipe/sophie-martin</span>
+      </span>
+      <span itemProp="publisher" itemScope itemType="https://schema.org/Organization" className="sr-only">
+        <span itemProp="name">DataSphere Innovation</span>
+        <span itemProp="url">https://datasphereinnovation.fr</span>
+      </span>
         <Navbar />
         <HeroSection />
         <CredibilityBar />
