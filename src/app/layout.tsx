@@ -23,6 +23,7 @@ import {
   JsonLd,
 } from "@/lib/json-ld";
 import { FAQ_ITEMS, SERVICES } from "@/lib/constants";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -82,6 +83,8 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  creator: "DataSphere Innovation",
+  publisher: "DataSphere Innovation",
 };
 
 export default function RootLayout({
@@ -164,6 +167,20 @@ export default function RootLayout({
       "@id": "https://datasphereinnovation.fr/#breadcrumb",
       itemListElement: [{ "@type": "ListItem", position: 1, name: "Accueil", item: "https://datasphereinnovation.fr" }],
     },
+    // ItemList schema for services catalog — Knowledge Graph entity signal
+    {
+      "@type": "ItemList",
+      "@id": "https://datasphereinnovation.fr/#services-list",
+      name: "Services Data & IA — DataSphere Innovation",
+      description: "Catalogue des services data et intelligence artificielle proposés par DataSphere Innovation : stratégie data, BI, IA, data engineering, automatisation et cloud.",
+      numberOfItems: SERVICES.length,
+      itemListElement: SERVICES.map((service, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: service.shortTitle,
+        url: `https://datasphereinnovation.fr/services/${service.slug}`,
+      })),
+    },
   ]);
 
   return (
@@ -183,6 +200,12 @@ export default function RootLayout({
         />
         <meta name="google-site-verification" content="PENDING_VERIFICATION" />
         <meta name="msvalidate.01" content="PENDING_VERIFICATION" />
+        {/* Entity identity signals for Knowledge Graph / Wikidata */}
+        <meta name="wikidata" content="Q131367265" />
+        <meta property="og:site_name" content="DataSphere Innovation" />
+        <meta name="author" content="DataSphere Innovation" />
+        <link rel="author" href="https://datasphereinnovation.fr/a-propos" />
+        <link rel="publisher" href="https://datasphereinnovation.fr/#organization" />
         {/* Global JSON-LD structured data — placed in <head> for search engine visibility */}
         <JsonLd data={graphSchema} />
       </head>
@@ -204,6 +227,7 @@ export default function RootLayout({
           {children}
           <Toaster richColors position="bottom-right" />
           <Analytics />
+          <GoogleAnalytics />
           <SpeedInsights />
         </ThemeProvider>
       </body>

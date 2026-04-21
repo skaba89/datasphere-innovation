@@ -23,9 +23,9 @@ const GEO_TOOLS = [
   {
     icon: LineChart,
     name: "Google Analytics 4",
-    description: "Solution d'analyse web de Google pour comprendre le comportement des utilisateurs, mesurer les conversions et optimiser les parcours. Essentiel pour le suivi des performances GEO et l'attribution des conversions.",
+    description: "Solution d'analyse web de Google intégrée à notre site pour comprendre le comportement des utilisateurs, mesurer les conversions et optimiser les parcours. Configuré avec anonymisation IP et consentement cookies.",
     url: "https://analytics.google.com/",
-    kpis: ["Sessions", "Taux de conversion", "Pages par session", "Durée moyenne"],
+    kpis: ["Sessions", "Taux de conversion", "Pages par session", "Citations IA"],
   },
 ];
 

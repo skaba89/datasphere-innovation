@@ -29,6 +29,8 @@ import {
   FOOTER_RESOURCES,
   LEGAL_LINKS,
 } from "@/lib/constants";
+import { EditorialNotice } from "@/components/ui/EditorialNotice";
+import { useAnalytics, AnalyticsEvents } from "@/hooks/useAnalytics";
 
 // ─── Service icon mapping ──────────────────────────────────────────────────
 
@@ -108,6 +110,7 @@ export function Footer() {
   const [email, setEmail] = React.useState("");
   const [subscribed, setSubscribed] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const { trackEvent } = useAnalytics();
 
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,6 +120,11 @@ export function Footer() {
       setSubscribed(true);
       setEmail("");
       setLoading(false);
+      trackEvent({
+        action: "subscribe",
+        category: AnalyticsEvents.NEWSLETTER,
+        label: email,
+      });
       setTimeout(() => setSubscribed(false), 4000);
     }, 800);
   };
@@ -361,6 +369,19 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 pt-6 border-t border-white/10">
+          <div className="[&_*]:!text-white/40 [&_a]:!text-primary/70 [&_a:hover]:!text-primary">
+            <EditorialNotice
+              datePublished="2021-01-01"
+              dateModified={new Date().toISOString().split("T")[0]}
+              author="DataSphere Innovation"
+              reviewer="Sophie Martin, Directrice Data Strategy"
+              sources={[
+                { name: "McKinsey", url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights" },
+                { name: "Gartner", url: "https://www.gartner.com/en/information-technology" },
+                { name: "Forbes", url: "https://www.forbes.com/sites/forbestechcouncil/" },
+              ]}
+            />
+          </div>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-white/55">
               &copy; {new Date().getFullYear()} {COMPANY.name}. Tous droits réservés.

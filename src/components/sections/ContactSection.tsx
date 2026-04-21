@@ -19,6 +19,7 @@ import {
 import { toast } from "sonner";
 import { Send, Phone, Mail, MapPin, MessageSquareHeart } from "lucide-react";
 import { CONTACT_SUBJECTS, COMPANY } from "@/lib/constants";
+import { useAnalytics, AnalyticsEvents } from "@/hooks/useAnalytics";
 
 interface FormState {
   name: string;
@@ -55,6 +56,7 @@ export function ContactSection() {
   const [loading, setLoading] = React.useState(false);
   const [form, setForm] = React.useState<FormState>(INITIAL_FORM);
   const [lastSubmit, setLastSubmit] = React.useState(0);
+  const { trackEvent } = useAnalytics();
 
   const updateField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -84,6 +86,11 @@ export function ContactSection() {
     toast.success(
       "Merci pour votre message ! Nous vous recontacterons sous 24h."
     );
+    trackEvent({
+      action: "submit",
+      category: AnalyticsEvents.CONTACT_FORM,
+      label: form.subject,
+    });
     setForm(INITIAL_FORM);
     setLoading(false);
   };

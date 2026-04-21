@@ -55,6 +55,10 @@ export function generateOrganizationSchema() {
     sameAs: [
       "https://www.linkedin.com/company/datasphere-innovation",
       "https://twitter.com/DataSphereInnov",
+      "https://www.wikidata.org/wiki/Q131367265",
+      "https://www.crunchbase.com/organization/datasphere-innovation",
+      "https://www.glassdoor.fr/Entreprise/datasphere-innovation",
+      "https://github.com/datasphere-innovation",
     ],
     foundingDate: "2021",
     numberOfEmployees: {
