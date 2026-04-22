@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { Clock, ArrowRight, Tag, User } from "lucide-react";
+import { AuthorLink } from "@/components/ui/AuthorLink";
 
 // Map author names to their equipe page slugs
 const AUTHOR_SLUG_MAP: Record<string, string> = {
@@ -138,12 +139,7 @@ export default function BlogPage() {
                         </time>
                         <span>•</span>
                         {AUTHOR_SLUG_MAP[post.author] ? (
-                          <Link
-                            href={`/equipe/${AUTHOR_SLUG_MAP[post.author]}`}
-                            className="hover:text-primary transition-colors"
-                          >
-                            {post.author}
-                          </Link>
+                          <AuthorLink slug={AUTHOR_SLUG_MAP[post.author]} name={post.author} />
                         ) : (
                           <span>{post.author}</span>
                         )}

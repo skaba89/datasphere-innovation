@@ -3,6 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Clock, TrendingUp, User } from "lucide-react";
 import { SectionReveal } from "@/components/ui/SectionReveal";
@@ -44,6 +45,8 @@ const INSIGHTS = [
 ];
 
 export function InsightsSection() {
+  const router = useRouter();
+
   return (
     <section id="insights" aria-labelledby="insights-heading" className="section-padding bg-background relative overflow-hidden">
       {/* Background */}
@@ -126,7 +129,14 @@ export function InsightsSection() {
                       </span>
                       <span className="flex items-center gap-1" itemProp="author">
                         <User size={11} />
-                        <Link href={`/equipe/${article.authorSlug}`} className="text-primary/70 hover:text-primary hover:underline" rel="author">{article.author}</Link>
+                        <span
+                          role="button"
+                          tabIndex={0}
+                          className="text-primary/70 hover:text-primary hover:underline cursor-pointer"
+                          rel="author"
+                          onClick={(e) => { e.stopPropagation(); e.preventDefault(); router.push(`/equipe/${article.authorSlug}`); }}
+                          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.stopPropagation(); e.preventDefault(); router.push(`/equipe/${article.authorSlug}`); } }}
+                        >{article.author}</span>
                       </span>
                     </div>
 
