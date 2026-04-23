@@ -162,7 +162,7 @@ export default function RootLayout({
       },
       publisher: { "@id": "https://datasphereinnovation.fr/#organization" },
       datePublished: "2021-01-01",
-      dateModified: new Date().toISOString().split("T")[0],
+      dateModified: "2025-01-15",
       url: "https://datasphereinnovation.fr",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://datasphereinnovation.fr" },
       articleSection: "Consulting Data & IA",

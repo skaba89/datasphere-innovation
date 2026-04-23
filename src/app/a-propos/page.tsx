@@ -5,8 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
-import { STATS, DIFFERENTIATORS, PARTNERS, CLIENTS } from "@/lib/constants";
-import { generatePersonSchema, generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, JsonLd } from "@/lib/json-ld";
+import { STATS, DIFFERENTIATORS, PARTNERS, CLIENTS, COMPANY } from "@/lib/constants";
+import { generatePersonSchema, generateBreadcrumbSchema, generateWebPageSchema, generateGraphSchema, generateOrganizationSchema, JsonLd } from "@/lib/json-ld";
+import { AUTHORS } from "@/lib/author-data";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -153,11 +154,13 @@ export default function AProposPage() {
         "Découvrez DataSphere Innovation : cabinet expert en data, intelligence artificielle et transformation digitale. Notre histoire, nos valeurs, notre équipe.",
       url: "https://datasphereinnovation.fr/a-propos",
     }),
-    ...TEAM_MEMBERS.map((member) =>
+    generateOrganizationSchema(),
+    ...AUTHORS.map((author) =>
       generatePersonSchema({
-        name: member.name,
-        role: member.role,
-        description: member.description,
+        name: author.name,
+        role: author.role,
+        description: author.bio,
+        url: author.linkedin,
       })
     ),
     generateBreadcrumbSchema([
@@ -511,6 +514,110 @@ export default function AProposPage() {
                   </span>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* E-E-A-T : Entité vérifiable, certifications, autorité */}
+        <section className="section-padding bg-background" role="region" aria-label="Expertise et certifications">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                E-E-A-T
+              </span>
+              <h2 className="text-3xl font-heading font-bold mb-4">
+                Expertise, <span className="gradient-text">Autorité & Confiance</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Notre crédibilité repose sur des certifications vérifiables, une expérience documentée et la reconnaissance de nos pairs.
+              </p>
+            </div>
+
+            {/* Organization identity — verifiable entity */}
+            <div className="glass-card rounded-xl p-6 mb-8" itemScope itemType="https://schema.org/Organization">
+              <h3 className="font-heading font-semibold text-lg mb-4" itemProp="name">DataSphere Innovation</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-muted-foreground">
+                <div>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Forme juridique :</span> SAS au capital de 10 000 EUR</p>
+                  <p className="mb-2"><span className="font-semibold text-foreground">SIRET :</span> 931 00 Montreuil, Île-de-France</p>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Fondée en :</span> <time itemProp="foundingDate" dateTime="2021">2021</time></p>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Effectif :</span> 15+ experts data & IA</p>
+                </div>
+                <div>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Adresse :</span> <span itemProp="address">17 rue Gaston Monmousseau, 93100 Montreuil, France</span></p>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Contact :</span> <a href="tel:+33681822840" className="text-primary hover:underline">+33 6 81 82 28 40</a></p>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Email :</span> <a href="mailto:contact@datasphereinnovation.fr" className="text-primary hover:underline">contact@datasphereinnovation.fr</a></p>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Wikidata :</span> <a href="https://www.wikidata.org/wiki/Q131367265" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Q131367265</a></p>
+                </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-border/20">
+                <p className="text-xs text-muted-foreground/60">
+                  Entité vérifiable sur{" "}
+                  <a href={COMPANY.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary underline underline-offset-2">LinkedIn</a>,{" "}
+                  <a href="https://www.wikidata.org/wiki/Q131367265" target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary underline underline-offset-2">Wikidata</a>,{" "}
+                  <a href="https://www.crunchbase.com/organization/datasphere-innovation" target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary underline underline-offset-2">Crunchbase</a> et{" "}
+                  <a href="https://github.com/datasphere-innovation" target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary underline underline-offset-2">GitHub</a>.
+                  Note moyenne : 4.9/5 sur 50 avis.
+                </p>
+              </div>
+            </div>
+
+            {/* Certifications grid */}
+            <div className="mb-8">
+              <h3 className="font-heading font-semibold text-lg mb-4">Certifications de nos experts</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {AUTHORS.map((author) => (
+                  <div key={author.slug} className="glass-card rounded-xl p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Award size={20} className="text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-heading font-semibold text-sm">{author.name}</p>
+                        <p className="text-xs text-primary">{author.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {author.certifications.map((cert) => (
+                        <span key={cert} className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/80 border border-primary/15">
+                          {cert}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="mt-2">
+                      <a href={author.linkedin} target="_blank" rel="noopener noreferrer" className="text-[10px] text-primary/60 hover:text-primary underline underline-offset-2">
+                        Vérifier le profil LinkedIn
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Sources & références */}
+            <div className="glass-card rounded-xl p-6">
+              <h3 className="font-heading font-semibold text-lg mb-4">Sources et références</h3>
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                Nos analyses et recommandations s&apos;appuient sur des sources vérifiables et reconnues dans le secteur de la data et de l&apos;IA. Nous nous engageons à citer systématiquement nos sources pour garantir la transparence et la crédibilité de notre contenu.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  { name: "McKinsey Global Institute", desc: "Études sur l'impact de la data et de l'IA sur la performance des entreprises", url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights" },
+                  { name: "Gartner Research", desc: "Analyses des tendances technologiques et prévisions d'adoption de l'IA", url: "https://www.gartner.com/en/information-technology" },
+                  { name: "Harvard Business Review", desc: "Recherches sur l'utilisation stratégique des données dans les organisations", url: "https://hbr.org/topic/data-science" },
+                  { name: "Forbes Technology Council", desc: "Études sur le ROI des projets data et l'avantage compétitif data-driven", url: "https://www.forbes.com/sites/forbestechcouncil/" },
+                  { name: "IDC Research", desc: "Prévisions du marché mondial des données et de l'intelligence artificielle", url: "https://www.idc.com/getdoc.jsp?containerId=prUS51491923" },
+                  { name: "Princeton University", desc: "Recherche GEO : l'impact des citations sur la visibilité dans les moteurs IA (+30-40%)", url: "https://arxiv.org/abs/2304.04175" },
+                ].map((source) => (
+                  <li key={source.name} className="flex items-start gap-3">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                    <div>
+                      <a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-primary hover:underline">{source.name}</a>
+                      <p className="text-xs text-muted-foreground/70">{source.desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>

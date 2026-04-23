@@ -158,7 +158,7 @@ export function generateWebPageSchema(page: WebPageSchemaInput) {
     name: page.title,
     description: page.description,
     url: page.url,
-    dateModified: page.dateModified || new Date().toISOString().split("T")[0],
+    dateModified: page.dateModified || "2025-01-15",
     publisher: {
       "@id": ORG_ID,
     },

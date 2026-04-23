@@ -376,7 +376,7 @@ export function Footer() {
           <div className="[&_*]:!text-white/40 [&_a]:!text-primary/70 [&_a:hover]:!text-primary">
             <EditorialNotice
               datePublished="2021-01-01"
-              dateModified={new Date().toISOString().split("T")[0]}
+              dateModified="2025-01-15"
               author="DataSphere Innovation"
               reviewer="Sophie Martin, Directrice Data Strategy"
               sources={[

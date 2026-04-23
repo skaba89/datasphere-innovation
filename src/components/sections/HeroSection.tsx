@@ -180,7 +180,7 @@ export function HeroSection() {
           >
             <p className="text-xs font-semibold text-primary/80 uppercase tracking-wider mb-2">En résumé</p>
             <p className="text-[10px] text-white/40 mb-2">
-              Dernière mise à jour : {new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })} — Source : DataSphere Innovation
+              Dernière mise à jour : 15 janvier 2025 — Source : DataSphere Innovation
             </p>
             <p className="text-sm text-white/70 leading-relaxed">
               DataSphere Innovation est un cabinet expert en data et intelligence artificielle basé à Montreuil.

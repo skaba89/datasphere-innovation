@@ -26,7 +26,7 @@ export default function HomePage() {
     <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col" itemScope itemType="https://schema.org/Article">
       <meta itemProp="headline" content="DataSphere Innovation — Cabinet Expert Data & IA" />
       <meta itemProp="datePublished" content="2021-01-01" />
-      <meta itemProp="dateModified" content={new Date().toISOString().split("T")[0]} />
+      <meta itemProp="dateModified" content="2025-01-15" />
       <meta itemProp="inLanguage" content="fr" />
       <meta itemProp="articleSection" content="Consulting Data & IA" />
       <span itemProp="author" itemScope itemType="https://schema.org/Person" className="sr-only">
