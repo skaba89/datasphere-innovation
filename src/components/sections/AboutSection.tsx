@@ -70,7 +70,7 @@ export function AboutSection() {
             </h2>
             <p className="text-muted-foreground mb-4 leading-relaxed text-base" data-section-summary>
               <span itemProp="name" className="sr-only">DataSphere Innovation</span>
-              <span itemProp="description">DataSphere Innovation est un cabinet expert en data et intelligence artificielle, fondé pour aider les entreprises à exploiter pleinement le potentiel de leurs données et à accélérer leur transformation digitale. Plus de 50 projets délivrés, 98% de satisfaction client et 3x de ROI moyen.</span>
+              <span itemProp="description">DataSphere Innovation est un cabinet expert en data et intelligence artificielle, fondé pour aider les entreprises à exploiter pleinement le potentiel de leurs données et à accélérer leur transformation digitale. Plus de 50 <Link href="/#cas-usage" className="text-primary hover:underline">projets délivrés</Link>, 98% de satisfaction client et 3x de <Link href="/#comparaison" className="text-primary hover:underline">ROI moyen</Link>.</span>
             </p>
             <p className="text-muted-foreground mb-6 leading-relaxed">
               Fondé par des experts passionnés par la data et l&apos;intelligence

@@ -62,7 +62,7 @@ export function TestimonialsSection() {
 
         <SectionReveal>
           <div className="max-w-3xl mx-auto">
-            <div className="p-8 md:p-10 rounded-2xl border border-border/30 bg-card relative overflow-hidden" aria-live="polite" role="region" aria-label="Témoignage client actuel">
+            <div className="p-8 md:p-10 rounded-2xl border border-border/30 bg-card relative overflow-hidden" aria-live="polite" aria-atomic="true" role="region" aria-roledescription="carrousel" aria-label="Témoignage client actuel">
               {/* Decorative gradient */}
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
 
@@ -132,7 +132,8 @@ export function TestimonialsSection() {
                           ? "bg-primary w-6"
                           : "bg-border hover:bg-muted-foreground w-2"
                       }`}
-                      aria-label={`Témoignage ${i + 1}`}
+                      aria-label={`Témoignage ${i + 1} sur ${TESTIMONIALS.length}`}
+                      aria-pressed={i === current}
                     />
                   ))}
                 </div>

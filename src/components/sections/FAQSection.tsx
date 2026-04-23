@@ -104,14 +104,39 @@ export function FAQSection() {
             <p className="text-muted-foreground/70 max-w-2xl text-sm mt-2" data-section-summary>
               DataSphere Innovation accompagne les entreprises en data, IA et transformation digitale : projets de 4 semaines à 12 mois, ROI moyen de 3x, conformité RGPD native, 98% de satisfaction client. Nos experts certifiés AWS, Azure et GCP interviennent sur tout le territoire français.
             </p>
+            {/* FAQ Quick Summary Table — GEO Pillar 3: Answer-first for AI engines */}
+            <div className="mt-6 mb-8 overflow-x-auto">
+              <table className="w-full text-sm border-collapse" role="table" aria-label="Résumé des questions fréquentes">
+                <thead>
+                  <tr className="border-b border-border/40">
+                    <th scope="col" className="text-left p-3 font-heading font-semibold text-foreground/90">Question</th>
+                    <th scope="col" className="text-left p-3 font-heading font-semibold text-foreground/90">Réponse rapide</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { q: "Quels types d'entreprises accompagnez-vous ?", r: "Startups, PME, ETI et grands groupes CAC40 — tous secteurs." },
+                    { q: "Combien de temps dure un projet ?", r: "POC en 4-6 semaines, projet BI en 2-4 mois, transformation en 6-12 mois." },
+                    { q: "Quelles technologies utilisez-vous ?", r: "AWS, Azure, GCP, Snowflake, Databricks, dbt, Airflow, Power BI, Python, Spark." },
+                    { q: "Vos solutions sont-elles conformes au RGPD ?", r: "Oui — Privacy by Design, anonymisation, chiffrement, registre des traitements." },
+                    { q: "Quel est le coût d'un projet data ou IA ?", r: "POC à partir de 15 000 €, projet BI de 30 à 80 k€, transformation de 100 à 500 k€." },
+                  ].map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? "bg-secondary/10" : "bg-background"}>
+                      <td className="p-3 text-foreground/80 border-b border-border/20 font-medium">{row.q}</td>
+                      <td className="p-3 text-muted-foreground border-b border-border/20">{row.r}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </SectionReveal>
 
         <SectionReveal>
           <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full" role="list">
               {FAQ_ITEMS.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-border/30" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                <AccordionItem key={index} value={`item-${index}`} className="border-border/30" role="listitem" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
                   <AccordionTrigger className="text-left font-heading font-medium hover:text-primary transition-colors">
                     <h3 itemProp="name">{faq.question}</h3>
                   </AccordionTrigger>

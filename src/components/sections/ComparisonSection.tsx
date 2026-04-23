@@ -105,7 +105,11 @@ export function ComparisonSection() {
               className="w-full border-collapse"
               role="table"
               aria-label="Tableau comparatif des approches data"
+              aria-describedby="comparison-caption"
             >
+              <caption id="comparison-caption" className="sr-only">
+                Comparaison entre DataSphere Innovation (expert Data & IA), un cabinet généraliste et le faire soi-même, sur 10 critères incluant l'expertise, le ROI, la conformité RGPD et le transfert de compétences.
+              </caption>
               <thead>
                 <tr>
                   <th

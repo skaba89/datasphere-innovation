@@ -20,6 +20,7 @@ import {
   generateFAQSchema,
   generateServiceSchema,
   generateVideoObjectSchema,
+  generateSpeakableSchema,
   JsonLd,
 } from "@/lib/json-ld";
 import { FAQ_ITEMS, SERVICES } from "@/lib/constants";
@@ -102,6 +103,7 @@ export default function RootLayout({
         "Cabinet expert en data, intelligence artificielle, analytics et transformation digitale. 50+ projets, 98% satisfaction, 3x ROI moyen.",
       url: "https://datasphereinnovation.fr",
     }),
+    generateSpeakableSchema("https://datasphereinnovation.fr", ["#hero h1", "#faq", "#services-heading"]),
     generateFAQSchema(FAQ_ITEMS),
     ...SERVICES.map((service) =>
       generateServiceSchema({
@@ -162,7 +164,7 @@ export default function RootLayout({
       },
       publisher: { "@id": "https://datasphereinnovation.fr/#organization" },
       datePublished: "2021-01-01",
-      dateModified: "2025-01-15",
+      dateModified: "2025-04-23",
       url: "https://datasphereinnovation.fr",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://datasphereinnovation.fr" },
       articleSection: "Consulting Data & IA",

@@ -369,3 +369,133 @@ Task: GEO Pillar 3+4: Schema + NLU content
 
 ### Build Verification
 - `bun run build` — ✅ Passed (all pages generated successfully)
+
+---
+
+## Task 1 — Fix stale dates & Add SpeakableSpecification schema
+
+**Date**: 2026-03-04
+
+### Changes Made
+
+1. **`/home/z/my-project/src/components/sections/HeroSection.tsx`** (line 183)
+   - Changed `15 janvier 2025` → `23 avril 2025` in the TL;DR "Dernière mise à jour" line.
+
+2. **`/home/z/my-project/src/app/page.tsx`** (line 29)
+   - Changed `<meta itemProp="dateModified" content="2025-01-15">` → `content="2025-04-23"`.
+
+3. **`/home/z/my-project/src/app/layout.tsx`** (line 166)
+   - Changed `dateModified: "2025-01-15"` → `dateModified: "2025-04-23"` in the inline Article schema.
+
+4. **`/home/z/my-project/src/app/layout.tsx`** (import block, line 23)
+   - Added `generateSpeakableSchema` to the import list from `@/lib/json-ld`.
+
+5. **`/home/z/my-project/src/app/layout.tsx`** (line 106)
+   - Added `generateSpeakableSchema("https://datasphereinnovation.fr", ["#hero h1", "#faq", "#services-heading"])` to the `generateGraphSchema` array, right after the `generateWebPageSchema` call.
+
+6. **`/home/z/my-project/src/lib/json-ld.tsx`** (line 161)
+   - Changed default `dateModified` from `"2025-01-15"` → `"2025-04-23"` in `generateWebPageSchema`.
+
+### Verification
+- `bun run lint` passed with zero errors.
+- Dev server compiled successfully (GET / 200).
+
+---
+Task ID: 3
+Agent: Sub Agent
+Task: Improve ARIA accessibility for dynamic/complex elements AND enrich internal linking
+
+## Part A: ARIA Improvements for Dynamic Elements
+
+### 1. TestimonialsSection.tsx — Carousel ARIA enhancements
+**File Modified:** `src/components/sections/TestimonialsSection.tsx`
+- Updated carousel dot buttons `aria-label` from `Témoignage ${i + 1}` to `Témoignage ${i + 1} sur ${TESTIMONIALS.length}` — gives screen readers full context (e.g., "Témoignage 2 sur 4")
+- Added `aria-pressed={i === current}` to dot buttons — communicates toggle state to assistive tech
+- Added `aria-atomic="true"` to carousel container div — ensures screen readers announce the entire slide content atomically on change
+- Added `aria-roledescription="carrousel"` to carousel container div — provides localized role description for French screen readers
+
+### 2. FAQSection.tsx — Accordion ARIA roles
+**File Modified:** `src/components/sections/FAQSection.tsx`
+- Added `role="list"` to `<Accordion>` component — establishes semantic list structure for the FAQ items
+- Added `role="listitem"` to each `<AccordionItem>` — marks each FAQ entry as a list item within the semantic list
+
+### 3. ComparisonSection.tsx — Table ARIA context
+**File Modified:** `src/components/sections/ComparisonSection.tsx`
+- Added `aria-describedby="comparison-caption"` to `<table>` element — links table to its descriptive caption for screen readers
+- Added `<caption id="comparison-caption" className="sr-only">` before `<thead>` — provides screen-reader-only description: "Comparaison entre DataSphere Innovation (expert Data & IA), un cabinet généraliste et le faire soi-même, sur 10 critères incluant l'expertise, le ROI, la conformité RGPD et le transfert de compétences."
+
+## Part B: Enrich Internal Linking with Contextual Links
+
+### 1. AboutSection.tsx — Contextual links in description
+**File Modified:** `src/components/sections/AboutSection.tsx`
+- In the `itemProp="description"` span, replaced plain text "50 projets délivrés" with `<Link href="/#cas-usage">projets délivrés</Link>`
+- Replaced plain text "3x de ROI moyen" with `<Link href="/#comparaison">ROI moyen</Link>`
+- Both links styled with `text-primary hover:underline` for consistent visual treatment
+
+### 2. HeroSection.tsx — Contextual links in TL;DR section
+**File Modified:** `src/components/sections/HeroSection.tsx`
+- Added 6 internal contextual links in the TL;DR synthesis block:
+  - "stratégie data" → `/services/data-strategy`
+  - "BI & dashboards" → `/services/bi-dashboards`
+  - "solutions IA" → `/services/ai-solutions`
+  - "data engineering" → `/services/data-engineering`
+  - "automatisation" → `/services/process-automation`
+  - "migration cloud" → `/services/cloud-modernization`
+- All links styled with `text-primary hover:underline` for visual consistency
+- Links improve both user navigation and internal link equity for SEO
+
+## Build Verification
+- `npm run build` — ✅ Passed (32 static pages generated successfully, no errors)
+
+## Summary of All Changes
+
+| File | Change Type | Description |
+|------|-------------|-------------|
+| TestimonialsSection.tsx | ARIA | Enhanced dot aria-label with total count, added aria-pressed |
+| TestimonialsSection.tsx | ARIA | Added aria-atomic="true" and aria-roledescription="carrousel" |
+| FAQSection.tsx | ARIA | Added role="list" to Accordion |
+| FAQSection.tsx | ARIA | Added role="listitem" to AccordionItem |
+| ComparisonSection.tsx | ARIA | Added aria-describedby="comparison-caption" to table |
+| ComparisonSection.tsx | ARIA | Added sr-only caption with id="comparison-caption" |
+| AboutSection.tsx | Internal Linking | Added Link to /#cas-usage on "projets délivrés" |
+| AboutSection.tsx | Internal Linking | Added Link to /#comparaison on "ROI moyen" |
+| HeroSection.tsx | Internal Linking | Added 6 contextual service links in TL;DR block |
+
+---
+Task ID: 2
+Agent: Sub Agent
+Task: Improve text aeration with bullet lists AND add FAQ summary table on homepage
+
+Work Log:
+
+### Part A: Text Aeration — DifferentiatorsSection.tsx
+
+**File Modified:** `src/components/sections/DifferentiatorsSection.tsx`
+- Replaced the dense intro paragraph (lines 105-111) with an aerated bullet-point layout
+- Original: single `<p>` block combining differentiation pillars + McKinsey/Gartner citations
+- New structure:
+  - Short intro paragraph: "Notre différenciation repose sur trois piliers fondamentaux :" (with `mb-2`)
+  - Unordered list (`<ul>`) with 3 `<li>` items, each with a bold label and description:
+    1. **Expertise ciblée** — Nous ne faisons que de la data et de l'IA...
+    2. **Impact mesurable** — Chaque projet est conçu pour un ROI vérifiable...
+    3. **Approche sur mesure** — Pas de solution générique, chaque projet est adapté...
+  - McKinsey/Gartner citation paragraph preserved unchanged after the list
+- Styling: `list-disc list-inside`, `space-y-1.5` for vertical rhythm, `text-white/90` for bold labels
+
+### Part B: FAQ Quick-Summary Table — FAQSection.tsx
+
+**File Modified:** `src/components/sections/FAQSection.tsx`
+- Added a quick-summary table after the `data-section-summary` paragraph and before the accordion
+- Table contains top 5 most important FAQ questions with short answers:
+  1. "Quels types d'entreprises accompagnez-vous ?" → Startups, PME, ETI et grands groupes CAC40
+  2. "Combien de temps dure un projet ?" → POC 4-6 semaines, BI 2-4 mois, transformation 6-12 mois
+  3. "Quelles technologies utilisez-vous ?" → AWS, Azure, GCP, Snowflake, Databricks, dbt, Airflow, Power BI, Python, Spark
+  4. "Vos solutions sont-elles conformes au RGPD ?" → Privacy by Design, anonymisation, chiffrement, registre des traitements
+  5. "Quel est le coût d'un projet data ou IA ?" → POC à partir de 15 000 €, BI 30-80 k€, transformation 100-500 k€
+- Accessibility: `role="table"`, `aria-label="Résumé des questions fréquentes"`, `scope="col"` on headers
+- Styling: alternating row colors (`bg-secondary/10` / `bg-background`), responsive with `overflow-x-auto`
+- Comment added: "GEO Pillar 3: Answer-first for AI engines"
+
+### Build Verification
+- `bun run lint` — ✅ Passed (no errors)
+- Dev server compiles successfully (GET / 200)

@@ -180,12 +180,12 @@ export function HeroSection() {
           >
             <p className="text-xs font-semibold text-primary/80 uppercase tracking-wider mb-2">En résumé</p>
             <p className="text-[10px] text-white/40 mb-2">
-              Dernière mise à jour : 15 janvier 2025 — Source : DataSphere Innovation
+              Dernière mise à jour : 23 avril 2025 — Source : DataSphere Innovation
             </p>
             <p className="text-sm text-white/70 leading-relaxed">
               DataSphere Innovation est un cabinet expert en data et intelligence artificielle basé à Montreuil.
-              Nous accompagnons les entreprises dans leur stratégie data, BI &amp; dashboards, solutions IA,
-              data engineering, automatisation et migration cloud. 50+ projets délivrés, 98% de satisfaction client,
+              Nous accompagnons les entreprises dans leur <Link href="/services/data-strategy" className="text-primary hover:underline">stratégie data</Link>, <Link href="/services/bi-dashboards" className="text-primary hover:underline">BI &amp; dashboards</Link>, <Link href="/services/ai-solutions" className="text-primary hover:underline">solutions IA</Link>,
+              <Link href="/services/data-engineering" className="text-primary hover:underline">data engineering</Link>, <Link href="/services/process-automation" className="text-primary hover:underline">automatisation</Link> et <Link href="/services/cloud-modernization" className="text-primary hover:underline">migration cloud</Link>. 50+ projets délivrés, 98% de satisfaction client,
               3x ROI moyen. Experts certifiés AWS, Azure et GCP. Conformité RGPD native.
             </p>
           </motion.div>

@@ -102,8 +102,15 @@ export function DifferentiatorsSection() {
               Plus qu&apos;un prestataire, un partenaire engagé dans la réussite de
               vos projets data & IA.
             </p>
-            <p className="text-white/70 max-w-3xl mt-3 text-base">
-              Notre différenciation repose sur une expertise ciblée, un impact mesurable et une approche sur mesure.
+            <p className="text-white/70 max-w-3xl mt-3 text-base mb-2">
+              Notre différenciation repose sur trois piliers fondamentaux :
+            </p>
+            <ul className="text-white/70 max-w-3xl text-base space-y-1.5 list-disc list-inside mb-3">
+              <li><strong className="text-white/90">Expertise ciblée</strong> — Nous ne faisons que de la data et de l&apos;IA, avec une profondeur que les généralistes ne peuvent pas égaler.</li>
+              <li><strong className="text-white/90">Impact mesurable</strong> — Chaque projet est conçu pour un ROI vérifiable, avec des KPIs définis dès le cadrage.</li>
+              <li><strong className="text-white/90">Approche sur mesure</strong> — Pas de solution générique, chaque projet est adapté à votre contexte et vos enjeux.</li>
+            </ul>
+            <p className="text-white/70 max-w-3xl text-base">
               Selon <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener noreferrer" className="text-accent/80 hover:text-accent underline underline-offset-2">McKinsey</a>, les entreprises
               data-driven sont 23 fois plus susceptibles d&apos;acquérir des clients. Selon
               <a href="https://www.gartner.com/en/information-technology" target="_blank" rel="noopener noreferrer" className="text-accent/80 hover:text-accent underline underline-offset-2"> Gartner</a>, plus de 80% des entreprises
