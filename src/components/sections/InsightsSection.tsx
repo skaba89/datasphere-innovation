@@ -73,6 +73,8 @@ export function InsightsSection() {
                 <Link href="/services/ai-solutions" className="text-primary hover:underline"> Machine Learning</Link>, le
                 <Link href="/services/data-engineering" className="text-primary hover:underline"> Data Engineering</Link> et le
                 <Link href="/services/cloud-modernization" className="text-primary hover:underline"> Cloud</Link>.
+                Consultez aussi notre <Link href="/#comparaison-services" className="text-primary hover:underline">comparatif des services</Link> et
+                la <Link href="/#methode" className="text-primary hover:underline">méthodologie</Link>.
               </p>
             </div>
             <Link

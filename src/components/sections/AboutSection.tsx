@@ -85,8 +85,10 @@ export function AboutSection() {
                 <span itemProp="addressRegion">Île-de-France</span>
                 <span itemProp="addressCountry">FR</span>
               </span>
-              <Link href="/services/data-strategy" className="text-primary hover:underline"> services de stratégie data</Link> et
-              <Link href="/services/ai-solutions" className="text-primary hover:underline"> solutions IA</Link>.
+              <Link href="/services/data-strategy" className="text-primary hover:underline"> services de stratégie data</Link>,
+              <Link href="/services/ai-solutions" className="text-primary hover:underline"> solutions IA</Link>,
+              <Link href="/services/bi-dashboards" className="text-primary hover:underline"> BI &amp; dashboards</Link> et
+              <Link href="/services/cloud-modernization" className="text-primary hover:underline"> migration cloud</Link>.
             </p>
             <Link
               href="/a-propos"

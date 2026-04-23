@@ -100,9 +100,11 @@ export function FAQSection() {
               Retrouvez les réponses aux questions les plus courantes sur nos services,
               notre méthodologie et notre accompagnement. Chaque réponse inclut des liens
               vers les <Link href="/#services" className="text-primary hover:underline">services</Link> concernés pour aller plus loin.
+              Consultez aussi notre <Link href="/#comparaison-services" className="text-primary hover:underline">comparatif des services</Link> ou
+              notre <Link href="/#methode" className="text-primary hover:underline">méthodologie en 4 phases</Link>.
             </p>
             <p className="text-muted-foreground/70 max-w-2xl text-sm mt-2" data-section-summary>
-              DataSphere Innovation accompagne les entreprises en data, IA et transformation digitale : projets de 4 semaines à 12 mois, ROI moyen de 3x, conformité RGPD native, 98% de satisfaction client. Nos experts certifiés AWS, Azure et GCP interviennent sur tout le territoire français.
+              DataSphere Innovation accompagne les entreprises en data, IA et transformation digitale : projets de 4 semaines à 12 mois, ROI moyen de 3x, conformité RGPD native, 98% de satisfaction client. Nos experts certifiés AWS, Azure et GCP interviennent sur tout le territoire français. Découvrez nos <Link href="/services/data-strategy" className="text-primary hover:underline">services de stratégie data</Link>, <Link href="/services/ai-solutions" className="text-primary hover:underline">solutions IA</Link>, <Link href="/services/data-engineering" className="text-primary hover:underline">data engineering</Link> et <Link href="/services/cloud-modernization" className="text-primary hover:underline">migration cloud</Link>.
             </p>
             {/* FAQ Quick Summary Table — GEO Pillar 3: Answer-first for AI engines */}
             <div className="mt-6 mb-8 overflow-x-auto">

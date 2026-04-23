@@ -55,7 +55,10 @@ export function TestimonialsSection() {
             <p className="text-muted-foreground max-w-2xl text-base">
               Avec un taux de satisfaction de 98% et un ROI moyen de 3x, nos clients témoignent de l&apos;impact concret de nos
               <Link href="/#services" className="text-primary hover:underline"> services data & IA</Link> sur leur performance.
-              Découvrez leurs retours d&apos;expérience.
+              Découvrez leurs retours d&apos;expérience et explorez nos
+              <Link href="/services/data-strategy" className="text-primary hover:underline"> stratégies data</Link>,
+              <Link href="/services/bi-dashboards" className="text-primary hover:underline"> solutions BI</Link> et
+              <Link href="/services/ai-solutions" className="text-primary hover:underline"> implémentations IA</Link>.
             </p>
           </div>
         </SectionReveal>

@@ -400,6 +400,8 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
                 Combine notre expertise {service.shortTitle.toLowerCase()} avec d&apos;autres services pour un impact maximal.
+                Explorez notre <Link href="/#comparaison-services" className="text-primary hover:underline">comparatif détaillé</Link> ou
+                découvrez notre <Link href="/#methode" className="text-primary hover:underline">méthodologie en 4 phases</Link>.
               </p>
             </div>
           </SectionReveal>

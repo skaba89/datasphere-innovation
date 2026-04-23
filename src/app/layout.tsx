@@ -164,7 +164,7 @@ export default function RootLayout({
       },
       publisher: { "@id": "https://datasphereinnovation.fr/#organization" },
       datePublished: "2021-01-01",
-      dateModified: "2025-04-23",
+      dateModified: "2026-04-23",
       url: "https://datasphereinnovation.fr",
       mainEntityOfPage: { "@type": "WebPage", "@id": "https://datasphereinnovation.fr" },
       articleSection: "Consulting Data & IA",
