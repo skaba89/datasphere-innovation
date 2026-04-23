@@ -2,27 +2,28 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { ArrowRight, ExternalLink, BarChart3, Search, LineChart, Shield, Gauge, Target } from "lucide-react";
+import { ArrowRight, ExternalLink, LineChart, Shield, Gauge, Target } from "lucide-react";
 
 const GEO_TOOLS = [
   {
-    icon: Search,
     name: "Google Search Console",
+    logo: "/images/tools/google-search-console.png",
     description: "Outil gratuit de Google pour surveiller, maintenir et dépanner la présence de votre site dans les résultats de recherche Google. Indispensable pour le suivi du référencement organique et la détection d'erreurs d'indexation.",
     url: "https://search.google.com/search-console",
     kpis: ["Impressions", "Clics", "Position moyenne", "CTR"],
   },
   {
-    icon: BarChart3,
     name: "Bing Webmaster Tools",
+    logo: "/images/tools/bing-webmaster-tools.png",
     description: "Plateforme de Microsoft pour le suivi de la présence de votre site dans les résultats de recherche Bing. Complémentaire à Google Search Console, elle offre des insights sur le second moteur de recherche mondial.",
     url: "https://www.bing.com/webmasters",
     kpis: ["Pages indexées", "Requêtes de recherche", "Backlinks", "Erreurs d'exploration"],
   },
   {
-    icon: LineChart,
     name: "Google Analytics 4",
+    logo: "/images/tools/google-analytics-4.png",
     description: "Solution d'analyse web de Google intégrée à notre site pour comprendre le comportement des utilisateurs, mesurer les conversions et optimiser les parcours. Configuré avec anonymisation IP et consentement cookies.",
     url: "https://analytics.google.com/",
     kpis: ["Sessions", "Taux de conversion", "Pages par session", "Citations IA"],
@@ -94,46 +95,49 @@ export function GeoToolsSection() {
         {/* Tools Grid */}
         <SectionReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-16">
-            {GEO_TOOLS.map((tool) => {
-              const Icon = tool.icon;
-              return (
-                <div
-                  key={tool.name}
-                  className="group p-6 rounded-2xl border border-border/30 bg-card hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
-                      <Icon size={24} className="text-primary" />
-                    </div>
-                    <h3 className="font-heading font-semibold text-base">{tool.name}</h3>
+            {GEO_TOOLS.map((tool) => (
+              <div
+                key={tool.name}
+                className="group p-6 rounded-2xl border border-border/30 bg-card hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="relative w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors overflow-hidden">
+                    <Image
+                      src={tool.logo}
+                      alt={`Logo ${tool.name}`}
+                      fill
+                      className="object-contain p-1.5"
+                      sizes="48px"
+                    />
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    {tool.description}
-                  </p>
-                  <div className="mb-4">
-                    <p className="text-xs font-semibold text-foreground/80 mb-2">KPIs suivis :</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {tool.kpis.map((kpi) => (
-                        <span
-                          key={kpi}
-                          className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/80 border border-primary/15"
-                        >
-                          {kpi}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <a
-                    href={tool.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
-                  >
-                    Accéder à l&apos;outil <ExternalLink size={10} />
-                  </a>
+                  <h3 className="font-heading font-semibold text-base">{tool.name}</h3>
                 </div>
-              );
-            })}
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  {tool.description}
+                </p>
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-foreground/80 mb-2">KPIs suivis :</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {tool.kpis.map((kpi) => (
+                      <span
+                        key={kpi}
+                        className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary/80 border border-primary/15"
+                      >
+                        {kpi}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <a
+                  href={tool.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+                >
+                  Accéder à l&apos;outil <ExternalLink size={10} />
+                </a>
+              </div>
+            ))}
           </div>
         </SectionReveal>
 

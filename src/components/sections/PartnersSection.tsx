@@ -3,24 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-
-// Partner logo mapping
-const PARTNER_LOGOS: { name: string; logo: string }[] = [
-  { name: "AWS", logo: "/images/partners/aws.png" },
-  { name: "Azure", logo: "/images/partners/azure.png" },
-  { name: "GCP", logo: "/images/partners/gcp.png" },
-  { name: "Snowflake", logo: "/images/partners/snowflake.png" },
-  { name: "Databricks", logo: "/images/partners/databricks.png" },
-  { name: "dbt", logo: "/images/partners/dbt.png" },
-  { name: "Airflow", logo: "/images/partners/airflow.png" },
-  { name: "Kafka", logo: "/images/partners/kafka.png" },
-  { name: "Power BI", logo: "/images/partners/powerbi.png" },
-  { name: "Tableau", logo: "/images/partners/tableau.png" },
-  { name: "Looker", logo: "/images/partners/looker.png" },
-  { name: "Fivetran", logo: "/images/partners/fivetran.png" },
-  { name: "Terraform", logo: "/images/partners/terraform.png" },
-  { name: "Dataiku", logo: "/images/partners/dataiku.png" },
-];
+import { PARTNER_LOGOS } from "@/lib/constants";
 
 export function PartnersSection() {
   return (
@@ -42,7 +25,7 @@ export function PartnersSection() {
         </SectionReveal>
 
         <SectionReveal>
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-4">
             {PARTNER_LOGOS.map((partner) => (
               <div
                 key={partner.name}

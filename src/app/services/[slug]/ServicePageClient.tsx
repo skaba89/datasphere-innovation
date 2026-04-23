@@ -28,6 +28,7 @@ import { BackToTop } from "@/components/layout/BackToTop";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { ChatWidget } from "@/components/chatbot/ChatWidget";
+import { PARTNER_LOGOS } from "@/lib/constants";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -224,6 +225,54 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
           </div>
         </div>
       </section>
+
+      {/* Tools Used — Official logos */}
+      {service.tools && service.tools.length > 0 && (
+        <section className="py-16 bg-secondary/10" role="region" aria-label="Outils utilisés">
+          <div className="container mx-auto px-4">
+            <SectionReveal>
+              <div className="text-center mb-10">
+                <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                  Stack Technique
+                </span>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold">
+                  Outils utilisés par nos <span className="gradient-text">experts</span>
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
+                  Les technologies de référence que nous maîtrisons pour délivrer des résultats optimaux en {service.shortTitle.toLowerCase()}.
+                </p>
+              </div>
+            </SectionReveal>
+            <SectionReveal>
+              <div className="flex flex-wrap items-center justify-center gap-5">
+                {service.tools.map((toolName) => {
+                  const partnerLogo = PARTNER_LOGOS.find((p) => p.name === toolName);
+                  if (!partnerLogo) return null;
+                  return (
+                    <div
+                      key={toolName}
+                      className="flex flex-col items-center justify-center gap-2 w-28 h-28 rounded-xl bg-card border border-border/30 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group p-3"
+                    >
+                      <div className="relative w-12 h-12 flex-shrink-0">
+                        <Image
+                          src={partnerLogo.logo}
+                          alt={`Logo officiel ${toolName}`}
+                          fill
+                          className="object-contain transition-all duration-300 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                          sizes="48px"
+                        />
+                      </div>
+                      <span className="text-xs font-medium text-muted-foreground group-hover:text-primary transition-colors text-center leading-tight">
+                        {toolName}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </SectionReveal>
+          </div>
+        </section>
+      )}
 
       {/* Benefits with image */}
       <section className="section-padding bg-secondary/20 relative overflow-hidden" role="region" aria-label="Bénéfices">

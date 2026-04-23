@@ -8,6 +8,7 @@ export interface ServiceData {
   benefits: string[];
   useCases: { title: string; description: string }[];
   methodology: { step: string; title: string; description: string }[];
+  tools: string[];
   cta: string;
   heroDescription: string;
 }
@@ -60,6 +61,7 @@ export const services: ServiceData[] = [
       { step: "04", title: "Deliver", description: "Suivi des KPIs et optimisation continue de la stratégie." },
     ],
     cta: "Définissez votre stratégie data",
+    tools: ["AWS", "Azure", "GCP", "Snowflake", "Dataiku"],
     heroDescription:
       "Transformez vos données en levier stratégique. Notre approche holistique combine gouvernance, architecture et culture data pour un impact durable.",
   },
@@ -110,6 +112,7 @@ export const services: ServiceData[] = [
       { step: "04", title: "Deliver", description: "Formation des utilisateurs et optimisation continue." },
     ],
     cta: "Créez vos dashboards",
+    tools: ["Power BI", "Looker", "Tableau", "Snowflake", "dbt"],
     heroDescription:
       "Des tableaux de bord qui racontent votre histoire data. Conçus pour l'impact, adoptés par les équipes.",
   },
@@ -160,6 +163,7 @@ export const services: ServiceData[] = [
       { step: "04", title: "Deliver", description: "Monitoring, retraining et optimisation des modèles." },
     ],
     cta: "Explorez l'IA pour votre business",
+    tools: ["Python", "Spark", "Databricks", "Azure", "GCP"],
     heroDescription:
       "De l'idée au déploiement, nous concrétisons vos ambitions IA avec des solutions robustes, scalables et responsables.",
   },
@@ -210,6 +214,7 @@ export const services: ServiceData[] = [
       { step: "04", title: "Deliver", description: "Monitoring, optimisation et documentation complète." },
     ],
     cta: "Modernisez vos pipelines data",
+    tools: ["dbt", "Airflow", "Spark", "Kafka", "Snowflake", "Fivetran"],
     heroDescription:
       "Des fondations data solides pour des insights fiables. Nous construisons l'infrastructure qui propulse votre transformation data.",
   },
@@ -260,6 +265,7 @@ export const services: ServiceData[] = [
       { step: "04", title: "Deliver", description: "Suivi des performances et optimisation continue." },
     ],
     cta: "Automatisez vos processus",
+    tools: ["Python", "Airflow", "Azure", "AWS", "Databricks"],
     heroDescription:
       "Libérez le potentiel de vos équipes. L'automatisation intelligente transforme vos opérations pour plus d'efficacité et d'agilité.",
   },
@@ -310,6 +316,7 @@ export const services: ServiceData[] = [
       { step: "04", title: "Deliver", description: "Optimisation continue, FinOps et gouvernance cloud." },
     ],
     cta: "Modernisez votre infrastructure",
+    tools: ["AWS", "Azure", "GCP", "Terraform", "dbt"],
     heroDescription:
       "Le cloud comme accélérateur de transformation. Nous sécurisons votre migration et optimisons votre infrastructure pour l'avenir.",
   },

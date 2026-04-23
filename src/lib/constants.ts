@@ -236,7 +236,33 @@ export const PARTNERS = [
   "Fivetran",
   "Terraform",
   "Dataiku",
+  "Python",
+  "Spark",
 ] as const;
+
+export interface PartnerLogo {
+  name: string;
+  logo: string;
+}
+
+export const PARTNER_LOGOS: PartnerLogo[] = [
+  { name: "AWS", logo: "/images/partners/aws.png" },
+  { name: "Azure", logo: "/images/partners/azure.png" },
+  { name: "GCP", logo: "/images/partners/gcp.png" },
+  { name: "Snowflake", logo: "/images/partners/snowflake.png" },
+  { name: "Databricks", logo: "/images/partners/databricks.png" },
+  { name: "dbt", logo: "/images/partners/dbt.png" },
+  { name: "Airflow", logo: "/images/partners/airflow.png" },
+  { name: "Kafka", logo: "/images/partners/kafka.png" },
+  { name: "Power BI", logo: "/images/partners/powerbi.png" },
+  { name: "Tableau", logo: "/images/partners/tableau.png" },
+  { name: "Looker", logo: "/images/partners/looker.png" },
+  { name: "Fivetran", logo: "/images/partners/fivetran.png" },
+  { name: "Terraform", logo: "/images/partners/terraform.png" },
+  { name: "Dataiku", logo: "/images/partners/dataiku.png" },
+  { name: "Python", logo: "/images/partners/python.png" },
+  { name: "Spark", logo: "/images/partners/spark.png" },
+];
 
 // ─── Clients ────────────────────────────────────────────────────────────────
 
