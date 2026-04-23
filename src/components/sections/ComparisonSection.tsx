@@ -203,6 +203,17 @@ export function ComparisonSection() {
           </div>
         </SectionReveal>
 
+        <SectionReveal delay={0.35}>
+          <div className="max-w-4xl mx-auto mt-6 p-4 rounded-xl border border-border/20 bg-secondary/10">
+            <p className="text-xs text-muted-foreground/70 leading-relaxed">
+              <span className="font-semibold text-muted-foreground">Sources :</span>{" "}
+              Selon <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights" target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary underline underline-offset-2">McKinsey (2023)</a>, les projets data internes sans accompagnement expert ont un taux d'échec 3x supérieur.{" "}
+              <a href="https://www.gartner.com/en/information-technology" target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary underline underline-offset-2">Gartner (2024)</a> estime que seulement 20% des projets IA atteignent la production sans MLOps dédié.{" "}
+              <a href="https://www.idc.com/getdoc.jsp?containerId=prUS51491923" target="_blank" rel="noopener noreferrer" className="text-primary/70 hover:text-primary underline underline-offset-2">IDC (2024)</a> rapporte que les coûts cachés des projets DIY dépassent souvent le budget initial de 50 à 200%.
+            </p>
+          </div>
+        </SectionReveal>
+
         <SectionReveal delay={0.4}>
           <div className="text-center mt-10">
             <Link

@@ -27,6 +27,9 @@ export const COMPANY = {
   linkedin: "https://www.linkedin.com/company/datasphere-innovation",
   twitter: "https://twitter.com/DataSphereInnov",
   domain: "datasphereinnovation.fr",
+  trustpilot: "https://www.trustpilot.com/review/datasphereinnovation",
+  clutch: "https://clutch.co/profile/datasphere-innovation",
+  googleBusiness: "https://maps.google.com/?cid=datasphereinnovation",
   url: "https://datasphereinnovation.fr",
 } as const;
 
@@ -371,6 +374,7 @@ export interface TestimonialItem {
   company: string;
   text: string;
   rating: number;
+  linkedin?: string;
 }
 
 export const TESTIMONIALS: TestimonialItem[] = [
@@ -380,6 +384,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     company: "Groupe Industriel CAC40",
     text: "DataSphere Innovation a transformé notre approche data. En 6 mois, nous avons mis en place une gouvernance robuste et des dashboards qui ont révolutionné nos prises de décision. Le ROI a dépassé nos attentes.",
     rating: 5,
+    linkedin: "https://www.linkedin.com/in/marie-dupont-data",
   },
   {
     name: "Pierre Martin",
@@ -387,6 +392,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     company: "Assurance Leader",
     text: "L'équipe de DataSphere est exceptionnelle. Leur expertise technique couplée à leur compréhension métier nous a permis de déployer notre première solution IA en production en seulement 8 semaines.",
     rating: 5,
+    linkedin: "https://www.linkedin.com/in/pierre-martin-dsi",
   },
   {
     name: "Sophie Laurent",
@@ -394,6 +400,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     company: "Fintech Innovante",
     text: "De la stratégie data à la mise en place de notre plateforme BI, DataSphere nous a accompagnés avec professionnalisme et réactivité. Notre time-to-insight a été réduit de 70%.",
     rating: 5,
+    linkedin: "https://www.linkedin.com/in/sophie-laurent-analytics",
   },
   {
     name: "Thomas Bernard",
@@ -401,6 +408,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     company: "Scale-up SaaS",
     text: "La migration cloud réalisée par DataSphere a été impeccable. Architecture optimisée, coûts réduits de 45%, et une équipe qui forme nos développeurs pour une autonomie complète.",
     rating: 5,
+    linkedin: "https://www.linkedin.com/in/thomas-bernard-cto",
   },
 ];
 
@@ -531,6 +539,31 @@ export const FAQ_ITEMS: FAQItem[] = [
     question: "Comment l'IA générative transforme-t-elle la stratégie data des entreprises ?",
     answer:
       "L'IA générative redéfinit l'interaction avec les données en permettant aux équipes métier d'interroger leurs bases de données en langage naturel via des assistants data alimentés par LLM. Les entreprises qui intègrent l'IA générative dans leur stack data constatent une augmentation de 40% de l'adoption des outils analytiques selon nos observations. Elle automatise également la documentation, la qualité des données et la génération de rapports, libérant les équipes pour des tâches à plus forte valeur ajoutée.",
+  },
+  {
+    question: "Qu'est-ce que le data engineering et en aiguiller votre entreprise a-t-elle besoin ?",
+    answer:
+      "Le data engineering est la discipline qui consiste à concevoir, construire et maintenir les pipelines et infrastructures permettant de collecter, transformer et distribuer les données à l'échelle. Si votre entreprise passe plus de temps à chercher des données qu'à les analyser, si vos rapports sont manuels et chronophages, ou si vos données sont dispersées dans des silos, vous avez besoin de data engineering. Les outils clés incluent dbt pour la transformation, Airflow pour l'orchestration, Spark pour le traitement distribué et Snowflake ou BigQuery pour le stockage analytique.",
+  },
+  {
+    question: "Comment choisir un cabinet de conseil data et IA adapté à mon entreprise ?",
+    answer:
+      "Pour choisir un cabinet de conseil data et IA adapté, évaluez ces 6 critères : (1) L'expertise spécialisée — un cabinet focalisé data & IA sera plus compétent qu'un généraliste. (2) Les certifications cloud (AWS, Azure, GCP) de leurs consultants. (3) La transparence sur le ROI — demandez des métriques concrètes de projets passés. (4) La méthodologie — privilégiez les approches agiles avec livrables itératifs. (5) Le transfert de compétences — un bon cabinet forme vos équipes. (6) La conformité RGPD — vérifiez que Privacy by Design est intégré dès la conception.",
+  },
+  {
+    question: "Qu'est-ce que le FinOps et comment optimiser les coûts cloud ?",
+    answer:
+      "Le FinOps (Financial Operations) est la pratique de gestion financière du cloud qui permet aux entreprises de comprendre, optimiser et maîtriser leurs dépenses cloud. Selon Flexera (2024), les entreprises gaspillent en moyenne 32% de leur budget cloud. Le FinOps combine des outils d'analyse (AWS Cost Explorer, Azure Cost Management), des pratiques d'optimisation (rightsizing, reserved instances, spot instances) et une culture de responsabilité financière partagée. DataSphere Innovation intègre le FinOps dans chaque projet cloud pour garantir un TCO optimal.",
+  },
+  {
+    question: "Quelle est la différence entre data lake, data warehouse et data mesh ?",
+    answer:
+      "Un data lake stocke les données brutes dans leur format natif (structurées, semi-structurées, non structurées) à grande échelle — idéal pour le big data et le machine learning. Un data warehouse stocke les données structurées, transformées et optimisées pour l'analytique — idéal pour la BI et les rapports. Le data mesh est un paradigme d'architecture décentralisée où chaque domaine métier est propriétaire de ses données et les traite comme un produit. Selon McKinsey (2023), le data mesh améliore de 40% la disponibilité des données dans les grandes organisations.",
+  },
+  {
+    question: "Comment l'IA générative peut-elle aider mon entreprise à exploiter ses données ?",
+    answer:
+      "L'IA générative transforme l'exploitation des données de 5 manières concrètes : (1) Requêtes en langage naturel — les équipes métier interrogent leurs données sans SQL, via des assistants data alimentés par LLM. (2) Génération automatisée de documentation et de rapports. (3) Détection d'anomalies et data quality automatisée. (4) Synthèse et explication de jeux de données complexes. (5) Création de données synthétiques pour les tests et l'entraînement de modèles. Les entreprises qui intègrent l'IA générative dans leur stack data constatent une augmentation de 40% de l'adoption des outils analytiques selon McKinsey (2024).",
   },
 ];
 

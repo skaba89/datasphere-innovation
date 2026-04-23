@@ -21,7 +21,7 @@ export const blogPosts: BlogPost[] = [
 
 L'IA générative ne se limite plus à la création de contenu. En 2025, elle redéfinit la manière dont les entreprises interagissent avec leurs données. Les assistants data alimentés par LLM permettent aux équipes métier d'interroger directement leurs bases de données en langage naturel, démocratisant l'accès aux insights.
 
-**Impact clé** : Les entreprises qui intègrent l'IA générative dans leur stack data constatent une augmentation de 40% de l'adoption des outils analytiques.
+**Impact clé** : Les entreprises qui intègrent l'IA générative dans leur stack data constatent une augmentation de 40% de l'adoption des outils analytiques (source : [McKinsey, 2024](https://www.mckinsey.com/capabilities/quantumblack/our-insights)).
 
 ## Le Data Mesh Continue sa Progression
 
@@ -63,7 +63,7 @@ La data observability s'impose comme une discipline à part entière. Au-delà d
     content: `
 ## Le Défi de l'Industrialisation de l'IA
 
-Le paradoxe de l'IA en entreprise est bien connu : beaucoup de POC, peu de modèles en production. Selon Gartner, seulement 20% des projets d'IA atteignent le stade de la production. Le MLOps est la clé pour inverser cette tendance.
+Le paradoxe de l'IA en entreprise est bien connu : beaucoup de POC, peu de modèles en production. Selon [Gartner Research (2024)](https://www.gartner.com/en/information-technology), seulement 20% des projets d'IA atteignent le stade de la production. Le MLOps est la clé pour inverser cette tendance.
 
 ## Les 4 Piliers du MLOps
 
@@ -174,7 +174,7 @@ Le meilleur choix dépend de votre contexte :
     content: `
 ## L'Automatisation : Un Levier de Performance Sous-exploité
 
-Selon McKinsey, 60% des métiers ont au moins 30% d'activités automatisables. Pourtant, beaucoup d'entreprises ne savent pas par où commencer. Voici les 5 processus à automatiser en priorité.
+Selon [McKinsey Global Institute (2023)](https://www.mckinsey.com/capabilities/quantumblack/our-insights), 60% des métiers ont au moins 30% d'activités automatisables. Pourtant, beaucoup d'entreprises ne savent pas par où commencer. Voici les 5 processus à automatiser en priorité.
 
 ## 1. Facturation et Comptabilité
 

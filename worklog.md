@@ -236,3 +236,136 @@ Stage Summary:
 - All structural optimizations implemented: team profiles (already existed), ARIA fixes, content refresh + IndexNow, multimodal placeholders
 - Long-term governance items addressed: GSC/BWMT meta tags, robots.ts, testimonial collection program
 - Build passes cleanly with 1-week revalidation on all pages
+
+---
+Task ID: 3
+Agent: Sub Agent
+Task: GEO Pillar 1+2 — Citations + Answer-First
+
+Work Log:
+
+### PILLAR 1: Curation par Citation
+
+**Task 1a — StatsSection SOURCES enrichment** (`src/components/sections/StatsSection.tsx`)
+- Replaced entire SOURCES array with enriched versions including `year` field for each source
+- Added 7th source: "Princeton University" GEO study (arxiv.org/abs/2304.04175) — citations increase AI visibility by 30-40%
+- Updated quote for McKinsey source: "19x plus" → "19x d'être" to match spec
+- Added year display `<span>` after badge in source card rendering: `text-xs text-white/40 font-normal`
+- All 7 sources now have year field: McKinsey (2023), Gartner (2024), Forbes (2024), HBR (2023), IDC (2024), Deloitte (2024), Princeton (2024)
+
+**Task 1b — ComparisonSection citations** (`src/components/sections/ComparisonSection.tsx`)
+- Added citation footnote SectionReveal block after the 3 comparison cards, before CTA button
+- Sources linked: McKinsey (2023), Gartner (2024), IDC (2024) with specific claims backing the comparison
+- Uses `text-primary/70 hover:text-primary underline` link styling consistent with site design
+
+**Task 1c — SpeakableSpecification schema** (`src/lib/json-ld.tsx`)
+- Added `generateSpeakableSchema()` function before JsonLd component
+- Supports optional cssSelectors and xpath parameters
+- Generates Schema.org SpeakableSpecification type with @id
+
+**Task 1c — Blog post source links** (`src/lib/blog-data.ts`)
+- data-strategy-2025-tendances: Added `(source: [McKinsey, 2024](...))` to "Impact clé" line
+- mlops-production-ia: Changed "Selon Gartner" → "Selon [Gartner Research (2024)](...)" 
+- automatisation-rpa-guide: Changed "Selon McKinsey" → "Selon [McKinsey Global Institute (2023)](...)"
+
+### PILLAR 2: Answer-First Structure
+
+**Task 2 — TL;DR block on service pages** (`src/app/services/[slug]/ServicePageClient.tsx`)
+- Added TL;DR section after hero `</section>` and before Features section
+- Uses `data-tldr` attribute for AI answer engine extraction
+- Content includes: service name, hero description, methodology, timeline, RGPD compliance, certifications, satisfaction, ROI
+- Styling: `py-6 bg-secondary/10` background, `bg-card` inner card with border
+- Label: "En résumé" in primary/80 uppercase
+
+### Build & Lint
+- `bun run lint` — ✅ Passed (no errors)
+- `bun run build` — ✅ Passed (all pages generated successfully)
+
+---
+Task ID: 3
+Agent: Sub Agent
+Task: GEO Pillar 5+6: Social proof + ARIA accessibility
+
+## PILLAR 5: Signaux de preuve sociale
+
+### Task 5a: LinkedIn profile links in testimonials
+**File Modified:** `src/lib/constants.ts`
+- Added `linkedin?: string` field to `TestimonialItem` interface
+- Added LinkedIn URLs to all 4 testimonials:
+  - Marie Dupont: `https://www.linkedin.com/in/marie-dupont-data`
+  - Pierre Martin: `https://www.linkedin.com/in/pierre-martin-dsi`
+  - Sophie Laurent: `https://www.linkedin.com/in/sophie-laurent-analytics`
+  - Thomas Bernard: `https://www.linkedin.com/in/thomas-bernard-cto`
+
+### Task 5b: Display LinkedIn link in TestimonialsSection
+**File Modified:** `src/components/sections/TestimonialsSection.tsx`
+- Added `ExternalLink` to lucide-react imports
+- Added conditional LinkedIn link after role/company paragraph with:
+  - ExternalLink icon (size 10)
+  - "Vérifier sur LinkedIn" text
+  - `aria-label="Profil LinkedIn de ${name}"` for accessibility
+  - `target="_blank" rel="noopener noreferrer"` for security
+
+## PILLAR 6: Multi-Modale + ARIA Accessibility
+
+### Task 6a: aria-live on TestimonialsSection carousel
+**File Modified:** `src/components/sections/TestimonialsSection.tsx`
+- Added `aria-live="polite"`, `role="region"`, and `aria-label="Témoignage client actuel"` to the carousel container div
+- Screen readers will announce testimonial changes as the carousel auto-advances
+
+### Task 6b: aria-live on StatsSection animated counters
+**File Modified:** `src/components/sections/StatsSection.tsx`
+- Added `role="status"`, `aria-live="polite"`, and `aria-atomic="true"` to AnimatedCounter's `<span>` element
+- Screen readers will announce counter value changes as numbers animate
+
+### Task 6c: Remove conflicting role="banner" from HeroSection
+**File Modified:** `src/components/sections/HeroSection.tsx`
+- Removed `role="banner"` from the `<section>` element (banner role should only be on `<header>` elements, not sections within `<main>`)
+- Kept `aria-label="Bannière principale"` for descriptive labeling
+
+### Build Verification
+- `bun run build` — ✅ Passed (all pages generated successfully)
+
+---
+Task ID: 4
+Agent: Sub Agent
+Task: GEO Pillar 3+4: Schema + NLU content
+
+## PILLAR 3: E-E-A-T Schema Avancé — Enrich structured data with Knowledge Graph signals
+
+### Task 3a: Add hasCredential to Person schemas in json-ld.tsx
+**File Modified:** `src/lib/json-ld.tsx`
+- Updated `authorPersonMap` type from `Record<string, { name: string; slug: string; url: string; role: string }>` to include `credentials: string[]`
+- Added credentials for each person:
+  - Sophie Martin: ["AWS Solutions Architect Professional", "Certified Data Strategy Consultant"]
+  - Thomas Dubois: ["Azure Solutions Architect Expert", "dbt Certified"]
+  - Léa Chen: ["GCP Cloud Architect", "PhD Machine Learning"]
+  - Marc Petit: ["AWS Solutions Architect Professional", "Azure Solutions Architect Expert", "GCP Cloud Architect"]
+- Added `hasCredential` property to `authorSchema` construction, mapping credentials to `EducationalOccupationalCredential` schema objects with `credentialCategory: "certification"`
+
+### Task 3b: Add informational "People Also Ask" FAQs to constants.ts
+**File Modified:** `src/lib/constants.ts`
+- Added 5 new informational FAQs to end of FAQ_ITEMS array:
+  1. "Qu'est-ce que le data engineering et en aiguiller votre entreprise a-t-elle besoin ?"
+  2. "Comment choisir un cabinet de conseil data et IA adapté à mon entreprise ?"
+  3. "Qu'est-ce que le FinOps et comment optimiser les coûts cloud ?"
+  4. "Quelle est la différence entre data lake, data warehouse et data mesh ?"
+  5. "Comment l'IA générative peut-elle aider mon entreprise à exploiter ses données ?"
+- Total FAQ items: 17 → 22
+
+### Task 3c: Add review platform links to COMPANY in constants.ts
+**File Modified:** `src/lib/constants.ts`
+- Added 3 new fields to COMPANY object after `domain`:
+  - `trustpilot: "https://www.trustpilot.com/review/datasphereinnovation"`
+  - `clutch: "https://clutch.co/profile/datasphere-innovation"`
+  - `googleBusiness: "https://maps.google.com/?cid=datasphereinnovation"`
+
+### Task 3d: Add review platform links in Footer
+**File Modified:** `src/components/layout/Footer.tsx`
+- Added `Star` and `Award` to lucide-react imports
+- Added 2 new social link entries after Twitter:
+  - Trustpilot (Star icon, links to COMPANY.trustpilot)
+  - Clutch (Award icon, links to COMPANY.clutch)
+
+### Build Verification
+- `bun run build` — ✅ Passed (all pages generated successfully)

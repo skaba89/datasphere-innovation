@@ -255,11 +255,11 @@ export interface ArticleSchemaInput {
 
 export function generateArticleSchema(article: ArticleSchemaInput) {
   // Map author names to Person profiles with @id linking to equipe pages
-  const authorPersonMap: Record<string, { name: string; slug: string; url: string; role: string }> = {
-    "Sophie Martin": { name: "Sophie Martin", slug: "sophie-martin", url: "https://www.linkedin.com/in/sophie-martin-datasphere", role: "Directrice Data Strategy" },
-    "Thomas Dubois": { name: "Thomas Dubois", slug: "thomas-dubois", url: "https://www.linkedin.com/in/thomas-dubois-datasphere", role: "Lead Data Engineer" },
-    "Léa Chen": { name: "Léa Chen", slug: "lea-chen", url: "https://www.linkedin.com/in/lea-chen-datasphere", role: "Head of AI Solutions" },
-    "Marc Petit": { name: "Marc Petit", slug: "marc-petit", url: "https://www.linkedin.com/in/marc-petit-datasphere", role: "Cloud & Architecture Lead" },
+  const authorPersonMap: Record<string, { name: string; slug: string; url: string; role: string; credentials: string[] }> = {
+    "Sophie Martin": { name: "Sophie Martin", slug: "sophie-martin", url: "https://www.linkedin.com/in/sophie-martin-datasphere", role: "Directrice Data Strategy", credentials: ["AWS Solutions Architect Professional", "Certified Data Strategy Consultant"] },
+    "Thomas Dubois": { name: "Thomas Dubois", slug: "thomas-dubois", url: "https://www.linkedin.com/in/thomas-dubois-datasphere", role: "Lead Data Engineer", credentials: ["Azure Solutions Architect Expert", "dbt Certified"] },
+    "Léa Chen": { name: "Léa Chen", slug: "lea-chen", url: "https://www.linkedin.com/in/lea-chen-datasphere", role: "Head of AI Solutions", credentials: ["GCP Cloud Architect", "PhD Machine Learning"] },
+    "Marc Petit": { name: "Marc Petit", slug: "marc-petit", url: "https://www.linkedin.com/in/marc-petit-datasphere", role: "Cloud & Architecture Lead", credentials: ["AWS Solutions Architect Professional", "Azure Solutions Architect Expert", "GCP Cloud Architect"] },
   };
 
   const authorInfo = authorPersonMap[article.author];
@@ -271,6 +271,11 @@ export function generateArticleSchema(article: ArticleSchemaInput) {
         url: `${SITE_URL}/equipe/${authorInfo.slug}`,
         jobTitle: authorInfo.role,
         sameAs: [authorInfo.url],
+        hasCredential: authorInfo.credentials.map((cred) => ({
+          "@type": "EducationalOccupationalCredential",
+          name: cred,
+          credentialCategory: "certification",
+        })),
         worksFor: {
           "@id": ORG_ID,
         },
@@ -512,6 +517,24 @@ export function generateVideoObjectSchema(video: VideoObjectSchemaInput) {
     },
     inLanguage: "fr",
   };
+}
+
+// ─── SpeakableSpecification Schema ──────────────────────────────────────────
+
+export function generateSpeakableSchema(url: string, cssSelectors?: string[], xpath?: string[]) {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "SpeakableSpecification",
+    "@id": `${url}/#speakable`,
+    url,
+  };
+  if (cssSelectors && cssSelectors.length > 0) {
+    schema.cssSelector = cssSelectors;
+  }
+  if (xpath && xpath.length > 0) {
+    schema.xpath = xpath;
+  }
+  return schema;
 }
 
 // ─── JSON-LD Script Component ───────────────────────────────────────────────

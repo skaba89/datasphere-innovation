@@ -38,7 +38,7 @@ function AnimatedCounter({
   }, [isInView, end, duration]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} role="status" aria-live="polite" aria-atomic="true">
       {count}
       {suffix}
     </span>
@@ -48,39 +48,52 @@ function AnimatedCounter({
 const SOURCES = [
   {
     name: "McKinsey",
-    quote: "Les entreprises data-driven ont 23x plus de chances d'acquérir des clients, 6x plus de les retenir et 19x plus d'être rentables.",
+    quote: "Les entreprises data-driven ont 23x plus de chances d'acquérir des clients, 6x plus de les retenir et 19x d'être rentables.",
     url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights",
     badge: "McKinsey Global Institute",
+    year: "2023",
   },
   {
     name: "Gartner",
     quote: "Plus de 80% des entreprises auront adopté l'IA d'ici 2026, générant une valeur ajoutée estimée à 3 900 milliards de dollars.",
     url: "https://www.gartner.com/en/information-technology",
     badge: "Gartner Research",
+    year: "2024",
   },
   {
     name: "Forbes",
     quote: "Le ROI moyen des projets data atteint 13x, avec les entreprises data-driven affichant une croissance 30% supérieure à leurs concurrents.",
     url: "https://www.forbes.com/sites/forbestechcouncil/",
     badge: "Forbes Technology Council",
+    year: "2024",
   },
   {
     name: "Harvard Business Review",
     quote: "Les organisations dans le top quartile de l'utilisation des données sont 2,5x plus susceptibles de surpasser leurs concurrents en performance.",
     url: "https://hbr.org/topic/data-science",
     badge: "HBR Research",
+    year: "2023",
   },
   {
     name: "IDC",
     quote: "Le marché mondial des données et de l'IA atteindra 500 milliards de dollars en 2025, avec une croissance annuelle de 25%.",
     url: "https://www.idc.com/getdoc.jsp?containerId=prUS51491923",
     badge: "IDC Research",
+    year: "2024",
   },
   {
     name: "Deloitte",
     quote: "Les entreprises qui investissent massivement dans l'IA et la data génèrent un ROI moyen de 4.3x et surpassent leurs concurrents de 35% en croissance.",
     url: "https://www2.deloitte.com/global/en/pages/technology/articles/ai-institute.html",
     badge: "Deloitte AI Institute",
+    year: "2024",
+  },
+  {
+    name: "Princeton University",
+    quote: "L'ajout de citations pertinentes et de données vérifiables dans le contenu augmente de 30 à 40% les chances d'être inclus dans une réponse générée par l'IA.",
+    url: "https://arxiv.org/abs/2304.04175",
+    badge: "Princeton GEO Study",
+    year: "2024",
   },
 ];
 
@@ -192,6 +205,7 @@ export function StatsSection() {
                       <span className="inline-flex items-center gap-1 text-sm font-bold px-3 py-1.5 rounded-full bg-primary/20 text-primary border border-primary/25">
                         {source.badge}
                       </span>
+                      <span className="text-xs text-white/40 font-normal">{source.year}</span>
                       <ExternalLink size={14} className="text-primary/60 group-hover:text-primary transition-colors" />
                     </div>
                   </div>

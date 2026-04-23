@@ -20,6 +20,8 @@ import {
   ChevronRight,
   Send,
   Sparkles,
+  Star,
+  Award,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -212,6 +214,8 @@ export function Footer() {
               {[
                 { href: COMPANY.linkedin, icon: Linkedin, label: "LinkedIn" },
                 { href: COMPANY.twitter, icon: Twitter, label: "Twitter" },
+                { href: COMPANY.trustpilot, icon: Star, label: "Trustpilot" },
+                { href: COMPANY.clutch, icon: Award, label: "Clutch" },
               ].map((social) => (
                 <a
                   key={social.label}

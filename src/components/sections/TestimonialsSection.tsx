@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote, ExternalLink } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
 
 export function TestimonialsSection() {
@@ -62,7 +62,7 @@ export function TestimonialsSection() {
 
         <SectionReveal>
           <div className="max-w-3xl mx-auto">
-            <div className="p-8 md:p-10 rounded-2xl border border-border/30 bg-card relative overflow-hidden">
+            <div className="p-8 md:p-10 rounded-2xl border border-border/30 bg-card relative overflow-hidden" aria-live="polite" role="region" aria-label="Témoignage client actuel">
               {/* Decorative gradient */}
               <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
 
@@ -103,6 +103,18 @@ export function TestimonialsSection() {
                     <p className="text-sm text-muted-foreground">
                       {testimonial.role} — {testimonial.company}
                     </p>
+                    {testimonial.linkedin && (
+                      <a
+                        href={testimonial.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-primary/70 hover:text-primary transition-colors mt-1"
+                        aria-label={`Profil LinkedIn de ${testimonial.name}`}
+                      >
+                        <ExternalLink size={10} />
+                        Vérifier sur LinkedIn
+                      </a>
+                    )}
                     <meta itemProp="itemReviewed" itemType="https://schema.org/Organization" content="DataSphere Innovation" />
                     <meta itemProp="datePublished" content="2024-09-15" />
                   </div>

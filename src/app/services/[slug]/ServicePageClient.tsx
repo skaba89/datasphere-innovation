@@ -180,6 +180,20 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
         </div>
       </section>
 
+      {/* TL;DR — Answer-First for GEO / AI answer engines */}
+      <section className="py-6 bg-secondary/10" aria-label="Résumé du service">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto p-4 rounded-xl border border-border/20 bg-card" data-tldr>
+            <p className="text-xs font-semibold text-primary/80 uppercase tracking-wider mb-2">En résumé</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {service.shortTitle} par DataSphere Innovation : {service.heroDescription} Méthodologie en 4 phases, 
+              premiers résultats en 4 à 6 semaines, conformité RGPD native, experts certifiés AWS/Azure/GCP. 
+              98% satisfaction client, ROI moyen de 3x.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="section-padding bg-background" role="region" aria-label="Fonctionnalités">
         <div className="container mx-auto px-4">

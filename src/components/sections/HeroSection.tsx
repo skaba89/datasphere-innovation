@@ -22,7 +22,6 @@ export function HeroSection() {
       ref={ref}
       id="hero"
       aria-label="Bannière principale"
-      role="banner"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
