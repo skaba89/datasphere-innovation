@@ -37,6 +37,12 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import type { ServiceData } from "@/lib/service-data";
 import { services } from "@/lib/service-data";
 
@@ -386,6 +392,63 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section — Service-specific questions for SEO & conversion */}
+      {service.faq && service.faq.length > 0 && (
+        <section className="section-padding bg-background" role="region" aria-label={`FAQ ${service.shortTitle}`} itemScope itemType="https://schema.org/FAQPage">
+          <div className="container mx-auto px-4">
+            <SectionReveal>
+              <div className="mb-14">
+                <span className="inline-block px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-medium mb-4">
+                  FAQ
+                </span>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4">
+                  Questions fréquentes sur <span className="gradient-text">{service.shortTitle}</span>
+                </h2>
+                <p className="text-muted-foreground max-w-2xl text-base">
+                  Retrouvez les réponses aux questions les plus courantes sur notre service {service.shortTitle.toLowerCase()}.
+                  Pour aller plus loin, consultez notre <Link href="/#faq" className="text-primary hover:underline">FAQ générale</Link> ou
+                  <Link href="/#contact" className="text-primary hover:underline"> contactez nos experts</Link>.
+                </p>
+              </div>
+            </SectionReveal>
+
+            <SectionReveal>
+              <div className="max-w-3xl mx-auto">
+                <Accordion type="single" collapsible className="w-full" role="list">
+                  {service.faq.map((faq, index) => (
+                    <AccordionItem key={index} value={`faq-${index}`} className="border-border/30" role="listitem" itemScope itemProp="mainEntity" itemType="https://schema.org/Question">
+                      <AccordionTrigger className="text-left font-heading font-medium hover:text-primary transition-colors">
+                        <h3 itemProp="name">{faq.question}</h3>
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed" itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">
+                        <p itemProp="text">{faq.answer}</p>
+                        {index === service.faq.length - 1 && (
+                          <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-border/20">
+                            <span className="text-xs text-muted-foreground/60 self-center">Vous avez d&apos;autres questions ?</span>
+                            <Link
+                              href="/#contact"
+                              className="text-xs px-2.5 py-1 rounded-full bg-primary/5 text-primary/70 border border-primary/10 hover:bg-primary/10 hover:text-primary transition-colors"
+                            >
+                              Contactez-nous
+                            </Link>
+                            <Link
+                              href="/#faq"
+                              className="text-xs px-2.5 py-1 rounded-full bg-primary/5 text-primary/70 border border-primary/10 hover:bg-primary/10 hover:text-primary transition-colors"
+                            >
+                              FAQ générale
+                            </Link>
+                          </div>
+                        )}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            </SectionReveal>
+          </div>
+        </section>
+      )}
 
       {/* Related Services */}
       <section className="section-padding bg-background" role="region" aria-label="Services complémentaires">

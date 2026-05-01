@@ -158,7 +158,7 @@ export function generateWebPageSchema(page: WebPageSchemaInput) {
     name: page.title,
     description: page.description,
     url: page.url,
-    dateModified: page.dateModified || "2026-04-23",
+    dateModified: page.dateModified || new Date().toISOString().split("T")[0],
     publisher: {
       "@id": ORG_ID,
     },
@@ -221,13 +221,14 @@ export function generateServiceSchema(service: ServiceSchemaInput) {
 export interface FAQSchemaInput {
   question: string;
   answer: string;
+  pageUrl?: string;
 }
 
-export function generateFAQSchema(faqs: FAQSchemaInput[]) {
+export function generateFAQSchema(faqs: FAQSchemaInput[], pageUrl?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": `${SITE_URL}/#faq`,
+    "@id": pageUrl ? `${pageUrl}/#faq` : `${SITE_URL}/#faq`,
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: faq.question,

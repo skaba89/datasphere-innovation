@@ -51,7 +51,7 @@ export default function HomePage() {
     <main id="main-content" aria-label="Contenu principal" className="min-h-screen flex flex-col" itemScope itemType="https://schema.org/Article">
       <meta itemProp="headline" content="DataSphere Innovation — Cabinet Expert Data & IA" />
       <meta itemProp="datePublished" content="2021-01-01" />
-      <meta itemProp="dateModified" content="2026-04-23" />
+      <meta itemProp="dateModified" content="2025-04-23" />
       <meta itemProp="inLanguage" content="fr" />
       <meta itemProp="articleSection" content="Consulting Data & IA" />
       <span itemProp="author" itemScope itemType="https://schema.org/Person" className="sr-only">
@@ -81,8 +81,8 @@ export default function HomePage() {
             <span aria-hidden="true">·</span>
             <Link href="/#contact" className="hover:text-primary transition-colors">Contact</Link>
             <span aria-hidden="true">·</span>
-            <time dateTime="2026-04-23" className="flex items-center gap-1">
-              Mis à jour le 23 avril 2026
+            <time dateTime="2025-04-23" className="flex items-center gap-1">
+              Mis à jour le 23 avril 2025
             </time>
           </div>
         </nav>

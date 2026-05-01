@@ -5,6 +5,7 @@ import {
   generateServiceSchema,
   generateBreadcrumbSchema,
   generateWebPageSchema,
+  generateFAQSchema,
   generateGraphSchema,
   JsonLd,
 } from "@/lib/json-ld";
@@ -44,11 +45,13 @@ export default async function ServicePage({ params }: PageProps) {
     return <div>Service non trouvé</div>;
   }
 
+  const serviceUrl = `https://datasphereinnovation.fr/services/${service.slug}`;
+
   const serviceGraph = generateGraphSchema([
     generateWebPageSchema({
       title: `${service.title} — DataSphere Innovation`,
       description: service.description,
-      url: `https://datasphereinnovation.fr/services/${service.slug}`,
+      url: serviceUrl,
     }),
     generateServiceSchema({
       slug: service.slug,
@@ -57,10 +60,12 @@ export default async function ServicePage({ params }: PageProps) {
       features: service.features,
       benefits: service.benefits,
     }),
+    // FAQPage JSON-LD for rich results on service pages
+    generateFAQSchema(service.faq, serviceUrl),
     generateBreadcrumbSchema([
       { name: "Accueil", url: "https://datasphereinnovation.fr" },
       { name: "Services", url: "https://datasphereinnovation.fr/#services" },
-      { name: service.title, url: `https://datasphereinnovation.fr/services/${service.slug}` },
+      { name: service.title, url: serviceUrl },
     ]),
   ]);
 
