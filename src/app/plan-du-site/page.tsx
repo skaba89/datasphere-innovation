@@ -50,7 +50,7 @@ const SITE_SECTIONS = [
       { label: "À propos", href: "/a-propos" },
       { label: "Notre équipe", href: "/equipe" },
       { label: "Carrières", href: "/carrieres" },
-      { label: "Contact", href: "/#contact" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -87,6 +87,7 @@ const SITE_SECTIONS = [
       { label: "Mentions légales", href: "/mentions-legales" },
       { label: "Politique de confidentialité", href: "/politique-confidentialite" },
       { label: "Conditions générales de vente", href: "/conditions-generales" },
+      { label: "Politique de cookies", href: "/politique-cookies" },
     ],
   },
 ];

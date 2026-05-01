@@ -81,18 +81,41 @@ export function ContactSection() {
     setLoading(true);
     setLastSubmit(now);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    toast.success(
-      "Merci pour votre message ! Nous vous recontacterons sous 24h."
-    );
-    trackEvent({
-      action: "submit",
-      category: AnalyticsEvents.CONTACT_FORM,
-      label: form.subject,
-    });
-    setForm(INITIAL_FORM);
-    setLoading(false);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(
+          data.error ||
+            "Une erreur est survenue. Veuillez réessayer."
+        );
+        setLoading(false);
+        return;
+      }
+
+      toast.success(
+        data.message ||
+          "Merci pour votre message ! Nous vous recontacterons sous 24h."
+      );
+      trackEvent({
+        action: "submit",
+        category: AnalyticsEvents.CONTACT_FORM,
+        label: form.subject,
+      });
+      setForm(INITIAL_FORM);
+    } catch {
+      toast.error(
+        "Impossible d'envoyer le message. Vérifiez votre connexion et réessayez."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -174,6 +197,21 @@ export function ContactSection() {
                     </p>
                   </div>
                 </div>
+              </div>
+
+              {/* Google Maps embed */}
+              <div className="rounded-2xl border border-border/30 overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.7!2d2.4356!3d48.8636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sMTcgcnVlIEdhc3RvbiBNb25tb3Vzc2VvdSwgOTMxMDAgTW9udHJldWls!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+                  width="100%"
+                  height="220"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  aria-label="Localisation de notre bureau à Montreuil sur Google Maps"
+                  title="DataSphere Innovation — 17 rue Gaston Monmousseau, 93100 Montreuil"
+                />
               </div>
             </div>
           </SectionReveal>

@@ -39,6 +39,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${BASE_URL}/contact`,
+      lastModified: safeDate("2025-04-10"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/blog`,
       lastModified: safeDate("2025-04-01"),
       changeFrequency: "weekly",
@@ -59,6 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${BASE_URL}/conditions-generales`,
       lastModified: safeDate("2025-01-15"),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
+      url: `${BASE_URL}/politique-cookies`,
+      lastModified: safeDate("2025-03-01"),
       changeFrequency: "yearly",
       priority: 0.3,
     },

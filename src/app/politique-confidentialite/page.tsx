@@ -229,7 +229,7 @@ export default function PolitiqueConfidentialitePage() {
                   contact@datasphereinnovation.fr
                 </a>
                 <br />
-                Téléphone : +33 6 81 82 28 40
+                Téléphone : +33 06 81 82 28 41
               </p>
               <p className="mt-2">
                 Vous pouvez également introduire une réclamation auprès de la

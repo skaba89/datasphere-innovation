@@ -20,8 +20,8 @@ export const COMPANY = {
   name: "DataSphere Innovation",
   tagline: "Cabinet expert Data & Intelligence Artificielle",
   email: "contact@datasphereinnovation.fr",
-  phone: "+33 6 81 82 28 40",
-  phoneHref: "tel:+33681822840",
+  phone: "+33 06 81 82 28 41",
+  phoneHref: "tel:+330681822841",
   address: "17 rue Gaston Monmousseau, 93100 Montreuil, France",
   addressShort: "93100 Montreuil",
   linkedin: "https://www.linkedin.com/company/datasphere-innovation",
@@ -625,7 +625,7 @@ export const FOOTER_NAVIGATION = [
   { label: "À propos", href: "/a-propos" },
   { label: "Notre équipe", href: "/equipe" },
   { label: "Carrières", href: "/carrieres" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const FOOTER_RESOURCES = [
@@ -639,6 +639,7 @@ export const LEGAL_LINKS = [
   { label: "Mentions légales", href: "/mentions-legales" },
   { label: "Politique de confidentialité", href: "/politique-confidentialite" },
   { label: "Conditions générales", href: "/conditions-generales" },
+  { label: "Politique de cookies", href: "/politique-cookies" },
 ];
 
 // ─── Chatbot ────────────────────────────────────────────────────────────────

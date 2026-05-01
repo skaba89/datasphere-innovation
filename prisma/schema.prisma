@@ -30,3 +30,17 @@ model Post {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model ContactSubmission {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  subject   String
+  message   String
+  rgpd      Boolean
+  createdAt DateTime @default(now())
+
+  @@map("contact_submissions")
+}

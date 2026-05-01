@@ -616,11 +616,11 @@ export function ServicePageClient({ service }: { service: ServiceData }) {
                   />
                 </Link>
                 <a
-                  href="tel:+33681822840"
-                  aria-label="Appeler au +33 6 81 82 28 40"
+                  href="tel:+330681822841"
+                  aria-label="Appeler au +33 06 81 82 28 41"
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-border bg-secondary/30 text-foreground font-heading font-medium hover:bg-secondary/60 transition-colors"
                 >
-                  +33 6 81 82 28 40
+                  +33 06 81 82 28 41
                 </a>
               </div>
             </div>

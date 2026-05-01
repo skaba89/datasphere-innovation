@@ -18,7 +18,7 @@ const CLIENT_LOGOS: { name: string; logo: string }[] = [
 
 export function ClientsSection() {
   return (
-    <section aria-labelledby="clients-heading" className="py-12 bg-[hsl(222,20%,6%)] border-t border-white/5">
+    <section id="clients" aria-labelledby="clients-heading" className="py-12 bg-[hsl(222,20%,6%)] border-t border-white/5">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="text-center mb-8">

@@ -545,7 +545,7 @@ export default function AProposPage() {
                 </div>
                 <div>
                   <p className="mb-2"><span className="font-semibold text-foreground">Adresse :</span> <span itemProp="address">17 rue Gaston Monmousseau, 93100 Montreuil, France</span></p>
-                  <p className="mb-2"><span className="font-semibold text-foreground">Contact :</span> <a href="tel:+33681822840" className="text-primary hover:underline">+33 6 81 82 28 40</a></p>
+                  <p className="mb-2"><span className="font-semibold text-foreground">Contact :</span> <a href="tel:+330681822841" className="text-primary hover:underline">+33 06 81 82 28 41</a></p>
                   <p className="mb-2"><span className="font-semibold text-foreground">Email :</span> <a href="mailto:contact@datasphereinnovation.fr" className="text-primary hover:underline">contact@datasphereinnovation.fr</a></p>
                   <p className="mb-2"><span className="font-semibold text-foreground">Wikidata :</span> <a href="https://www.wikidata.org/wiki/Q131367265" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Q131367265</a></p>
                 </div>

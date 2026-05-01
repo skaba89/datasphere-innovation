@@ -7,7 +7,7 @@ import { PARTNER_LOGOS } from "@/lib/constants";
 
 export function PartnersSection() {
   return (
-    <section aria-labelledby="partners-heading" className="py-16 bg-[hsl(222,20%,4%)] border-t border-white/5">
+    <section id="partenaires" aria-labelledby="partners-heading" className="py-16 bg-[hsl(222,20%,4%)] border-t border-white/5">
       <div className="container mx-auto px-4">
         <SectionReveal>
           <div className="text-center mb-10">

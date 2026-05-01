@@ -96,7 +96,7 @@ export function generateLocalBusinessSchema() {
     "@id": `${SITE_URL}/#localbusiness`,
     name: SITE_NAME,
     image: `${SITE_URL}/images/logo-datasphere.png`,
-    telephone: "+33 6 81 82 28 40",
+    telephone: "+33 06 81 82 28 41",
     email: "contact@datasphereinnovation.fr",
     address: {
       "@type": "PostalAddress",

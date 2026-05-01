@@ -80,11 +80,11 @@ export default function MentionsLegalesPage() {
                 <br />
                 N° TVA intracommunautaire : FR XX XXX XXX XXX
                 <br />
-                Téléphone : +33 6 81 82 28 40
+                Téléphone : +33 06 81 82 28 41
                 <br />
                 Email : contact@datasphereinnovation.fr
                 <br />
-                Directeur de la publication : [Nom du directeur]
+                Directeur de la publication : Sophie Martin
               </p>
             </div>
 
@@ -95,11 +95,11 @@ export default function MentionsLegalesPage() {
               <p>
                 Le site est hébergé par :
                 <br />
-                [Nom de l&apos;hébergeur]
+                Vercel Inc.
                 <br />
-                [Adresse de l&apos;hébergeur]
+                440 N Barranca Ave #4133, Covina, CA 91723, États-Unis
                 <br />
-                [Téléphone de l&apos;hébergeur]
+                +1 555-876-7777
               </p>
             </div>
 
@@ -187,6 +187,36 @@ export default function MentionsLegalesPage() {
                 Les présentes mentions légales sont régies par le droit
                 français. En cas de litige, les tribunaux français seront
                 seuls compétents.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-heading font-semibold text-foreground mb-3">
+                8. Médiation
+              </h2>
+              <p>
+                En cas de litige relatif à l&apos;interprétation ou à l&apos;exécution
+                des présentes mentions légales, le consommateur peut recourir
+                à une médiation conventionnelle ou à tout mode alternatif de
+                règlement des différends. Conformément à l&apos;article L.612-1 du
+                Code de la consommation, le consommateur peut également recourir
+                gratuitement au service de médiation de la consommation suivant :
+                Médiateur du e-commerce de la FEVAD — 60 rue La Boétie, 75008
+                Paris — www.mediateurfevad.fr
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-heading font-semibold text-foreground mb-3">
+                9. Crédits
+              </h2>
+              <p>
+                Ce site a été conçu et développé par DataSphere Innovation.
+                Les images et illustrations proviennent de banques d&apos;images
+                libres de droits ou sont la propriété exclusive de DataSphere
+                Innovation. Les technologies utilisées incluent Next.js, React,
+                Tailwind CSS et les frameworks mentionnés sur notre page
+                partenaires.
               </p>
             </div>
           </div>
